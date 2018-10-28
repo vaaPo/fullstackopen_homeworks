@@ -1,0 +1,28 @@
+title 0sa-0 notes application (by Paavo Muranen)
+
+User-Agent -> fullstack-exampleapp in Cowboy: GET notes
+note right of fullstack-exampleapp in Cowboy: prepare Muistiinpanot - form <!DOCTYPE html>
+fullstack-exampleapp in Cowboy -> User-Agent: notes
+note left of User-Agent: notes Muistiinpanot\nform shown
+note left of User-Agent: form shown
+note left of User-Agent: <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+User-Agent -> fullstack-exampleapp in Cowboy: GET main.css
+note right of fullstack-exampleapp in Cowboy: prepare main.css
+note right of fullstack-exampleapp in Cowboy: .container {\n  padding: 10px;\n  border: 1px solid\n}\n\n.notes {\n  color: blue; \n}
+fullstack-exampleapp in Cowboy -> User-Agent: main.css
+
+note left of User-Agent: <script type="text/javascript" src="main.js"></script>
+
+User-Agent -> fullstack-exampleapp in Cowboy: GET main.js
+note right of fullstack-exampleapp in Cowboy: prepare main.js
+note right of fullstack-exampleapp in Cowboy:var xhttp = new XMLHttpRequest()\n  \nxhttp.onreadystatechange = function () {\n  if (this.readyState == 4 && this.status == 200) {\n    const data = JSON.parse(this.responseText)\n    console.log(data)\n\n    var ul = document.createElement('ul')\n    ul.setAttribute('class', 'notes')\n\n    data.forEach(function(note){\n      var li = document.createElement('li')\n      \n      ul.appendChild(li);\n      li.appendChild(document.createTextNode(note.content))\n    })\n\n    document.getElementById("notes").appendChild(ul)\n  }\n}\n\nxhttp.open("GET", "/data.json", true)\nxhttp.send()
+fullstack-exampleapp in Cowboy -> User-Agent: main.js
+note left of User-Agent: http.open("GET", "/data.json", true)
+User-Agent -> fullstack-exampleapp in Cowboy: GET data.json
+note right of fullstack-exampleapp in Cowboy: prepare data.json
+note right of fullstack-exampleapp in Cowboy: [\n    {\ncontent: "HTML on helppoa",\ndate: "2017-12-10T17:30:31.098Z"\n    },\n    {\ncontent: "Selain pystyy suorittamaan vain javascriptiä",\ndate: "2017-12-10T18:39:34.091Z"\n    },\n    {\ncontent: "HTTP-protokollan tärkeimmät metodit ovat GET ja POST",\ndate: "2017-12-10T19:20:14.298Z"\n    }\n]
+fullstack-exampleapp in Cowboy -> User-Agent: data.json
+
+note left of User-Agent: render list of notes\nMuistiinpanot\n- HTML on helppoa\n- Selain pystyy suorittamaan vain javascriptiä\n- HTTP-protokollan tärkeimmät metodit ovat GET ja POST

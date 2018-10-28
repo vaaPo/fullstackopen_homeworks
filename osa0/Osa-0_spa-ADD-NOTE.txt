@@ -1,0 +1,13 @@
+title Osa-0 spa\nADD NOTE\n (by Paavo Muranen)
+note left of EndUser: EndUser has already navigated to to https://fullstack-exampleapp.herokuapp.com/spa
+note left of EndUser: types new note "vaaPo was here!"
+EndUser -> User-Agent: "Talleta"-onclick 
+note left of User-Agent:   form.onsubmit = function (e) {\n    e.preventDefault()\n\n    var note = {\n      content: e.target.elements[0].value,\n      date: new Date()\n    }\n\n    notes.push(note)\n    e.target.elements[0].value = ""\n    redrawNotes()\n    sendToServer(note)\n  }
+
+note left of User-Agent:     update notes array - notes.push(note)\n    e.target.elements[0].value = ""
+note left of User-Agent:     redrawNotes()
+note left of User-Agent: note = {content: "vaaPo was here!", date: "2018-10-28T16:47:23.253Z"}
+User-Agent -> EndUser: show new note in the list (notesElement.appendChild(ul))
+note left of User-Agent: sendToServer(note)
+User-Agent -> SPA: POST new_note_spa with payload
+SPA -> User-Agent: {"message":"note created"}

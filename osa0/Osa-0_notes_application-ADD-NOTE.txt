@@ -1,0 +1,33 @@
+title 0sa-0 notes application\nADD NOTE\n(by Paavo Muranen)
+note left of EndUser: type new note "vaaPo was here!"
+EndUser -> User-Agent: click "Talleta"-button
+note left of User-Agent: form data\nnote=vaaPo+was+here%21
+User-Agent -> fullstack-exampleapp in Cowboy: POST new_note
+note right of fullstack-exampleapp in Cowboy: store note to db..
+
+User-Agent -> fullstack-exampleapp in Cowboy: GET notes
+note right of fullstack-exampleapp in Cowboy: prepare Muistiinpanot - form <!DOCTYPE html>
+fullstack-exampleapp in Cowboy -> User-Agent: notes
+note left of User-Agent: notes Muistiinpanot\nform shown
+note left of User-Agent: form shown
+note left of User-Agent: <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+User-Agent -> fullstack-exampleapp in Cowboy: GET main.css
+note right of fullstack-exampleapp in Cowboy: prepare main.css
+note right of fullstack-exampleapp in Cowboy: .container {\n  padding: 10px;\n  border: 1px solid\n}\n\n.notes {\n  color: blue; \n}
+fullstack-exampleapp in Cowboy -> User-Agent: main.css
+
+note left of User-Agent: <script type="text/javascript" src="main.js"></script>
+
+User-Agent -> fullstack-exampleapp in Cowboy: GET main.js
+note right of fullstack-exampleapp in Cowboy: prepare main.js
+note right of fullstack-exampleapp in Cowboy:var xhttp = new XMLHttpRequest()\n  \nxhttp.onreadystatechange = function () {\n  if (this.readyState == 4 && this.status == 200) {\n    const data = JSON.parse(this.responseText)\n    console.log(data)\n\n    var ul = document.createElement('ul')\n    ul.setAttribute('class', 'notes')\n\n    data.forEach(function(note){\n      var li = document.createElement('li')\n      \n      ul.appendChild(li);\n      li.appendChild(document.createTextNode(note.content))\n    })\n\n    document.getElementById("notes").appendChild(ul)\n  }\n}\n\nxhttp.open("GET", "/data.json", true)\nxhttp.send()
+fullstack-exampleapp in Cowboy -> User-Agent: main.js
+note left of User-Agent: http.open("GET", "/data.json", true)
+User-Agent -> fullstack-exampleapp in Cowboy: GET data.json
+note right of fullstack-exampleapp in Cowboy: prepare data.json
+note right of fullstack-exampleapp in Cowboy: [\n\n    {\n    content: "HTML on helppoa",\n    date: "2017-12-10T17:30:31.098Z"\n    },\n    {\n    content: "Selain pystyy suorittamaan vain javascriptiä",\n    date: "2017-12-10T18:39:34.091Z"\n    },\n    {\n    content: "HTTP-protokollan tärkeimmät metodit ovat GET ja POST",\n    date: "2017-12-10T19:20:14.298Z"\n    },\n    {\n    content: "vaaPo was here!",\n    date: "2018-10-28T13:31:02.123Z"\n    }\n]
+fullstack-exampleapp in Cowboy -> User-Agent: data.json
+note left of User-Agent: eventhandler: xhttp.onreadystatechange = function () {\n  if (this.readyState == 4 && this.status == 200)
+note left of EndUser: read list of notes\nMuistiinpanot\n- HTML on helppoa\n- Selain pystyy suorittamaan vain javascriptiä\n- HTTP-protokollan tärkeimmät metodit ovat GET ja POST\n- vaaPo was here!

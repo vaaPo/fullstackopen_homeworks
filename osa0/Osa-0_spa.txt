@@ -1,0 +1,40 @@
+title Osa-0 spa\n (by Paavo Muranen)
+note left of EndUser: navigate to https://fullstack-exampleapp.herokuapp.com/spa
+
+EndUser -> User-Agent: https://fullstack-exampleapp.herokuapp.com/spa
+User-Agent -> SPA: GET spa
+note right of SPA: årepare spa
+note right of SPA: <!DOCTYPE html>\n<html>\n<head>\n  <link rel="stylesheet" type="text/css" href="/main.css" />\n  <script type="text/javascript" src="spa.js"></script>\n</head>\n<body>\n  <div class='container'>\n    <h1>Muistiinpanot -- single page app</h1>\n    <div id='notes'>\n    </div>\n    <form id='notes_form'>\n      <input type="text" name="note"><br>\n      <input type="submit" value="Talleta">\n    </form>\n  </div>\n</body>\n</html>
+SPA -> User-Agent: spa
+
+note left of User-Agent: <link rel="stylesheet" type="text/css" href="/main.css" />
+
+
+User-Agent -> SPA: GET main.css
+note right of SPA: prepare main.css
+note right of SPA:.container {\n  padding: 10px;\n  border: 1px solid\n}\n\n.notes {\n  color: blue;\n}
+
+SPA -> User-Agent: main.css
+note right of User-Agent:   <script type="text/javascript" src="spa.js"></script>
+User-Agent -> SPA: get spa.js
+
+note right of SPA: prepare spa.js
+note right of SPA: var xhttp = new XMLHttpRequest()\n\nxhttp.onreadystatechange = function () {\n  if (this.readyState == 4 && this.status == 200) {\n    notes = JSON.parse(this.responseText)\n    redrawNotes()\n  }\n}\n\nxhttp.open("GET", "/data.json", true)\nxhttp.send()\n\nvar sendToServer = function (note) {\n  var xhttpForPost = new XMLHttpRequest()\n  xhttpForPost.onreadystatechange = function () {\n    if (this.readyState == 4 && this.status == 201) {\n      console.log(this.responseText)\n    }\n  }\n\n  xhttpForPost.open("POST", '/new_note_spa', true)\n  xhttpForPost.setRequestHeader("Content-type", "application/json")\n  xhttpForPost.send(JSON.stringify(note));\n}\n\nwindow.onload = function (e) {\n  var form = document.getElementById("notes_form")\n  form.onsubmit = function (e) {\n    e.preventDefault()\n\n    var note = {\n      content: e.target.elements[0].value,\n      date: new Date()\n    }\n\n    notes.push(note)\n    e.target.elements[0].value = ""\n    redrawNotes()\n    sendToServer(note)\n  }\n}
+
+SPA -> User-Agent: spa.js
+
+note left of User-Agent: xhttp.open("GET", "/data.json", true)\nxhttp.send()
+
+User-Agent -> SPA: get /data.json
+note right of SPA: prepare data.json
+note right of SPA: [{"content":"HTML on helppoa","date":"2017-12-10T17:30:31.098Z"},\n...\n}]
+SPA -> User-Agent: data.json
+
+note left of User-Agent: xhttp.onreadystatechange = function () {\n  if (this.readyState == 4 && this.status == 200) {\n    notes = JSON.parse(this.responseText)\n    redrawNotes()\n  }\n}
+User-Agent -> EndUser: redrawn notes (page refreshed)
+User-Agent -> SPA: get favicon.ico
+note right of SPA: try to find favicon.ico, and construct error page
+note right of SPA: <!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot GET /favicon.ico</pre>\n</body>\n</html>
+SPA -> User-Agent: status 404, not found , error page
+note left of User-Agent: if (this.readyState == 4 && this.status == 200)\ncondition not met
+note right of EndUser: favicon.ico not shown in tab etc.
