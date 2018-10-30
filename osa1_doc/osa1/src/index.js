@@ -18,19 +18,28 @@ const Hello = () => {
 //step4-props-object-argument-properties
 const Hello_w_props = (props) => {
     return (
-      <div>
-        <p>Hello {props.name}</p>
-      </div>
+        <div>
+            <p>Hello {props.name}</p>
+        </div>
     )
-  }
-  
+}
+
+//step5-2props
+const Hello_w_2props = (props) => {
+    return (
+        <div>
+            <p>Hello {props.name}, you are {props.age} years old</p>
+        </div>
+    )
+}
 
 //step3-user_components in App
 const App = () => {
     const now = new Date() //step2-add_consts
     const a = 10           //step2-add_consts
     const b = 20           //step2-add_consts
-
+    const nimi = 'Pekka'    //step5-2props
+    const ika = 10          //step5-2props
     return (
         <div id="step1">
             <h1>Greetings step1</h1>
@@ -52,6 +61,12 @@ const App = () => {
                         //step4-props-object-argument-properties
                         <Hello_w_props name="Arto" />
                         <Hello_w_props name="Pekka" />
+                        <div id="step5">
+                            <h5>Greetings</h5>
+                            //step5-2props
+                            <Hello_w_2props name="Arto" age={26 + 10} />
+                            <Hello_w_2props name={nimi} age={ika} />
+                        </div>
                     </div>
                 </div>
             </div>
