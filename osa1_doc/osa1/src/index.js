@@ -15,8 +15,17 @@ const Hello = () => {
     )
 }
 
+//step4-props-object-argument-properties
+const Hello_w_props = (props) => {
+    return (
+      <div>
+        <p>Hello {props.name}</p>
+      </div>
+    )
+  }
+  
 
-//step4-user_components in App2
+//step3-user_components in App
 const App = () => {
     const now = new Date() //step2-add_consts
     const a = 10           //step2-add_consts
@@ -38,6 +47,12 @@ const App = () => {
                     <Hello />
                     <Hello />
                     <Hello />
+                    <div id="step4">
+                        <h4>Greetings</h4>
+                        //step4-props-object-argument-properties
+                        <Hello_w_props name="Arto" />
+                        <Hello_w_props name="Pekka" />
+                    </div>
                 </div>
             </div>
         </div>
