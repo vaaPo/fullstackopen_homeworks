@@ -33,6 +33,22 @@ const Hello_w_2props = (props) => {
     )
 }
 
+//step6-missing-capital-in-component-name-footer
+const footer_err = () => {
+    return (
+      <div>greeting app created by <a href="https://github.com/vaaPo/fullstackopen_homeworks/commits/master/osa1_doc">osa1_doc</a></div>
+    )
+  }
+
+ //step6-missing-capital-in-component-name-footer
+const Footer = () => {
+    return (
+      <div>greeting app created by <a href="https://github.com/vaaPo/fullstackopen_homeworks/commits/master/osa1_doc">vaaPo</a></div>
+    )
+  }
+ 
+
+
 //step3-user_components in App
 const App = () => {
     const now = new Date() //step2-add_consts
@@ -63,9 +79,14 @@ const App = () => {
                         <Hello_w_props name="Pekka" />
                         <div id="step5">
                             <h5>Greetings</h5>
-                            //step5-2props
-                            <Hello_w_2props name="Arto" age={26 + 10} />
+                            //step5-2props                            <Hello_w_2props name="Arto" age={26 + 10} />
                             <Hello_w_2props name={nimi} age={ika} />
+                            <div id="step6">
+                                <footer_err />
+                                <div id="step7">
+                                <Footer />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
