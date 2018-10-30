@@ -14,18 +14,35 @@ import ReactDOM from 'react-dom';
 //step1   )
 
 //step2-add_consts
-const App = () => {
-    const now = new Date()
-    const a = 10
-    const b = 20
+//step2 const App = () => {
+//step2     const now = new Date()
+//step2     const a = 10
+//step2     const b = 20
+//step2     return (
+//step2       <div>
+//step2         <p>Hello world, it is {now.toString()}</p>
+//step2         <p>{a} plus {b} is {a + b}</p>
+//step2       </div>
+//step2     )
+//step2   }
+  
+//step3-several_components
+const Hello = () => {
     return (
       <div>
-        <p>Hello world, it is {now.toString()}</p>
-        <p>{a} plus {b} is {a + b}</p>
+        <p>Hello world</p>
       </div>
     )
   }
   
+  const App = () => {
+    return (
+      <div>
+        <h1>Greetings</h1>
+        <Hello />
+      </div>
+    )
+  }
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
