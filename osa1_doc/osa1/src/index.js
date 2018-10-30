@@ -7,13 +7,29 @@ import ReactDOM from 'react-dom';
 //step1-simplify Voit poistaa tiedostot
 // App.js, App.css, App.test.js, logo.svg ja registerServiceWorker.js
 
-const App = () => (
-    <div>
-      <p>Hello world</p>
-    </div>
-  )
+//step1 const App = () => (
+//step1     <div>
+//step1       <p>Hello world</p>
+//step1     </div>
+//step1   )
+
+//step2-add_consts
+const App = () => {
+    const now = new Date()
+    const a = 10
+    const b = 20
+    return (
+      <div>
+        <p>Hello world, it is {now.toString()}</p>
+        <p>{a} plus {b} is {a + b}</p>
+      </div>
+    )
+  }
+  
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
+//step1-simplify Hello world
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
