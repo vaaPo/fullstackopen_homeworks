@@ -169,7 +169,66 @@ const App = () => {
       
     const vastaus3 = keskiarvo(2, 5)
     console.log(vastaus3)      
+    
+    //step16-object-methods-this
+    const arto = {
+        nimi: 'Arto Hellas',
+        ika: 35,
+        koulutus: 'Filosofian tohtori',
+        tervehdi: function () {
+          console.log('hello, my name is', this.nimi)
+        }
+      }
       
+    arto.tervehdi()  // tulostuu hello, my name is Arto Hellas
+    
+    //step17-object-add-function-after-creation
+    arto.vanhene = function() {
+        this.ika += 1
+      }
+      
+    console.log(arto.ika)  // tulostuu 35
+    arto.vanhene()
+    console.log(arto.ika)  // tulostuu 36
+
+    //step16-object-method-calls
+    const arto2 = {
+        nimi: 'Arto2 Hellas',
+        tervehdi: function () {
+          console.log('hello, my name is', this.nimi)
+        },
+        laskeSumma: function (a, b) {
+          console.log(a + b)
+        }
+      }
+    
+      arto2.laskeSumma(1, 4)   // tulostuu 5    call to method via object
+      const viiteSummaan = arto2.laskeSumma     //method reference to variable (metodiviite)
+      viiteSummaan(10, 15)   // tulostuu 25     call via variable
+
+    //step17-object-method-call and this
+    arto2.tervehdi()        // tulostuu hello, my name is Arto Hellas
+
+    const viiteTervehdykseen = arto2.tervehdi
+  //  viiteTervehdykseen()   // tulostuu hello, my name is undefined
+    //Kutsuttaessa metodia viitteen kautta, on metodi kadottanut tiedon siitä mikä oli alkuperäinen this. 
+    //Toisin kuin melkein kaikissa muissa kielissä, 
+    //Javascriptissa this:n arvo määrittyy sen mukaan miten metodia on kutsuttu. 
+    //Kutsuttaessa metodia viitteen kautta, this:in arvoksi tulee ns. globaali objekti 
+    //ja lopputulos ei ole yleensä ollenkaan se, mitä sovelluskehittäjä olettaa.
+
+
+    //step18-this-refers-to-unexpected-object
+    setTimeout(arto2.tervehdi, 1000)    //hello my name is undefined
+    //This:in kadottaminen aiheuttaa Reactilla ja Node.js:lla ohjelmoidessa monia potentiaalisia ongelmia. 
+    //Javascriptissa this:in arvo siis määräytyy siitä miten metodia on kutsuttu. 
+    //setTimeoutia käytettäessä metodia kutsuu Javascript-moottori ja this viittaa Timeout-olioon.
+
+    //step19-enforce-this-with-bind
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+    setTimeout(arto2.tervehdi.bind(arto), 1000)
+
+
 
     return (
         <div id="step1">
