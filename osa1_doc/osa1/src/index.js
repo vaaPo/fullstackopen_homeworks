@@ -229,6 +229,31 @@ const App = () => {
     setTimeout(arto2.tervehdi.bind(arto), 1000)
 
 
+    //step20-classes
+    class Henkilo {
+        constructor(nimi, ika) {
+          this.nimi = nimi
+          this.ika = ika
+        }
+        tervehdi() {
+          console.log('hello, my name is', this.nimi)
+        }
+      }
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+
+    const arto = new Henkilo('Arto Hellas', 35)     //prototyyppiperintämekanismi 
+    arto.tervehdi()
+    const jami = new Henkilo('Jami Kousa', 21)
+    jami.tervehdi()
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+    //https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance
+
+    //Molempien olioiden todellinen tyyppi on Object sillä Javascriptissä ei perimmiltään ole muita tyyppejä kuin 
+    //Boolean, Null, Undefined, Number, String, Symbol ja Object
+    
+
+      
+
 
     return (
         <div id="step1">
