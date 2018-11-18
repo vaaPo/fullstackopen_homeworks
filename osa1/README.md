@@ -1,11 +1,5 @@
 Here you can find the homeworks
 
-
-fullstackopen_homeworks
-
-Full Stack Open - misc training files and homeworks etc.
-
-osa1
 ### HW1.1   jako komponenteiksi: Otsikko, Sisalto, Yhteensa
 ### HW1.2   lisää komponentteja: Sisaltoon kolme Osa-komponenttia
 ### HW1.3   tieto olioissa: käytä osa1,osa2,osa3 olioita
