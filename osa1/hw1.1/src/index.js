@@ -1,12 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const App = () => {
+  const kurssi = 'Half Stack -sovelluskehitys'
+  const osa1 = 'Reactin perusteet'
+  const tehtavia1 = 10
+  const osa2 = 'Tiedonvälitys propseilla'
+  const tehtavia2 = 7
+  const osa3 = 'Komponenttien tila'
+  const tehtavia3 = 14
+/** orig
+  return (
+    <div>
+      <h1>{kurssi}</h1>
+      <p>{osa1} {tehtavia1}</p>
+      <p>{osa2} {tehtavia2}</p>
+      <p>{osa3} {tehtavia3}</p>
+      <p>yhteensä {tehtavia1 + tehtavia2 + tehtavia3} tehtävää</p>
+    </div>
+  )
+*/
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+/** tobe rakenne
+return (
+    <div>
+      <Otsikko kurssi={kurssi} />
+      <Sisalto ... />
+      <Yhteensa ... />
+    </div>
+  )
+*/
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+)
