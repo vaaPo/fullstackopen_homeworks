@@ -11,7 +11,8 @@ const Otsikko = (props) => {
     );
 };
 
-const Sisalto = (props) => {
+// ToBe HW1.2
+const Osa = (props) => {
     return (
         <div>
             <p>{props.osanro} {props.osanimi} {props.tehtavalkm}</p>
@@ -31,13 +32,20 @@ const App = () => {
 
 /** tobe rakenne */
 // * Kaikki data pidetään edelleen komponentissa App, joka välittää tarpeelliset tiedot kullekin komponentille props:ien avulla. 
+const Sisalto = () => {
+    return (
+      <div>
+      <Osa osanro="1" osanimi="Reactin perusteet" tehtavalkm={10} />
+      <Osa osanro="2" osanimi="Tiedonvälitys propseilla" tehtavalkm={7} />
+      <Osa osanro="3" osanimi="Komponenttien tila" tehtavalkm={14} />
+      </div>
+    );
+};
 
 return (
     <div>
       <Otsikko kurssi="Half Stack -sovelluskehitys" />
-      <Sisalto osanro="1" osanimi="Reactin perusteet" tehtavalkm={10} />
-      <Sisalto osanro="2" osanimi="Tiedonvälitys propseilla" tehtavalkm={7} />
-      <Sisalto osanro="3" osanimi="Komponenttien tila" tehtavalkm={14} />
+      <Sisalto />
       <Yhteensa tehtavalkm={10+7+14} /> {/**ugly it is indeed! */}
     </div>
   )
@@ -47,3 +55,14 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+
+/** orig
+const Sisalto = (props) => {
+    return (
+        <div>
+            <p>{props.osanro} {props.osanimi} {props.tehtavalkm}</p>
+        </div>
+    );
+};
+*/
