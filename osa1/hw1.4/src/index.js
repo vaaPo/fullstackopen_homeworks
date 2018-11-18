@@ -12,60 +12,82 @@ const Otsikko = (props) => {
     );
 };
 
-// ToBe HW1.2
-const Osa = (props) => {
-    return (
-        <div>
-            <p>{props.osanro} {props.osanimi} {props.tehtavalkm}</p>
-        </div>
-    );
-};
-
-const Yhteensa = (props) => {
-    return (
-        <div>
-            <p>yhteensä {props.tehtavalkm} tehtävää</p>
-        </div>
-    );
-};
-
 const App = () => {
 
     /** tobe rakenne HW1.3*/
     const kurssi = 'Half Stack -sovelluskehitys';
+    // TOBE HW1.4 rakenne
+    const osax = [
+        { id: 1,
+          nimi: 'Reactin perusteet',
+          tehtavia: 10
+        },
+        { id:2,
+          nimi: 'Tiedonvälitys propseilla',
+          tehtavia: 7
+        },
+        { id:3,
+          nimi: 'Komponenttien tila',
+          tehtavia: 14
+        }
+      ];
+    console.log(osax);
 
-    const osa1 = {
-    nro: 1,
-    nimi: 'Reactin perusteet',
-    tehtavia: 10
+    const summat = {
+        hwtot : 0,
     };
-    const osa2 = {
-    nro: 2,
-    nimi: 'Tiedonvälitys propseilla',
-    tehtavia: 7
+    console.log(summat);
+    console.log(' yhteensä=' + summat.hwtot); 
+    osax.forEach(function(item, index, array) {
+        console.log(item, index);
+    });
+    
+    osax.forEach(function(item, index, array) {
+        console.log(item.id,item.nimi, item.tehtavia, index);
+    });
+
+    osax.forEach((rivi) => {
+        summat.hwtot=summat.hwtot+rivi.tehtavia;
+        console.log(rivi.id+' rivi arraysta osax '+ rivi.nimi,rivi.tehtavia +' yhteensä=' + summat.hwtot); 
+      });
+    console.log(' yhteensä=' + summat.hwtot); 
+
+    function Sisaltox(props) {
+        const content = props.osax.map((rivi) =>
+        <div key={rivi.id}>
+          <p>{rivi.nimi} {rivi.tehtavia}</p>
+        </div>
+      );
+      return (
+        <div id="osat">
+          <hr />
+          {content}
+        </div>
+      );
     };
-    const osa3 = {
-    nro: 3,
-    nimi: 'Komponenttien tila',
-    tehtavia: 14
-    };
-    // * Kaikki data pidetään edelleen komponentissa App, joka välittää tarpeelliset tiedot kullekin komponentille props:ien avulla. 
-    const Sisalto = () => {
+
+    function Yhteensax(props) {
+        const summax = {
+            hwtot : 0,
+        };
+        props.osax.forEach((rivi) => {
+            summax.hwtot=summax.hwtot+rivi.tehtavia;
+            console.log('Yhteensax: ' + rivi.id+' rivi arraysta osax '+ rivi.nimi,rivi.tehtavia +' yhteensä=' + summax.hwtot); 
+          });
         return (
-        <div>
-        <Osa osanro={osa1.nro} osanimi={osa1.nimi} tehtavalkm={osa1.tehtavia} />
-        <Osa osanro={osa2.nro} osanimi={osa2.nimi} tehtavalkm={osa2.tehtavia} />
-        <Osa osanro={osa3.nro} osanimi={osa3.nimi} tehtavalkm={osa3.tehtavia} />
+        <div id="summarivi">
+            <h3>Yhteensä tehtäviä {summax.hwtot} kappaletta</h3>
         </div>
         );
     };
+
 
 return (
     <div id="hw"> <h1>### HW1.4   oliot taulukkoon: kolmen olion sijaan tee osat-olio missä taulukossa osa1-3</h1>
         <div id="mycourse">
         <Otsikko kurssi={kurssi} />
-        <Sisalto />
-        <Yhteensa tehtavalkm={osa1.tehtavia + osa2.tehtavia + osa3.tehtavia} /> {/**ugly it is indeed! */}
+        <Sisaltox osax={osax}/>
+        <Yhteensax osax={osax}/>
         </div>
     </div>
   )
