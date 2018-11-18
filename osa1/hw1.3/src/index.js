@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//### HW1.2   lisää komponentteja: Sisaltoon kolme Osa-komponenttia
+//### HW1.3   tieto olioissa: käytä osa1,osa2,osa3 olioita
+
 
 const Otsikko = (props) => {
     return (
@@ -30,23 +31,42 @@ const Yhteensa = (props) => {
 
 const App = () => {
 
-/** tobe rakenne */
-// * Kaikki data pidetään edelleen komponentissa App, joka välittää tarpeelliset tiedot kullekin komponentille props:ien avulla. 
-const Sisalto = () => {
-    return (
-      <div>
-      <Osa osanro="1" osanimi="Reactin perusteet" tehtavalkm={10} />
-      <Osa osanro="2" osanimi="Tiedonvälitys propseilla" tehtavalkm={7} />
-      <Osa osanro="3" osanimi="Komponenttien tila" tehtavalkm={14} />
-      </div>
-    );
-};
+    /** tobe rakenne HW1.3*/
+    const kurssi = 'Half Stack -sovelluskehitys';
+
+    const osa1 = {
+    nro: 1,
+    nimi: 'Reactin perusteet',
+    tehtavia: 10
+    };
+    const osa2 = {
+    nro: 2,
+    nimi: 'Tiedonvälitys propseilla',
+    tehtavia: 7
+    };
+    const osa3 = {
+    nro: 3,
+    nimi: 'Komponenttien tila',
+    tehtavia: 14
+    };
+    // * Kaikki data pidetään edelleen komponentissa App, joka välittää tarpeelliset tiedot kullekin komponentille props:ien avulla. 
+    const Sisalto = () => {
+        return (
+        <div>
+        <Osa osanro={osa1.nro} osanimi={osa1.nimi} tehtavalkm={osa1.tehtavia} />
+        <Osa osanro={osa2.nro} osanimi={osa2.nimi} tehtavalkm={osa2.tehtavia} />
+        <Osa osanro={osa3.nro} osanimi={osa3.nimi} tehtavalkm={osa3.tehtavia} />
+        </div>
+        );
+    };
 
 return (
-    <div>
-      <Otsikko kurssi="Half Stack -sovelluskehitys" />
-      <Sisalto />
-      <Yhteensa tehtavalkm={10+7+14} /> {/**ugly it is indeed! */}
+    <div id="hw"> <h1>HW1.3   tieto olioissa: käytä osa1,osa2,osa3 olioita</h1>
+        <div id="mycourse">
+        <Otsikko kurssi={kurssi} />
+        <Sisalto />
+        <Yhteensa tehtavalkm={osa1.tehtavia + osa2.tehtavia + osa3.tehtavia} /> {/**ugly it is indeed! */}
+        </div>
     </div>
   )
 };
@@ -55,14 +75,3 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
-
-
-/** orig
-const Sisalto = (props) => {
-    return (
-        <div>
-            <p>{props.osanro} {props.osanimi} {props.tehtavalkm}</p>
-        </div>
-    );
-};
-*/
