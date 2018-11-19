@@ -46,9 +46,8 @@ class App extends React.Component {
             default:
                 return (showStats);
         };
-
     };
-    
+    //TODO find out why I have Warning: Unreachable code  no-unreachable
     nollaa() {
       this.setState({ good: 0 });
       this.setState({ neutral: 0 });
