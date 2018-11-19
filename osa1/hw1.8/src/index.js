@@ -2,31 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //### HW1.8   unicafe osa3: refactored to components (Button, Statistics(shows all stats), Statistic(shows one stat row))
 
-
-
-const Displayx = ({ counter }) => {
-    return (
-      <div>{counter}</div>
-    )
-};
-
 const Statistic = ({ stat }) => <div>{stat}</div>
-
-const Buttonx = (props) => (
-<button onClick={props.handleClick}>
-    {props.text}
-</button>
-);
-
-
-const hello = (feedbackMean) => {
-    const fbMean = () => { Statistic(this.feedbackMean)};
-    console.log(fbMean);
-  
-    return (fbMean
-    );
-  };
-
+const Statisticn = ({ name,stat }) => <div>{name} {stat}</div>
 const Button = ({ handleClick, text }) => (
     <button onClick={handleClick}>
       {text}
@@ -48,22 +25,21 @@ class App extends React.Component {
     Statistics = () => {
         const showStats=(
         <React.Fragment>
-            <div id="st2"><h2>statistiikka</h2></div>
-            <div> hyvä {this.state.good} 
-            <div> neutraali {this.state.neutral} 
-            <div> huono {this.state.bad} 
-            <div> <Statistic stat={this.feedbackMean()}/> 
-            <div> <Statistic stat={this.positivePerc()}/> 
-            <div> <Statistic stat={this.state.counter}/> </div></div></div></div></div></div>
+            <div id="st2"><h2>statistiikka</h2>
+             <Statisticn name="hyvä" stat={this.state.good}/>
+             <Statisticn name="neutraali" stat={this.state.neutral}/>
+             <Statisticn name="huono" stat={this.state.bad}/>
+             <Statisticn name="keskiarvo" stat={this.feedbackMean()}/> 
+             <Statisticn name="positiivisia" stat={this.positivePerc()}/> 
+             <Statisticn name="lukumäärä" stat={this.state.counter}/> 
+            </div>
         </React.Fragment>
         );
         console.log("render Statistics here");
         console.log(showStats);
         return showStats;
     };
-
-
-  
+    
     nollaa() {
       this.setState({ good: 0 });
       this.setState({ neutral: 0 });
@@ -103,12 +79,12 @@ class App extends React.Component {
 
     feedbackMean() {
         const fbmean = (this.state.sum/this.state.counter).toFixed(2);
-        return ("keskiarvo "+fbmean);
+        return (fbmean);
     };
 
     positivePerc() {
         const pperc = (this.state.good / this.state.counter * 100).toFixed(2);
-        return ("positiivisia "+pperc + "%");
+        return (pperc + "%");
 
     };
 
@@ -117,18 +93,6 @@ class App extends React.Component {
         <div><h1>###HW1.8   unicafe</h1>
             <p>osa3: refactored to components (Button, Statistics(shows all stats), Statistic(shows one stat row))</p>
             <div><h2>Anna palautetta</h2></div>
-            <button onClick={this.goodPlusone.bind(this)}>hyvä</button>
-            <button onClick={this.neutralPlusone.bind(this)}>neutraali</button>
-            <button onClick={this.badPlusone.bind(this)}>huono</button>
-            <div><h2>statistiikka</h2></div>
-            <div> hyvä {this.state.good} </div>
-            <div> neutraali {this.state.neutral} </div>
-            <div> huono {this.state.bad} </div>
-            <button onClick={this.nollaa.bind(this)}>nollaa</button>
-            <div> counter {this.state.counter} </div>
-            <div> {this.feedbackMean()}</div>
-            <div> {this.positivePerc()}</div>
-            <div> FIDDLE WITH DESTRUCTURING</div>
             <div>
                 <Button
                 handleClick={this.goodPlusone.bind(this)}
@@ -143,15 +107,6 @@ class App extends React.Component {
                 text="Huono"
                 />
             </div>
-            <div> Displayx <Displayx counter={this.state.counter}/> </div>
-            <div><h2>statistiikka</h2></div>
-            <div> hyvä {this.state.good} </div>
-            <div> neutraali {this.state.neutral} </div>
-            <div> huono {this.state.bad} </div>
-            <div> <Statistic stat={this.feedbackMean()}/> </div>
-            <div> <Statistic stat={this.positivePerc()}/> </div>
-            <div> <Statistic stat={this.state.counter}/> </div>
-            PLAA
             <div> <this.Statistics/></div>
        </div>
       );
