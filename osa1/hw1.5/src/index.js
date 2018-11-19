@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 
 //### HW1.5   sovellus joka käyttää kurssi-oliota
 
-
 const Otsikko = (props) => {
     return (
         <div>
@@ -15,24 +14,23 @@ const Otsikko = (props) => {
 const App = () => {
 
 /** tobe rakenne HW1.5*/
-/**     const kurssi = {
+    const kurssix = {
         nimi: 'Half Stack -sovelluskehitys',
         osat: [
-          {
-            nimi: 'Reactin perusteet',
-            tehtavia: 10
-          },
-          {
-            nimi: 'Tiedonvälitys propseilla',
-            tehtavia: 7
-          },
-          {
-            nimi: 'Komponenttien tila',
-            tehtavia: 14
-          }
+              { id: 1,
+                nimi: 'Reactin perusteet',
+                tehtavia: 10
+              },
+              { id:2,
+                nimi: 'Tiedonvälitys propseilla',
+                tehtavia: 7
+              },
+              { id:3,
+                nimi: 'Komponenttien tila',
+                tehtavia: 14
+              }
         ]
-      }
-*/
+    };
 
     const kurssi = 'Half Stack -sovelluskehitys';
     // TOBE HW1.4 rakenne
@@ -102,7 +100,7 @@ const App = () => {
 
 
 return (
-    <div id="hw"> <h1>### HW1.4   oliot taulukkoon: kolmen olion sijaan tee osat-olio missä taulukossa osa1-3</h1>
+    <div id="hw"> <h1>### HW1.5   sovellus joka käyttää kurssi-oliota</h1>
         <div id="mycourse">
         <Otsikko kurssi={kurssi} />
         <Sisaltox osax={osax}/>
