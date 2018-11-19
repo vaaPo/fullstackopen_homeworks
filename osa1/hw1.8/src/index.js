@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //### HW1.8   unicafe osa3: refactored to components (Button, Statistics(shows all stats), Statistic(shows one stat row))
 
-const Statistic = ({ stat }) => <div>{stat}</div>
-const Statisticn = ({ name,stat }) => <div>{name} {stat}</div>
+const Statistic = ({ name,stat }) => <div>{name} {stat}</div>
 const Button = ({ handleClick, text }) => (
     <button onClick={handleClick}>
       {text}
@@ -26,18 +25,18 @@ class App extends React.Component {
         const showStats=(
         <React.Fragment>
             <div id="st2"><h2>statistiikka</h2>
-             <Statisticn name="hyvä" stat={this.state.good}/>
-             <Statisticn name="neutraali" stat={this.state.neutral}/>
-             <Statisticn name="huono" stat={this.state.bad}/>
-             <Statisticn name="keskiarvo" stat={this.feedbackMean()}/> 
-             <Statisticn name="positiivisia" stat={this.positivePerc()}/> 
-             <Statisticn name="lukumäärä" stat={this.state.counter}/> 
+             <Statistic name="hyvä" stat={this.state.good}/>
+             <Statistic name="neutraali" stat={this.state.neutral}/>
+             <Statistic name="huono" stat={this.state.bad}/>
+             <Statistic name="keskiarvo" stat={this.feedbackMean()}/> 
+             <Statistic name="positiivisia" stat={this.positivePerc()}/> 
+             <Statistic name="lukumäärä" stat={this.state.counter}/> 
             </div>
         </React.Fragment>
         );
         console.log("render Statistics here");
         console.log(showStats);
-        return showStats;
+        return (showStats);
     };
     
     nollaa() {
@@ -49,6 +48,8 @@ class App extends React.Component {
       console.log("nollaus this.state.good " + this.state.good);
       console.log("nollaus this.state.neutral " + this.state.neutral);
       console.log("nollaus this.state.bad " + this.state.bad);
+      console.log("nollaus this.state.counter " + this.state.counter);
+      console.log("nollaus this.state.sum " + this.state.sum);
     };
 
     counterPlusone() {
@@ -108,6 +109,11 @@ class App extends React.Component {
                 />
             </div>
             <div> <this.Statistics/></div>
+            <Button
+                handleClick={this.nollaa.bind(this)}
+                text="Reset, nollaa metriikat"
+                />
+
        </div>
       );
     };
