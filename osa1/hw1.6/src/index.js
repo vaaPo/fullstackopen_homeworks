@@ -6,21 +6,21 @@ class App extends React.Component {
     constructor() {
       super();
       this.state = {
-        counter: 1,
         good: 0,
         neutral: 0,
         bad: 0
       };
     };
   
-    kasvataYhdella() {
-      this.setState({ counter: this.state.counter + 1 });
-      console.log("kasvataYhdella this.state.counter " + this.state.counter);
-    };
+ 
   
     nollaa() {
-      this.setState({ counter: 0 });
-      console.log("nollaus this.state.counter " + this.state.counter);
+      this.setState({ good: 0 });
+      this.setState({ neutral: 0 });
+      this.setState({ bad: 0 });
+      console.log("nollaus this.state.good " + this.state.good);
+      console.log("nollaus this.state.neutral " + this.state.neutral);
+      console.log("nollaus this.state.bad " + this.state.bad);
     };
 
     goodPlusone() {
@@ -40,16 +40,8 @@ class App extends React.Component {
 
     render() {
       return (
-        <div>
-          <div>{this.state.counter}</div>
-          <div>
-            <button onClick={this.kasvataYhdella.bind(this)}>
-              plus
-            </button>
-            <button onClick={this.nollaa.bind(this)}>
-                zero
-            </button>
-          </div>
+        <div><h1>### HW1.6   unicafe</h1>
+            <p>osa1: anna palautetta buttons (hyvä, neutraali, huono) ja statistiikka - selain-istuntopohjainen</p>
             <div><h2>Anna palautetta</h2></div>
             <button onClick={this.goodPlusone.bind(this)}>hyvä</button>
             <button onClick={this.neutralPlusone.bind(this)}>neutraali</button>
@@ -58,7 +50,10 @@ class App extends React.Component {
             <div> hyvä {this.state.good} </div>
             <div> neutraali {this.state.neutral} </div>
             <div> huono {this.state.bad} </div>
-        </div>
+            <button onClick={this.nollaa.bind(this)}>
+                nollaa
+            </button>
+       </div>
       );
     };
   };
