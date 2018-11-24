@@ -39,8 +39,12 @@ class App extends React.Component {
              <Statistic name="hyvä" stat={this.state.good}/>
              <Statistic name="neutraali" stat={this.state.neutral}/>
              <Statistic name="huono" stat={this.state.bad}/>
+             <Statistic name="funhyvä" stat={this.state.fungood.funcounter}/>
+             <Statistic name="funneutraali" stat={this.state.funneutral.funcounter}/>
+             <Statistic name="funhuono" stat={this.state.funbad.funcounter}/>
              <Statistic name="keskiarvo" stat={this.feedbackMean()}/> 
              <Statistic name="positiivisia" stat={this.positivePerc()}/> 
+             <Statistic name="funpositiivisia" stat={this.funpositivePerc()}/> 
              <Statistic name="lukumäärä" stat={this.state.counter}/> 
             </div>
         </React.Fragment>
@@ -139,6 +143,13 @@ class App extends React.Component {
         return (pperc + "%");
 
     };
+
+    funpositivePerc() {
+        const pperc = (this.state.fungood.funcounter / this.state.counter * 100).toFixed(2);
+        return (pperc + "%");
+
+    };
+
 
     //TODO https://stackoverflow.com/questions/29280445/reactjs-setstate-with-a-dynamic-key-name
 /**    inputChangeHandler : function (event) {
