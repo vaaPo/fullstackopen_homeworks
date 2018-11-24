@@ -11,18 +11,51 @@ const Button = ({ handleClick, text }) => (
     </button>
 );
 
+// 1.10x hints:
+const olio = {
+    a: 1,
+    b: 2
+  };
+  
+  olio['c'] = 3;
+  
+  console.log(olio.a);    // tulostuu 1
+  
+  console.log(olio['b']);  // tulostuu 2
+  
+  const apu = 'c';
+  console.log(olio[apu]);  // tulostuu 3
+
+var object1 = {a: 'foo', b: 42, c: {}};
+
+console.log(object1.a);
+// expected output: "foo"
+
+var a = 'foo';
+var b = 42;
+var c = {};
+var object2 = {a: a, b: b, c: c};
+
+console.log(object2.b);
+// expected output: 42
+// 1.10x hints:
+
+
 class App extends React.Component {
     constructor() {
-      super();
+      super();              // this !
       this.state = {
         good: 0,
         neutral: 0,
         bad: 0,
         counter: 0,
-        sum: 0
+        sum: 0,
+        funfuncounter : 1
       };
     };
   
+
+
     Statistics = () => {
         const showStats=(
         <React.Fragment>
@@ -36,19 +69,27 @@ class App extends React.Component {
             </div>
         </React.Fragment>
         );
+
         const cnt=this.state.counter;
+//        showis = 
 
         console.log("render Statistics here");
         console.log("cnt is " + cnt);
+        console.log("STATISTICS this.state.good", this.state.good);
         //HW1.9 magic for conditional return
-        switch(cnt) {
+        //return (showStats);
+        switch(this.state.counter) {
             case 0:
                 return (<div id="nostats">ei yhtään palautetta annettu</div>);
+                //https://eslint.org/docs/2.0.0/rules/no-unreachable
             default:
                 return (showStats);
-        };
+            //TODO find out why I have Warning: Unreachable code  no-unreachable
+            // TODO https://eslint.org/docs/2.0.0/rules/no-unreachable 
+            //eslint-disable-next-line
+        }; 
     };
-    //TODO find out why I have Warning: Unreachable code  no-unreachable
+
     nollaa() {
       this.setState({ good: 0 });
       this.setState({ neutral: 0 });
@@ -99,6 +140,32 @@ class App extends React.Component {
 
     };
 
+    //TODO https://stackoverflow.com/questions/29280445/reactjs-setstate-with-a-dynamic-key-name
+/**    inputChangeHandler : function (event) {
+        this.setState({ [event.target.id]: event.target.value });
+        // alternatively using template strings for strings
+        // this.setState({ [`key${event.target.id}`]: event.target.value });
+    }
+ */
+    ngonArvo= async event => {
+        event.preventDefault();     
+        event.persist();
+        console.log("ngonArvo Param passed => event.target.id: ", event.target.id);
+        console.log("ngonArvo Param passed => event.target.value: ", event.target.value);
+        const dynamiccountername = event.target.id;
+        console.log("ngonArvo dynamiccountername :", dynamiccountername);
+        console.log("ngonArvo before this.state[dynamiccountername]", this.state[dynamiccountername]);
+        //...
+        const newvalue = this.state[dynamiccountername] + Number(event.target.value);
+        console.log("ngonArvo newvalue :", newvalue);
+//        this.setState({ [event.target.id]: newvalue });                      // the real magic with dynamic-key-name is here
+        this.setState({ [dynamiccountername]: newvalue });                      // the real magic with dynamic-key-name is here
+        this.setState({ sum: this.state.sum +1});
+        this.setState({ counter: this.state.counter +1});
+        console.log("ngonArvo after this.state[dynamiccountername]", this.state[dynamiccountername]);
+    };
+
+
     render() {
       return (
         <div><h1>### HW1.10x unicafe</h1>
@@ -124,6 +191,13 @@ class App extends React.Component {
                 text="Reset, nollaa metriikat"
                 />
 
+       <div>{this.state.funfuncounter+100}</div>
+       <div>{this.state['funfuncounter']}</div>
+       <button onClick={this.onApprove} id='approve' value='1'>Approve</button>
+       <div>new buttons and new event handling</div>
+       <button onClick={this.ngonArvo} id='good' value='1'>Good+1</button>
+       <button onClick={this.ngonArvo} id='neutral' value='1'>Neutral+</button>
+       <button onClick={this.ngonArvo} id='bad' value='1'>Bad+1</button>
        </div>
       );
     };
