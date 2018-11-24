@@ -5,8 +5,9 @@ import ReactDOM from 'react-dom';
 
 
 const Statistic = ({ name,stat }) => <div>{name} {stat}</div>
-const Button = ({ handleClick, text }) => (
-    <button onClick={handleClick}>
+//<button onClick={this.funArvo} id='fungood'          value='1'>hyvä</button>
+const Button = ({ handleClick, text, idval, valueval }) => (
+    <button onClick={handleClick} id={idval} value={valueval}>
       {text}
     </button>
 );
@@ -31,20 +32,15 @@ class App extends React.Component {
   //funfuncounter['counter']
   //funfuncounter['statvalue']
 
-//FIXME voi pojat tää rewrite alkaa mennä vähän yli :)
     Statistics = () => {
         const showStats=(
         <React.Fragment>
             <div id="st2"><h2>statistiikka</h2>
-             <Statistic name="hyvä" stat={this.state.good}/>
-             <Statistic name="neutraali" stat={this.state.neutral}/>
-             <Statistic name="huono" stat={this.state.bad}/>
-             <Statistic name="funhyvä" stat={this.state.fungood.funcounter}/>
-             <Statistic name="funneutraali" stat={this.state.funneutral.funcounter}/>
-             <Statistic name="funhuono" stat={this.state.funbad.funcounter}/>
+             <Statistic name="hyvä" stat={this.state.fungood.funcounter}/>
+             <Statistic name="neutraali" stat={this.state.funneutral.funcounter}/>
+             <Statistic name="huono" stat={this.state.funbad.funcounter}/>
              <Statistic name="keskiarvo" stat={this.feedbackMean()}/> 
-             <Statistic name="positiivisia" stat={this.positivePerc()}/> 
-             <Statistic name="funpositiivisia" stat={this.funpositivePerc()}/> 
+             <Statistic name="positiivisia" stat={this.funpositivePerc()}/> 
              <Statistic name="lukumäärä" stat={this.state.counter}/> 
             </div>
         </React.Fragment>
@@ -64,23 +60,8 @@ class App extends React.Component {
                 //https://eslint.org/docs/2.0.0/rules/no-unreachable
             default:
                 return (showStats);
-            //TODO find out why I have Warning: Unreachable code  no-unreachable
-            // TODO https://eslint.org/docs/2.0.0/rules/no-unreachable 
             //eslint-disable-next-line
         }; 
-    };
-
-    nollaa() {
-        this.setState({ good: 0 });
-        this.setState({ neutral: 0 });
-        this.setState({ bad: 0 });
-        this.setState({ counter: 0});
-        this.setState({ sum: 0});
-        console.log("nollaus this.state.good " + this.state.good);
-        console.log("nollaus this.state.neutral " + this.state.neutral);
-        console.log("nollaus this.state.bad " + this.state.bad);
-        console.log("nollaus this.state.counter " + this.state.counter);
-        console.log("nollaus this.state.sum " + this.state.sum);
     };
 
     funnollaa= async event => {
@@ -104,33 +85,6 @@ class App extends React.Component {
             console.log("funNOLLAA sumname;", sumname, " newvalue:", newvalue);
             return ("hop");
         });
-    };
-
-
-    counterPlusone() {
-        this.setState({ counter: this.state.counter + 1});
-        console.log("counterPlusone this.state.counter = "+this.state.counter);
-    };
-
-    goodPlusone() {
-        this.setState({ good: this.state.good + 1});
-        this.setState({ sum: this.state.sum +1});
-        console.log("goodPlusone this.state.good = "+ this.state.good);
-        this.counterPlusone();
-    };
-  
-    neutralPlusone() {
-        this.setState({ neutral: this.state.neutral + 1});
-        this.setState({ sum: this.state.sum + 0});  // pfff
-        console.log("neutralPlusone this.state.neutral = "+ this.state.neutral);
-        this.counterPlusone();
-    };
-
-    badPlusone() {
-        this.setState({ bad: this.state.bad + 1});
-        this.setState({ sum: this.state.sum -1});
-        console.log("badPlusone this.state.bad = "+ this.state.bad);
-        this.counterPlusone();
     };
 
     feedbackMean() {
@@ -158,26 +112,6 @@ class App extends React.Component {
         // this.setState({ [`key${event.target.id}`]: event.target.value });
     }
  */
-    ngonArvo= async event => {
-        event.preventDefault();     
-        event.persist();
-        console.log("ngonArvo Param passed => event.target.id: ", event.target.id);
-        console.log("ngonArvo Param passed => event.target.value: ", event.target.value);
-        const dynamiccountername = event.target.id;
-        console.log("ngonArvo dynamiccountername :", dynamiccountername);
-        console.log("ngonArvo before this.state[dynamiccountername]", this.state[dynamiccountername]);
-        //...
-        const newvalue = this.state[dynamiccountername] + Number(event.target.value);
-        console.log("ngonArvo newvalue :", newvalue);
-//        this.setState({ [event.target.id]: newvalue });                      // the real magic with dynamic-key-name is here
-        this.setState({ [dynamiccountername]: newvalue });                      // the real magic with dynamic-key-name is here
-        this.setState({ sum: this.state.sum +1});  //TODO fix stats with correct values
-        //funfuncounter['counter']
-        //funfuncounter['statvalue']
-        this.setState({ counter: this.state.counter +1});
-        console.log("ngonArvo after this.state[dynamiccountername]", this.state[dynamiccountername]);
-    };
-
     funArvo= async event => {
         event.preventDefault();     
         event.persist();
@@ -204,47 +138,12 @@ class App extends React.Component {
         <div><h1>### HW1.10x unicafe</h1>
             <p> osa5: refactored to use same event handler, see https://fullstackopen.github.io/osa1/#funktio-joka-palauttaa-funktion</p>
             <div><h2>Anna palautetta</h2></div>
-            <div>
-                <Button
-                handleClick={this.goodPlusone.bind(this)}
-                text="Hyvä"
-                />
-                <Button
-                handleClick={this.neutralPlusone.bind(this)}
-                text="Neutraali"
-                />
-                <Button
-                handleClick={this.badPlusone.bind(this)}
-                text="Huono"
-                />
-            </div>
+            <Button handleClick={this.funArvo.bind(this)}   idval='fungood'    valueval='1' text='hyvä'/> 
+            <Button handleClick={this.funArvo.bind(this)}   idval='funneutral' valueval='1' text='neutraali'/> 
+            <Button handleClick={this.funArvo.bind(this)}   idval='funbad'     valueval='1' text='huono'/> 
             <div> <this.Statistics/></div>
-            <Button
-                handleClick={this.nollaa.bind(this)}
-                text="Reset, nollaa metriikat"
-                />
-
-       <button onClick={this.onApprove} id='approve' value='1'>Approve</button>
-       <div>new buttons and new event handling</div>
-       <button onClick={this.ngonArvo} id='good' value='1'>Good+1</button>
-       <button onClick={this.ngonArvo} id='neutral' value='1'>Neutral+</button>
-       <button onClick={this.ngonArvo} id='bad' value='1'>Bad+1</button>
-       <div>funfuncounter tests</div>
-       <div>funfuncounter.funcounter is {this.state.funfuncounter['funcounter']}</div>
-       <div>funfuncounter.statvalue is {this.state.funfuncounter['statvalue']}</div>
-       <div>fungood.funcounter is {this.state.fungood['funcounter']}</div>
-       <div>funneutral.funcounter is {this.state.funneutral['funcounter']}</div>
-       <div>funbad.funcounter is {this.state.funbad['funcounter']}</div>
-       <div>funfuncounter.statvalue is {this.state.funfuncounter['statvalue']}</div>
-       <button onClick={this.funArvo} id='funfuncounter'    value='1'>funfuncounter+1</button>
-       <button onClick={this.funArvo} id='fungood'          value='1'>fungood+1</button>
-       <button onClick={this.funArvo} id='funneutral'       value='1'>funneutral+1</button>
-       <button onClick={this.funArvo} id='funbad'           value='1'>funbad+1</button>
-       <Button
-                handleClick={this.funnollaa.bind(this)}
-                text="Reset, nollaa fun-metriikat"
-                />
-
+            <Button handleClick={this.funnollaa.bind(this)} idval='funnollaa'  valueval='0' text="Reset, nollaa metriikat"
+                        />
        </div>
       );
     };
