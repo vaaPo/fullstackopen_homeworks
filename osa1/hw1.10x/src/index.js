@@ -50,10 +50,11 @@ class App extends React.Component {
         bad: 0,
         counter: 0,
         sum: 0,
-        funfuncounter : 1
+        funfuncounter : {funcounter: 0, statvalue: 100}
       };
     };
-  
+  //funfuncounter['counter']
+  //funfuncounter['statvalue']
 
 
     Statistics = () => {
@@ -160,11 +161,34 @@ class App extends React.Component {
         console.log("ngonArvo newvalue :", newvalue);
 //        this.setState({ [event.target.id]: newvalue });                      // the real magic with dynamic-key-name is here
         this.setState({ [dynamiccountername]: newvalue });                      // the real magic with dynamic-key-name is here
-        this.setState({ sum: this.state.sum +1});
+        this.setState({ sum: this.state.sum +1});  //TODO fix stats with correct values
+        //funfuncounter['counter']
+        //funfuncounter['statvalue']
         this.setState({ counter: this.state.counter +1});
         console.log("ngonArvo after this.state[dynamiccountername]", this.state[dynamiccountername]);
     };
 
+    funArvo= async event => {
+        event.preventDefault();     
+        event.persist();
+        console.log("ngonArvo Param passed => event.target.id: ", event.target.id);
+        console.log("ngonArvo Param passed => event.target.value: ", event.target.value);
+        const dynamiccountername = event.target.id;
+        console.log("ngonArvo dynamiccountername :", dynamiccountername);
+        console.log("ngonArvo before this.state[dynamiccountername]", this.state[dynamiccountername]);
+        //...
+        const defstatvalue = Number(this.state[dynamiccountername].statvalue);  // we save this so we can inject it back, hack it is.
+        const newvalue = this.state[dynamiccountername].funcounter + Number(event.target.value);
+
+        console.log("ngonArvo newvalue :", newvalue, " defstatvalue: ",defstatvalue);
+//        this.setState({ [event.target.id]: newvalue });                      // the real magic with dynamic-key-name is here
+        this.setState({ [dynamiccountername]: {funcounter: newvalue, statvalue: defstatvalue} });                         // trick [dynamiccountername.counter]
+        this.setState({ sum: this.state.sum + defstatvalue});     // trick [dynamiccountername.statvalue]
+        //funfuncounter['counter']
+        //funfuncounter['statvalue']
+        this.setState({ counter: this.state.counter +1});
+        console.log("ngonArvo after this.state[dynamiccountername]", this.state[dynamiccountername]);
+    };
 
     render() {
       return (
@@ -191,13 +215,15 @@ class App extends React.Component {
                 text="Reset, nollaa metriikat"
                 />
 
-       <div>{this.state.funfuncounter+100}</div>
-       <div>{this.state['funfuncounter']}</div>
        <button onClick={this.onApprove} id='approve' value='1'>Approve</button>
        <div>new buttons and new event handling</div>
        <button onClick={this.ngonArvo} id='good' value='1'>Good+1</button>
        <button onClick={this.ngonArvo} id='neutral' value='1'>Neutral+</button>
        <button onClick={this.ngonArvo} id='bad' value='1'>Bad+1</button>
+       <div>funfuncounter tests</div>
+       <div>funfuncounter.funcounter is {this.state.funfuncounter['funcounter']}</div>
+       <div>funfuncounter.statvalue is {this.state.funfuncounter['statvalue']}</div>
+       <button onClick={this.funArvo} id='funfuncounter' value='1'>funfuncounter+1</button>
        </div>
       );
     };
