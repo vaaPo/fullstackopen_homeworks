@@ -15,21 +15,23 @@ class App extends React.Component {
     constructor() {
       super();              // this !
       this.state = {
+        counterconf: ['fungood','funneutral','funbad'],
+        sumconf: ['sum','counter'],
         good: 0,
         neutral: 0,
         bad: 0,
         counter: 0,
         sum: 0,
         funfuncounter : {funcounter: 0, statvalue: 100},
-        fungood: {funcounter: 0, statvalue: 1},
-        funneutral: {funcounter: 0, statvalue: 0},
-        funbad: {funcounter: 0, statvalue: -1}
+        fungood:        {funcounter: 0, statvalue: 1},
+        funneutral:     {funcounter: 0, statvalue: 0},
+        funbad:         {funcounter: 0, statvalue: -1}
       };
     };
   //funfuncounter['counter']
   //funfuncounter['statvalue']
 
-
+//FIXME voi pojat tää rewrite alkaa mennä vähän yli :)
     Statistics = () => {
         const showStats=(
         <React.Fragment>
@@ -65,17 +67,41 @@ class App extends React.Component {
     };
 
     nollaa() {
-      this.setState({ good: 0 });
-      this.setState({ neutral: 0 });
-      this.setState({ bad: 0 });
-      this.setState({ counter: 0});
-      this.setState({ sum: 0});
-      console.log("nollaus this.state.good " + this.state.good);
-      console.log("nollaus this.state.neutral " + this.state.neutral);
-      console.log("nollaus this.state.bad " + this.state.bad);
-      console.log("nollaus this.state.counter " + this.state.counter);
-      console.log("nollaus this.state.sum " + this.state.sum);
+        this.setState({ good: 0 });
+        this.setState({ neutral: 0 });
+        this.setState({ bad: 0 });
+        this.setState({ counter: 0});
+        this.setState({ sum: 0});
+        console.log("nollaus this.state.good " + this.state.good);
+        console.log("nollaus this.state.neutral " + this.state.neutral);
+        console.log("nollaus this.state.bad " + this.state.bad);
+        console.log("nollaus this.state.counter " + this.state.counter);
+        console.log("nollaus this.state.sum " + this.state.sum);
     };
+
+    funnollaa= async event => {
+            event.preventDefault();     
+            event.persist();
+      // map, hmmm foreach ...
+        this.state.counterconf.map((loopcounters) => {
+            console.log("funnollaa is looping",loopcounters);
+            const dynamiccountername = loopcounters; 
+            const defstatvalue = Number(this.state[dynamiccountername].statvalue);  // this we trust ku pässi sarviinsa :) 
+            const newvalue = 0;
+            this.setState({ [dynamiccountername]: {funcounter: newvalue, statvalue: defstatvalue} });    
+            console.log("funNOLLAA dynamiccountername:",dynamiccountername, " newvalue :", newvalue, " defstatvalue: ",defstatvalue);
+            return ("hip");
+        });
+        this.state.sumconf.map((loopsums) => {
+            console.log("funnollaa is looping sums", loopsums);
+            const sumname=loopsums;
+            const newvalue=0;
+            this.setState({ [sumname]: newvalue});
+            console.log("funNOLLAA sumname;", sumname, " newvalue:", newvalue);
+            return ("hop");
+        });
+    };
+
 
     counterPlusone() {
         this.setState({ counter: this.state.counter + 1});
@@ -203,6 +229,10 @@ class App extends React.Component {
        <button onClick={this.funArvo} id='fungood'          value='1'>fungood+1</button>
        <button onClick={this.funArvo} id='funneutral'       value='1'>funneutral+1</button>
        <button onClick={this.funArvo} id='funbad'           value='1'>funbad+1</button>
+       <Button
+                handleClick={this.funnollaa.bind(this)}
+                text="Reset, nollaa fun-metriikat"
+                />
 
        </div>
       );
