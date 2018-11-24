@@ -11,36 +11,6 @@ const Button = ({ handleClick, text }) => (
     </button>
 );
 
-// 1.10x hints:
-const olio = {
-    a: 1,
-    b: 2
-  };
-  
-  olio['c'] = 3;
-  
-  console.log(olio.a);    // tulostuu 1
-  
-  console.log(olio['b']);  // tulostuu 2
-  
-  const apu = 'c';
-  console.log(olio[apu]);  // tulostuu 3
-
-var object1 = {a: 'foo', b: 42, c: {}};
-
-console.log(object1.a);
-// expected output: "foo"
-
-var a = 'foo';
-var b = 42;
-var c = {};
-var object2 = {a: a, b: b, c: c};
-
-console.log(object2.b);
-// expected output: 42
-// 1.10x hints:
-
-
 class App extends React.Component {
     constructor() {
       super();              // this !
@@ -50,7 +20,10 @@ class App extends React.Component {
         bad: 0,
         counter: 0,
         sum: 0,
-        funfuncounter : {funcounter: 0, statvalue: 100}
+        funfuncounter : {funcounter: 0, statvalue: 100},
+        fungood: {funcounter: 0, statvalue: 1},
+        funneutral: {funcounter: 0, statvalue: 0},
+        funbad: {funcounter: 0, statvalue: -1}
       };
     };
   //funfuncounter['counter']
@@ -171,23 +144,22 @@ class App extends React.Component {
     funArvo= async event => {
         event.preventDefault();     
         event.persist();
-        console.log("ngonArvo Param passed => event.target.id: ", event.target.id);
-        console.log("ngonArvo Param passed => event.target.value: ", event.target.value);
+        console.log("funArvo Param passed => event.target.id: ", event.target.id);
+        console.log("funArvo Param passed => event.target.value: ", event.target.value);
         const dynamiccountername = event.target.id;
-        console.log("ngonArvo dynamiccountername :", dynamiccountername);
-        console.log("ngonArvo before this.state[dynamiccountername]", this.state[dynamiccountername]);
+        console.log("funArvo dynamiccountername :", dynamiccountername);
+        console.log("funArvo before this.state[dynamiccountername]", this.state[dynamiccountername]);
         //...
         const defstatvalue = Number(this.state[dynamiccountername].statvalue);  // we save this so we can inject it back, hack it is.
         const newvalue = this.state[dynamiccountername].funcounter + Number(event.target.value);
 
-        console.log("ngonArvo newvalue :", newvalue, " defstatvalue: ",defstatvalue);
-//        this.setState({ [event.target.id]: newvalue });                      // the real magic with dynamic-key-name is here
+        console.log("funArvo newvalue :", newvalue, " defstatvalue: ",defstatvalue);
+        // this.setState({ [event.target.id]: newvalue });                      // the real magic with dynamic-key-name is here
+        // if we dont put the array in condition the statvalue is lost //FIXME  
         this.setState({ [dynamiccountername]: {funcounter: newvalue, statvalue: defstatvalue} });                         // trick [dynamiccountername.counter]
         this.setState({ sum: this.state.sum + defstatvalue});     // trick [dynamiccountername.statvalue]
-        //funfuncounter['counter']
-        //funfuncounter['statvalue']
         this.setState({ counter: this.state.counter +1});
-        console.log("ngonArvo after this.state[dynamiccountername]", this.state[dynamiccountername]);
+        console.log("funArvo after this.state[dynamiccountername]", this.state[dynamiccountername]);
     };
 
     render() {
@@ -223,7 +195,15 @@ class App extends React.Component {
        <div>funfuncounter tests</div>
        <div>funfuncounter.funcounter is {this.state.funfuncounter['funcounter']}</div>
        <div>funfuncounter.statvalue is {this.state.funfuncounter['statvalue']}</div>
-       <button onClick={this.funArvo} id='funfuncounter' value='1'>funfuncounter+1</button>
+       <div>fungood.funcounter is {this.state.fungood['funcounter']}</div>
+       <div>funneutral.funcounter is {this.state.funneutral['funcounter']}</div>
+       <div>funbad.funcounter is {this.state.funbad['funcounter']}</div>
+       <div>funfuncounter.statvalue is {this.state.funfuncounter['statvalue']}</div>
+       <button onClick={this.funArvo} id='funfuncounter'    value='1'>funfuncounter+1</button>
+       <button onClick={this.funArvo} id='fungood'          value='1'>fungood+1</button>
+       <button onClick={this.funArvo} id='funneutral'       value='1'>funneutral+1</button>
+       <button onClick={this.funArvo} id='funbad'           value='1'>funbad+1</button>
+
        </div>
       );
     };
