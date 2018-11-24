@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //### HW1.10x unicafe osa5: refactored to use same event handler, see https://fullstackopen.github.io/osa1/#funktio-joka-palauttaa-funktion
+//
 
 
 const Statistic = ({ name,stat }) => <div>{name} {stat}</div>
