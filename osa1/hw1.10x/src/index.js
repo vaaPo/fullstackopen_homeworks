@@ -3,6 +3,39 @@ import ReactDOM from 'react-dom';
 //### HW1.10x unicafe osa5: refactored to use same event handler, see https://fullstackopen.github.io/osa1/#funktio-joka-palauttaa-funktion
 //
 
+const products = [{
+    name: "onion",
+    price: ".99",
+    id: 1
+  }, {
+    name: "pepper",
+    price: "1.25",
+    id: 2
+  }, {
+    name: "broccoli",
+    price: "3.00",
+    id: 3
+  }];
+  
+  const TableRow = ({row}) => (
+    <tr>
+      <td key={row.name}>{row.name}</td>
+      <td key={row.id}>{row.id}</td>
+      <td key={row.price}>{row.price}</td>
+    </tr>
+  )
+  
+  const Table = ({data}) = (
+    <table>
+      {data.map(row => {
+        <TableRow row={row} />
+      })}
+    </table>
+  )
+  
+//  ReactDOM.render(
+//    <Table data={products} />, 
+//    document.getElementById("root")
 
 const Statistic = ({ name,stat }) => <div>{name} {stat}</div>
 //<button onClick={this.funArvo} id='fungood'          value='1'>hyvä</button>
@@ -144,6 +177,8 @@ class App extends React.Component {
             <div> <this.Statistics/></div>
             <Button handleClick={this.funnollaa.bind(this)} idval='funnollaa'  valueval='0' text="Reset, nollaa metriikat"
                         />
+            <div> html table tricks</div>
+            <Table data={products} />
        </div>
       );
     };
