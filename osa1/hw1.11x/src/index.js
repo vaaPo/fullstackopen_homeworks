@@ -47,32 +47,37 @@ class App extends React.Component {
              <Statistic name="lukumäärä" stat={this.state.counter}/> 
              </>
         );
-        switch(this.state.counter) {
-            case 0:
-                return (<div id="nostats4table">ei yhtään palautetta annettu</div>);
-                //https://eslint.org/docs/2.0.0/rules/no-unreachable
-            default:
-                return (showStats4table);
-            //eslint-disable-next-line
-        };
+        return (showStats4table);
     };
    
+//https://stackoverflow.com/questions/43958700/react-error-th-cannot-appear-as-a-child-of-thead-see-unknown-thead-th
 
     Tablestats = () => {
         const showTablestats=(
             <React.Fragment>
                 <div id="tabstat1"><h2>Table of Statistics</h2>
                 <table >
+                    <thead>
                     <tr>
                     <td>&nbsp;</td>
                     <th scope="col">arvo</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <this.Statistics4table/>
+                    </tbody>
                 </table>
                 </div>
             </React.Fragment>
         );
-        return (showTablestats);
+        switch(this.state.counter) {
+            case 0:
+                return (<div id="nostats4table">ei yhtään palautetta annettu</div>);
+                //https://eslint.org/docs/2.0.0/rules/no-unreachable
+            default:
+                return (showTablestats);
+            //eslint-disable-next-line
+        };
     };
 
     funnollaa= async event => {
@@ -147,8 +152,8 @@ class App extends React.Component {
 
     render() {
       return (
-        <div><h1>### HW1.10x unicafe</h1>
-            <p> osa5: refactored to use same event handler, see https://fullstackopen.github.io/osa1/#funktio-joka-palauttaa-funktion</p>
+        <div><h1>### HW1.11x unicafe </h1>
+            <p> osa6: show results in HTML table, see https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics</p>
             <div><h2>Anna palautetta</h2></div>
             <Button handleClick={this.funArvo.bind(this)}   idval='fungood'    valueval='1' text='hyvä'/> 
             <Button handleClick={this.funArvo.bind(this)}   idval='funneutral' valueval='1' text='neutraali'/> 
