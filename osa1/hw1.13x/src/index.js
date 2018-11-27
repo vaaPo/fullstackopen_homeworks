@@ -29,18 +29,22 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+
+
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selected: -1   // 0 1 2 ..
+      selected: 0 //-1   // 0 1 2 ..
     };
   };
+
 
   randme= async event => {
     event.preventDefault();     
     event.persist();
-    const usl = anecdotes.length - 1 ;
+ //   const usl = anecdotes.length - 1 ;
+    const usl = anecdotesnvotes.anecdotes.length -1 ;
     const lsl = 0;
     const randval = getRandomInt(lsl, usl);
     console.log("random", randval, usl);
@@ -51,66 +55,56 @@ class App extends React.Component {
   voteme= async event => {
     event.preventDefault();     
     event.persist();
-    const usl = anecdotes.length - 1 ;
-    const lsl = 0;
-    const randval = getRandomInt(lsl, usl);
-    console.log("random", randval, usl);
-    this.setState({ selected: randval});
+
+    const kopio = {...anecdotesnvotes};
+    kopio.anecdotes[this.state.selected].votes += 1 ;  // add vote
+    anecdotesnvotes.anecdotes[this.state.selected].votes = kopio.anecdotes[this.state.selected].votes;
+    console.log("kopio votes",kopio.anecdotes[this.state.selected].key,kopio.anecdotes[this.state.selected].votes);
+    console.log("votes",anecdotesnvotes.anecdotes[this.state.selected].votes);
+
     return ("hop");
     };
     
 
   render() {
+      console.log(this.state.selected);
     return (
       <div>
-        {this.props.anecdotes[this.state.selected]}
-        <br></br>
+          <div>HW1.13x   {anecdotesnvotes.nimi}</div>
         <Button handleClick={this.voteme.bind(this)} text="vote"/>
         <Button handleClick={this.randme.bind(this)} text="next anecdote"/>
+        <p>{anecdotesnvotes.anecdotes[this.state.selected].key}.) {anecdotesnvotes.anecdotes[this.state.selected].text}</p>
+        has votes: {anecdotesnvotes.anecdotes[this.state.selected].votes}
+
       </div>
     );
   };
 };
 
-const anecdotes = [
-  'If it hurts, do it more often',
-  'Adding manpower to a late software project makes it later!',
-  'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
-  'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
-  'Premature optimization is the root of all evil.',
-  'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.'
-];
-
-const pisteet = [1, 4, 6, 3];
-console.log(pisteet);
-
-const kopio = [...pisteet]
-kopio[2] += 1   // kasvatetaan taulukon paikan 2 arvoa yhdellä
-
 const anecdotesnvotes = {
     nimi: 'Anecdotes with their votes',
     anecdotes: [
-      {
+      { key: 0,
         text: 'If it hurts, do it more often',
         votes: 0
       },
-      {
+      { key: 1,
         text: 'Adding manpower to a late software project makes it later!',
         votes: 0
       },
-      {
+      { key: 2,
         text: 'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
         votes: 0
       },
-      {
+      { key: 3,
         text:   'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
         votes: 0
       },
-      {
+      { key: 4,
         text:   'Premature optimization is the root of all evil.',
         votes: 0
       },
-      {
+      { key: 5,
         text: 'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
         votes: 0
       },
@@ -119,8 +113,7 @@ const anecdotesnvotes = {
 
 
 
-
 ReactDOM.render(
-  <App anecdotes={anecdotes} />,
+  <App anecdotesnvotes={anecdotesnvotes} />,
   document.getElementById('root')
 );
