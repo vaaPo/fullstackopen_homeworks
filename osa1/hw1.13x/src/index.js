@@ -34,11 +34,13 @@ function getRandomInt(min, max) {
 class App extends React.Component {
   constructor(props) {
     super(props)
+    const usl = anecdotesnvotes.anecdotes.length -1; 
+    const lsl = 0;
+    const seedrandom = getRandomInt(lsl,usl);
     this.state = {
-      selected: 0 //-1   // 0 1 2 ..
+      selected: seedrandom //1 //-1   // 0 1 2 ..    //FIXME, this is fixed now- fix so that it is random from begin
     };
   };
-
 
   randme= async event => {
     event.preventDefault();     
@@ -61,6 +63,8 @@ class App extends React.Component {
     anecdotesnvotes.anecdotes[this.state.selected].votes = kopio.anecdotes[this.state.selected].votes;
     console.log("kopio votes",kopio.anecdotes[this.state.selected].key,kopio.anecdotes[this.state.selected].votes);
     console.log("votes",anecdotesnvotes.anecdotes[this.state.selected].votes);
+    //FIXME how to rerender winner after voting and show new votes on the anecdote https://davidwalsh.name/react-force-render
+    this.forceUpdate(); //FIXME this is not very clean, but works
 
     return ("hop");
     };
