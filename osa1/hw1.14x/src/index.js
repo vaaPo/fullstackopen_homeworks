@@ -34,8 +34,11 @@ function getRandomInt(min, max) {
 class App extends React.Component {
   constructor(props) {
     super(props)
+    const usl = anecdotesnvotes.anecdotes.length -1; 
+    const lsl = 0;
+    const seedrandom = getRandomInt(lsl,usl);
     this.state = {
-      selected: 0 //-1   // 0 1 2 ..
+      selected: seedrandom //1 //-1   // 0 1 2 ..    //FIXME, this is fixed now- fix so that it is random from begin
     };
   };
 
@@ -43,7 +46,6 @@ class App extends React.Component {
   randme= async event => {
     event.preventDefault();     
     event.persist();
- //   const usl = anecdotes.length - 1 ;
     const usl = anecdotesnvotes.anecdotes.length -1 ;
     const lsl = 0;
     const randval = getRandomInt(lsl, usl);
@@ -61,14 +63,14 @@ class App extends React.Component {
     anecdotesnvotes.anecdotes[this.state.selected].votes = kopio.anecdotes[this.state.selected].votes;
     console.log("kopio votes",kopio.anecdotes[this.state.selected].key,kopio.anecdotes[this.state.selected].votes);
     console.log("votes",anecdotesnvotes.anecdotes[this.state.selected].votes);
-
+    //FIXME how to rerender winner after voting and show new votes on the anecdote https://davidwalsh.name/react-force-render
     return ("hop");
     };
   
-    findwinner= async event => {
-        event.preventDefault();     
-        event.persist();
-    
+//    findWinner= async event => {
+//        event.preventDefault();     
+//        event.persist();
+    findWinner = () => {
         const rankcopy = {...anecdotesnvotes.anecdotes.votes};
         console.log("rankcopy ",rankcopy[1]);
         console.log("rank anecdotesnvotes ",anecdotesnvotes.anecdotes[1].votes);
@@ -85,7 +87,28 @@ class App extends React.Component {
             };
         };
         console.log("findwinner found maxpos", maxpos);
-        return ("winner");
+        const showWinner=(
+            <React.Fragment>
+                <div id="tabstat1"><h2>Anecdote with most votes:</h2>
+                <table >
+                    <thead>
+                    <tr>
+                    <td>&nbsp;</td>
+                    <th align="right" scope="col">votes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>{anecdotesnvotes.anecdotes[maxpos].key}</tr>
+                    <tr>
+                    {anecdotesnvotes.anecdotes[maxpos].text}
+                    <td align="right">{anecdotesnvotes.anecdotes[maxpos].votes}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </React.Fragment>
+        );
+        return (showWinner);
      };
 
   render() {
@@ -93,17 +116,18 @@ class App extends React.Component {
       console.log('length in render',anecdotesnvotes.anecdotes.length);
     return (
       <div>
-          <div>HW1.14x   {anecdotesnvotes.nimi}</div>
+        <div>HW1.14x   {anecdotesnvotes.nimi}</div>
         <Button handleClick={this.voteme.bind(this)} text="vote"/>
         <Button handleClick={this.randme.bind(this)} text="next anecdote"/>
         <p>{anecdotesnvotes.anecdotes[this.state.selected].key}.) {anecdotesnvotes.anecdotes[this.state.selected].text}</p>
         has votes: {anecdotesnvotes.anecdotes[this.state.selected].votes}
-            <Button handleClick={this.findwinner.bind(this)} text="find winner"/>
-
+        <div> <this.findWinner/></div>
       </div>
     );
   };
 };
+//        <Button handleClick={this.findwinner.bind(this)} text="find winner"/>
+
 
 const anecdotesnvotes = {
     nimi: 'Anecdotes with their votes',
@@ -134,8 +158,6 @@ const anecdotesnvotes = {
       },
     ]
   };
-
-
 
 ReactDOM.render(
   <App anecdotesnvotes={anecdotesnvotes} />,
