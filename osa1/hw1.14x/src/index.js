@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 //### HW1.14x anekdootit osa3: show "the anecdote with most votes", 
+//https://www.w3schools.com/js/js_array_sort.asp
+
 
 const Button = ({ handleClick, text}) => (
     <button onClick={handleClick}>
@@ -29,8 +31,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -49,7 +49,7 @@ class App extends React.Component {
     const randval = getRandomInt(lsl, usl);
     console.log("random", randval, usl);
     this.setState({ selected: randval});
-    return ("hop");
+    return ("hip");
     };
 
   voteme= async event => {
@@ -64,10 +64,33 @@ class App extends React.Component {
 
     return ("hop");
     };
+  
+    findwinner= async event => {
+        event.preventDefault();     
+        event.persist();
     
+        const rankcopy = {...anecdotesnvotes.anecdotes.votes};
+        console.log("rankcopy ",rankcopy[1]);
+        console.log("rank anecdotesnvotes ",anecdotesnvotes.anecdotes[1].votes);
+        var len=anecdotesnvotes.anecdotes.length;
+        console.log('length in findwinner',anecdotesnvotes.anecdotes.length);
+        console.log("len is", len);
+        var max = -Infinity;
+        var maxpos = len;
+        while (len--) {
+            if (anecdotesnvotes.anecdotes[len].votes > max) {
+                max = anecdotesnvotes.anecdotes[len].votes;
+                maxpos=len;
+                console.log('maxpos is now',len,' with max',max);
+            };
+        };
+        console.log("findwinner found maxpos", maxpos);
+        return ("winner");
+     };
 
   render() {
       console.log(this.state.selected);
+      console.log('length in render',anecdotesnvotes.anecdotes.length);
     return (
       <div>
           <div>HW1.14x   {anecdotesnvotes.nimi}</div>
@@ -75,6 +98,7 @@ class App extends React.Component {
         <Button handleClick={this.randme.bind(this)} text="next anecdote"/>
         <p>{anecdotesnvotes.anecdotes[this.state.selected].key}.) {anecdotesnvotes.anecdotes[this.state.selected].text}</p>
         has votes: {anecdotesnvotes.anecdotes[this.state.selected].votes}
+            <Button handleClick={this.findwinner.bind(this)} text="find winner"/>
 
       </div>
     );
