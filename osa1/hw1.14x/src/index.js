@@ -68,9 +68,7 @@ class App extends React.Component {
     return ("hop");
     };
   
-//    findWinner= async event => {
-//        event.preventDefault();     
-//        event.persist();
+
     findWinner = () => {
         const rankcopy = {...anecdotesnvotes.anecdotes.votes};
         console.log("rankcopy ",rankcopy[1]);
