@@ -32,8 +32,11 @@ function getRandomInt(min, max) {
 class App extends React.Component {
   constructor(props) {
     super(props)
+    const usl = anecdotes.length - 1 ; 
+    const lsl = 0;
+    const seedrandom = getRandomInt(lsl,usl);
     this.state = {
-      selected: -1 // show nothing -1 has no anecdote on load  // 0 1 2 ..
+      selected: seedrandom //1 //-1   // 0 1 2 ..    //FIXME, this is fixed now- fix so that it is random from begin
     };
   };
   randme= async event => {
