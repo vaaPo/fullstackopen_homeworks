@@ -33,7 +33,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selected: 0   // 0 1 2 ..
+      selected: -1 // show nothing -1 has no anecdote on load  // 0 1 2 ..
     };
   };
   randme= async event => {
