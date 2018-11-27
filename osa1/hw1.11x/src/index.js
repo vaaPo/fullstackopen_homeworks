@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 
 //### HW1.11x unicafe osa6: show results in HTML table, see https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics
 
