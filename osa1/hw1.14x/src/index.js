@@ -64,6 +64,7 @@ class App extends React.Component {
     console.log("kopio votes",kopio.anecdotes[this.state.selected].key,kopio.anecdotes[this.state.selected].votes);
     console.log("votes",anecdotesnvotes.anecdotes[this.state.selected].votes);
     //FIXME how to rerender winner after voting and show new votes on the anecdote https://davidwalsh.name/react-force-render
+    this.forceUpdate(); //FIXME this is not very clean, but works
     return ("hop");
     };
   
@@ -117,16 +118,17 @@ class App extends React.Component {
     return (
       <div>
         <div>HW1.14x   {anecdotesnvotes.nimi}</div>
-        <Button handleClick={this.voteme.bind(this)} text="vote"/>
+        <div><Button handleClick={this.voteme.bind(this)} text="vote"/>
         <Button handleClick={this.randme.bind(this)} text="next anecdote"/>
         <p>{anecdotesnvotes.anecdotes[this.state.selected].key}.) {anecdotesnvotes.anecdotes[this.state.selected].text}</p>
         has votes: {anecdotesnvotes.anecdotes[this.state.selected].votes}
         <div> <this.findWinner/></div>
-      </div>
+      </div></div>
     );
   };
 };
 //        <Button handleClick={this.findwinner.bind(this)} text="find winner"/>
+
 
 
 const anecdotesnvotes = {
