@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ComponentNote from './components/ComponentNote';     // the Note rewritten to its own file
 
 //https://fullstackopen.github.io/osa2/
 //https://reactjs.org/docs/reconciliation.html#recursing-on-children
@@ -71,6 +72,10 @@ const App = (props) => {
       <h1>Muistiinpanot with Note-component</h1>
       <ul>
         {notes.map(note=><Note key={note.id} note={note}/>)}
+      </ul>
+      <h1>Muistiinpanot with ./components/ComponentNote-component</h1>
+      <ul>
+        {notes.map(note=><ComponentNote key={note.id} note={note}/>)}
       </ul>
     </div>
   );
