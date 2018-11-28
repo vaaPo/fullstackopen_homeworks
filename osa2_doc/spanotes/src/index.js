@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom';
 //https://fullstackopen.github.io/osa2/
 //https://reactjs.org/docs/reconciliation.html#recursing-on-children
 //https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318
+//https://www.npmjs.com/package/shortid
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+
 
 const notes = [
   {
@@ -25,6 +28,12 @@ const notes = [
     important: true
   }
 ];
+
+const Note = ({ note }) => {        // Note component, looks better in Chrome.developer.React  <Note key="3"> ...
+    return (
+      <li>{note.content}</li>
+    );
+  };
 
 const App = (props) => {
   const { notes } = props;
@@ -58,6 +67,10 @@ const App = (props) => {
       <h1>Muistiinpanot with method, better format</h1>
       <ul>
         {betterrivit()}
+      </ul>
+      <h1>Muistiinpanot with Note-component</h1>
+      <ul>
+        {notes.map(note=><Note key={note.id} note={note}/>)}
       </ul>
     </div>
   );
