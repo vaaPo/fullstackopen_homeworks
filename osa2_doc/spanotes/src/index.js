@@ -1,12 +1,46 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//https://fullstackopen.github.io/osa2/
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const notes = [
+  {
+    id: 1,
+    content: 'HTML on helppoa',
+    date: '2017-12-10T17:30:31.098Z',
+    important: true
+  },
+  {
+    id: 2,
+    content: 'Selain pystyy suorittamaan vain javascriptiä',
+    date: '2017-12-10T18:39:34.091Z',
+    important: false
+  },
+  {
+    id: 3,
+    content: 'HTTP-protokollan tärkeimmät metodit ovat GET ja POST',
+    date: '2017-12-10T19:20:14.298Z',
+    important: true
+  }
+];
+
+const App = (props) => {
+  const { notes } = props;
+
+  return (
+    <div>
+      <h1>Muistiinpanot</h1>
+      <ul>
+        <li>{notes[0].content}</li>
+        <li>{notes[1].content}</li>
+        <li>{notes[2].content}</li>
+      </ul>
+    </div>
+  );
+};
+
+ReactDOM.render(
+  <App notes={notes} />,
+  document.getElementById('root')
+);
+
