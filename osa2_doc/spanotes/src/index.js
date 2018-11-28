@@ -26,6 +26,7 @@ const notes = [
 
 const App = (props) => {
   const { notes } = props;
+  const rivit = () => notes.map(note => <li>{note.content}</li>);   // FIXME Warning: Each child in an array or iterator should have a unique "key" prop.
 
   return (
     <div>
@@ -34,6 +35,14 @@ const App = (props) => {
         <li>{notes[0].content}</li>
         <li>{notes[1].content}</li>
         <li>{notes[2].content}</li>
+      </ul>
+      <h1>Muistiinpanot with map</h1>
+      <ul>
+        {notes.map(note => <li>{note.content}</li>)}
+      </ul>
+      <h1>Muistiinpanot with method</h1>
+      <ul>
+        {rivit()}
       </ul>
     </div>
   );
