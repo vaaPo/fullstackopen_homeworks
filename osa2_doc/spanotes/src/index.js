@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App'
+import App from './App';
 
 //https://fullstackopen.github.io/osa2/
 //https://reactjs.org/docs/reconciliation.html#recursing-on-children
