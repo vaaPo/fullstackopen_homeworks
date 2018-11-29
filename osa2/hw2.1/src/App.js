@@ -1,17 +1,7 @@
-//import React, { Component } from 'react';
 import React from 'react';
 import Kurssi from './components/Kurssi/Kurssi';
-//import ComponentNote from './components/notes/ComponentNote';     // the Note rewritten to its own file
-//import HelloWprops from './components/Hello/HelloWprops';
-
-
 
 console.log("App.js - imports loaded");
-
-const App = (props) => {
-//  const { kurssi } = props;
-  const notes = props.notes;
-  const kurssi = props.kurssi;
 //### HW2.1 komponenttirakenne  rewrite //### HW1.5   sovellus joka käyttää kurssi-oliota
 /**
 App                 src\App.js
@@ -25,10 +15,10 @@ App                 src\App.js
 kurssi data         src\Kurssi\halfstackkurssi.js
 
  */
-/** here are multiple modules with names that only differ in casing.        //FIXME why Kurssi and kurssi ?
-This can lead to unexpected behavior when compiling on a filesystem with other case-semantic.
-Use equal casing. Compare these module identifiers:
- */
+const App = (props) => {
+  const notes = props.notes;
+  const kurssi = props.kurssi;
+
 console.log("App.js - const App=(props) loading");
 console.log("App.js - props",props);
 
@@ -47,13 +37,3 @@ return (
   
 export default App;
 
-/**small tests*/
-//           <div id="notes">
-//            {notes.map(note=><ComponentNote key={note.id} note={note}/>)}
-//          </div>
-//       <div id="step5">
-//       <h5>Greetings with HelloWprops</h5>
-//       {/** step5-2props */} 
-//       <HelloWprops name="Arto" age={26 + 10} />
-//
-//

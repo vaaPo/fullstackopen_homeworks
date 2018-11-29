@@ -1,17 +1,11 @@
 //import React from 'react';
 
 //### HW2.1 komponenttirakenne  rewrite //### HW1.5   sovellus joka käyttää kurssi-oliota
-/**
-App
-  Kurssi
-    Otsikko
-    Sisalto
-      Osa
-      Osa
- */
+// example data src\components\Kurssi\halfstackkurssi.js
+
 console.log("halfstackkurssi.js loading");
 
-  const kurssi = {
+const kurssi = {
     nimi: 'Half Stack -sovelluskehitys',
     osat: [
           { id: 1,
@@ -27,6 +21,6 @@ console.log("halfstackkurssi.js loading");
             tehtavia: 14
           }
     ]
-  };
+};
 
 export default kurssi;
