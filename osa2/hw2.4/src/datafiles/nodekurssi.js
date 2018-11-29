@@ -1,3 +1,4 @@
+// ./src/datafiles/nodekurssi.js
 console.log("nodekurssi.js loading");
 
 const kurssi = {

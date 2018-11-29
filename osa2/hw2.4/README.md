@@ -1,3 +1,22 @@
+//### OPETUSOHJELMA HW2.4 monta kurssia
+/**
+App                 src\App.js
+  Kurssit           src\Kurssi\Kurssit.js
+   Kurssi           src\Kurssi\Kurssi.js
+    Otsikko         src\Kurssi\Otsikko.js
+     Sisalto        src\Kurssi\Sisalto.js
+      Osa
+      Osa
+  Yhteensä          src\Kurssi\Yhteensa.js
+
+kurssi loader       src\Kurssi\montakurssia.js
+kurssi data         src\datafiles\halfstackkurssi.js
+                    src\datafiles\nodekurssi.js
+
+ */
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
