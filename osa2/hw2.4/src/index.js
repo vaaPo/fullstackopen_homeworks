@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import notes from './components/notes/notes';
-import halfstackkurssi from './components/Kurssi/montakurssia';
+import montakurssia from './components/Kurssi/montakurssia';
 
 console.log("Index.js loading");
 //### HW2.4 monta kurssia
@@ -19,8 +19,9 @@ App                 src\App.js
 kurssi olio         src\Kurssi\halfstackkurssi.js
 
  */
+console.log("index.js - montakurssia",montakurssia);
 
 ReactDOM.render(
-  <App notes={notes} kurssi={halfstackkurssi} />,
+  <App notes={notes} kurssit={montakurssia} />,
   document.getElementById('root')
 );
