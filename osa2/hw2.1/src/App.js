@@ -1,91 +1,50 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import React, { Component } from 'react';
+import React from 'react';
+import ComponentNote from './components/notes/ComponentNote';     // the Note rewritten to its own file
+import HelloWprops from './components/Hello/HelloWprops';
 
-const App = () => {
+import Mycourse from './components/Kurssi/Mycourse';
+//import Kurssi from './components/Kurssi/Kurssi';
 
-  /** tobe rakenne HW1.5*/
-      const kurssi = {
-          nimi: 'Half Stack -sovelluskehitys',
-          osat: [
-                { id: 1,
-                  nimi: 'Reactin perusteet',
-                  tehtavia: 10
-                },
-                { id:2,
-                  nimi: 'Tiedonvälitys propseilla',
-                  tehtavia: 7
-                },
-                { id:3,
-                  nimi: 'Komponenttien tila',
-                  tehtavia: 14
-                }
-          ]
-      };
-      function Otsikko(props) {
-          const otsikko15 = (<div>
-                              <h2>Otsikko {props.kurssi.nimi}</h2>
-                             </div>
-          );
-        return (
-          <div id="otsikko15">
-            <hr />
-            {otsikko15}
-          </div>
-        );
-      };
-      function Sisalto(props) {
-          const content = props.kurssi.osat.map((rivi) =>
-          <div key={rivi.id}>
-            <p>{rivi.id} {rivi.nimi} {rivi.tehtavia}</p>
-          </div>
-        );
-        return (
-          <div id="osat">
-            <hr />
-            {content}
-          </div>
-        );
-      };
-  
-      function Yhteensa(props) {
-          const summa = {
-              hwtot : 0,
-              osatot : 0
-          };
-          props.kurssi.osat.forEach((rivi) => {
-              summa.hwtot=summa.hwtot+rivi.tehtavia;
-              summa.osatot=summa.osatot+1;
-              console.log('Yhteensa: ' + rivi.id+' rivi arraysta osa '+ rivi.nimi,rivi.tehtavia +' yhteensä=' + summa.hwtot + ' osatot='+summa.osatot); 
-            });
-          return (
-          <div id="summarivi">
-              <h3>Yhteensä tehtäviä {summa.hwtot} kappaletta kurssin {summa.osatot} osassa</h3>
-          </div>
-          );
-      };
-  
-      function Mycourse(props) {
-          const ots=Otsikko(props);
-          const yht=Yhteensa(props);
-          const rivit=Sisalto(props);
-          return (
-              <div id="ots">{ots}
-                  <div id="rivit">{rivit}
-                      <div id="yht">{yht}</div>
-                  </div>
-              </div>
-          )
-      };
-  
+console.log("App.js - imports loaded");
+
+const App = (props) => {
+//  const { kurssi } = props;
+  const notes = props.notes;
+  const kurssi = props.kurssi;
+//### HW2.1 komponenttirakenne  rewrite //### HW1.5   sovellus joka käyttää kurssi-oliota
+/**
+App
+  Kurssi
+    Otsikko
+    Sisalto
+      Osa
+      Osa
+ */
+console.log("App.js - const App=(props) loading");
+console.log("App.js - props",props);
+
+console.log("App.js - kurssi", kurssi);
+console.log("App.js - notes", notes);
+console.log("App.js - just before return");
+
   return (
-      <div id="hw"> <h1>#### HW2.1 components rewrite of ### HW1.5   sovellus joka käyttää kurssi-oliota</h1>
+      <div id="hw"> <h1>#### HW2.1 components total rewrite of ### HW1.5 sovellus joka käyttää kurssi-oliota</h1>
           <div id="mycourse">
-          <Mycourse kurssi={kurssi} />
           </div>
-      </div>
+          <div id="notes">
+            {notes.map(note=><ComponentNote key={note.id} note={note}/>)}
+          </div>
+       <div id="step5">
+       <h5>Greetings with HelloWprops</h5>
+       {/** step5-2props */} 
+       <HelloWprops name="Arto" age={26 + 10} />
+       <div id="mycourse">
+        <Mycourse kurssi={kurssi} />
+        </div>
+       </div>
+       </div>
     )
   };
   
-
 export default App;

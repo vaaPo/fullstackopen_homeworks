@@ -1,19 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import notes from './components/notes/notes';
+import kurssi from './components/Kurssi/kurssi';
 
-
-//### HW2.1 komponenttirakenne  rewrite //### HW1.5   sovellus joka käyttää kurssi-oliota
-/**
-App
-  Kurssi
-    Otsikko
-    Sisalto
-      Osa
-      Osa
- */
+console.log("Index.js loading");
+//  <App kurssi={kurssi} />,
 
 ReactDOM.render(
-  <App />,
+  <App notes={notes} kurssi={kurssi} />,
   document.getElementById('root')
 );
