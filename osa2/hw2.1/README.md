@@ -1,3 +1,18 @@
+//### HW2.1 komponenttirakenne  rewrite //### HW1.5   sovellus joka käyttää kurssi-oliota
+/**
+App                 src\App.js
+  Kurssi            src\Kurssi\Kurssi.js
+    Otsikko         src\Kurssi\Otsikko.js
+    Sisalto         src\Kurssi\Sisalto.js
+      Osa
+      Osa
+  Yhteensä          src\Kurssi\Yhteensa.js
+
+kurssi olio         src\Kurssi\halfstackkurssi.js
+
+ */
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

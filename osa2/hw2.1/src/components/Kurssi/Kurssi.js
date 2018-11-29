@@ -1,34 +1,23 @@
 import React from 'react';
+import Otsikko from './Otsikko';
+import Sisalto from './Sisalto';
+import Yhteensa from './Yhteensa';
 
-//### HW2.1 komponenttirakenne  rewrite //### HW1.5   sovellus joka käyttää kurssi-oliota
-/**
-App
-  Kurssi
-    Otsikko
-    Sisalto
-      Osa
-      Osa
- */
+console.log("Kurssi.js - loading");
 
-  /** tobe rakenne HW1.5*/
-  console.log("Kurssi.js loading");
+function Kurssi(props) {
+        console.log("Kurssi.js - props", props);
+        const ots=Otsikko(props);
+        const yht=Yhteensa(props);
+        const osat=Sisalto(props);
+        return (
+            <div id="otsikko">{ots}
+                <div id="osat">{osat}
+                    <div id="yhteensa">{yht}</div>
+                </div>
+            </div>
+        )
+    };
 
-  const kurssi = {
-    nimi: 'Half Stack -sovelluskehitys',
-    osat: [
-          { id: 1,
-            nimi: 'Reactin perusteet',
-            tehtavia: 10
-          },
-          { id:2,
-            nimi: 'Tiedonvälitys propseilla',
-            tehtavia: 7
-          },
-          { id:3,
-            nimi: 'Komponenttien tila',
-            tehtavia: 14
-          }
-    ]
-  };
-
-export default kurssi;
+export default Kurssi;
+          

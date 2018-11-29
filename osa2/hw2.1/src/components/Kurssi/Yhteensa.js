@@ -8,15 +8,15 @@ function Yhteensa(props) {
         osatot : 0
     };
 
-    props.kurssi.osat.forEach((rivi) => {
-        summa.hwtot=summa.hwtot+rivi.tehtavia;
+    props.kurssi.osat.forEach((osa) => {
+        summa.hwtot=summa.hwtot+osa.tehtavia;
         summa.osatot=summa.osatot+1;
-        console.log('      Yhteensa: ', rivi.id,' rivi arraysta osa ', rivi.nimi,rivi.tehtavia,' yhteensä=', summa.hwtot,' osatot=',summa.osatot); 
+        console.log('osa.id:', osa.id,'osa.tehtavia:',osa.tehtavia,'summa.hwtot:', summa.hwtot,'summa.osatot:',summa.osatot,'osa.nimi:', osa.nimi); 
       });
-    console.log("    Yhteensa.js - just before return");
+    console.log("Yhteensa.js - just before return", summa.hwtot, summa.osatot);
 
     return (
-    <div id="summarivi">
+    <div id="summaosa">
         <h3>Yhteensä tehtäviä {summa.hwtot} kappaletta kurssin {summa.osatot} osassa</h3>
     </div>
     );

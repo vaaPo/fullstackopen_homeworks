@@ -9,9 +9,7 @@ App
       Osa
       Osa
  */
-
-  /** tobe rakenne HW1.5*/
-console.log("kurssi.js loading");
+console.log("halfstackkurssi.js loading");
 
   const kurssi = {
     nimi: 'Half Stack -sovelluskehitys',
