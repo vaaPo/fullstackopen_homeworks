@@ -19,7 +19,7 @@ function Kurssit(props) {
     const kala = kurssix.map((kurssi) => kurssi.nimi);
     const content = kurssix.map((mappedkurssi) =>
     <div key={mappedkurssi.id} >
-      <p><Kurssi kurssi={mappedkurssi}/></p>
+      <Kurssi kurssi={mappedkurssi}/>
     </div>
     );
     console.log('Kurssit.js - kala', kala);
