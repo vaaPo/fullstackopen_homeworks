@@ -1,6 +1,7 @@
 import React from 'react';
 import Kurssit from './components/Kurssi/Kurssit';
 import Note from './components/Notes/Note';
+import PhoneBook from './components/PhoneBook/PhoneBook';
 
 console.log("App.js - imports loaded");
 //### HW2.6 PhoneBook komponenttirakenne 
@@ -32,8 +33,15 @@ class App extends React.Component {
       notes: props.notes,
       kurssit: props.kurssit,
       newNote: '',
-      showAll: true
+      showAll: true,
+      persons: props.persons,
+      newPerson: ''
     };
+    this.toggleVisible = this.toggleVisible.bind(this);
+    this.addNote = this.addNote.bind(this);
+    this.handleNoteChange= this.handleNoteChange.bind(this);
+    this.addPerson = this.addPerson.bind(this);
+    this.handlePersonChange = this.handlePersonChange.bind(this);
   };
 
 /**console.log("App.js - const App=(props) loading");
@@ -69,6 +77,27 @@ console.log("App.js - just before return");
     this.setState({ newNote: event.target.value });
   };
 
+  addPerson = (event) => {
+    event.preventDefault();
+    alert('addPerson submitted: ' + this.state.newPerson);
+    const personObject = {
+      name: this.state.newPerson,
+      id: this.state.persons.length + 1
+    };
+
+    const persons = this.state.persons.concat(personObject);
+
+    this.setState({
+      persons: persons,
+      newPerson: ''
+    });
+  };
+
+  handlePersonChange = (event) => {
+    console.log(event.target.value);
+    this.setState({ newPerson: event.target.value });
+  };
+
   // conditional chains type, but only one row
   //  of ternary https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
   // see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
@@ -84,6 +113,23 @@ console.log("App.js - just before return");
     return (
       <div>
         <div id="opetusohjelma"><h1>OPETUSOHJELMA HW2.6 PhoneBook</h1>
+        <div id="notes"><h2>Mapped persons</h2>
+            {this.state.persons.map(person=><PhoneBook key={person.id} person={person}/>)}
+        <form onSubmit={this.addPerson}>
+          <label>name: 
+          <input
+            name="addPersonInput"
+            type="text"
+            value={this.state.newPerson} 
+            onChange={this.handlePersonChange}
+          />
+          </label>
+          <button type="submit">tallenna person</button>
+        </form>
+        <div>
+        debug: {this.state.newPerson}
+        </div>
+
         <h1>Muistiinpanot</h1>
         <div>
           <button onClick={this.toggleVisible}>
@@ -94,7 +140,9 @@ console.log("App.js - just before return");
           {notesToShow.map(note => <Note key={note.id} note={note} />)}
         </ul>
         <form onSubmit={this.addNote}>
-          <input 
+          <input
+            name="addNoteInput"
+            type="text"
             value={this.state.newNote} 
             onChange={this.handleNoteChange}
           />
@@ -104,6 +152,7 @@ console.log("App.js - just before return");
         <Kurssit kurssit={this.state.kurssit}/>
         <div id="notes"><h2>Mapped ALL notes</h2>
             {this.state.notes.map(note=><Note key={note.id} note={note}/>)}
+        </div>
         </div>
         </div>
         </div>
