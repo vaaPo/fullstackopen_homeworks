@@ -24,7 +24,6 @@ kurssi data         src\datafiles\halfstackkurssi.js
                     src\datafiles\nodekurssi.js
 
  */
-console.log("index.js - montakurssia",montakurssia);
 
 ReactDOM.render(
   <App notes={notes} kurssit={montakurssia} persons={persons}/>,

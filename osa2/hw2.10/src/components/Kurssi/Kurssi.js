@@ -3,13 +3,13 @@ import Otsikko from './Otsikko';
 import Sisalto from './Sisalto';
 import Yhteensa from './Yhteensa';
 
-console.log("Kurssi.js - loading");
+//console.log("Kurssi.js - loading");
 
 function Kurssi(props) {
-    console.log("Kurssi.js - props", props);
-    console.log("Kurssi.js - props.kurssi", props.kurssi);
-    const parsikurssi = props.kurssi;
-    console.log("Kurssi.js - parsikurssi", parsikurssi);
+    //console.log("Kurssi.js - props", props);
+    //console.log("Kurssi.js - props.kurssi", props.kurssi);
+    //const parsikurssi = props.kurssi;
+    //console.log("Kurssi.js - parsikurssi", parsikurssi);
     const ots=Otsikko(props);
     const yht=Yhteensa(props);
     const osat=Sisalto(props);

@@ -1,10 +1,13 @@
-
-
-
 import React from 'react';
 import Kurssit from './components/Kurssi/Kurssit';
 import Note from './components/Notes/Note';
 import PhoneBook from './components/PhoneBook/PhoneBook';
+import Clock from './components/Clock/Clock';
+import TemperatureCalculator from './components/Temperature/TemperatureCalculator';
+import FormPersonsByString from './components/PhoneBook/FormPersonsByString';
+import FilterPersonsByName from './components/PhoneBook/FilterPersonsByName';
+import FilterPersonsByString from './components/PhoneBook/FilterPersonsByString';
+import AllPersons from './components/PhoneBook/AllPersons';
 
 console.log("App.js - imports loaded");
 //### HW2.10 PhoneBook split to components: duplicate prevention,phonenumbers and search
@@ -40,7 +43,9 @@ class App extends React.Component {
       persons: props.persons,
       newPerson: '',
       newPhonenumber: '',
-      newsearchPerson: ''
+      newsearchPerson: '',
+      stateliftupsearchstring: '',
+      value: ''
     };
     this.toggleVisible = this.toggleVisible.bind(this);
     this.addNote = this.addNote.bind(this);
@@ -48,6 +53,7 @@ class App extends React.Component {
     this.addPerson = this.addPerson.bind(this);
     this.handlePersonChange = this.handlePersonChange.bind(this);
     this.handlesearchPersonChange = this.handlesearchPersonChange.bind(this);
+    this.handleFormPersonByString = this.handleFormPersonByString.bind(this);
   };
 
 /**console.log("App.js - const App=(props) loading");
@@ -103,7 +109,7 @@ console.log("App.js - just before return");
         newPhonenumber: ''
       });
       } else {
-      alert('duplicate check: ' +this.state.newPerson +" is duplicate " + duplicate); 
+      //alert('duplicate check: ' +this.state.newPerson +" is duplicate " + duplicate); 
     };
 
   };
@@ -122,9 +128,19 @@ console.log("App.js - just before return");
     console.log(event.target.value);
     this.setState({
       value: event.target.value.toUpperCase(),
-      newsearchPerson: event.target.value.toUpperCase()
+      newsearchPerson: event.target.value.toUpperCase(),
+      stateliftupsearchstring: event.target.value.toUpperCase()
     });
 
+  };
+
+  handleFormPersonByString = (event) => {
+    console.log(event.target.value);
+    //alert('handleFormPersonByString event.target.value: ' + event.target.value);
+    this.setState({
+      value: event.target.value.toUpperCase(),
+      newsearchPerson: event.target.value.toUpperCase()
+    });
   };
 
   // conditional chains type, but only one row
@@ -143,9 +159,24 @@ console.log("App.js - just before return");
     const searchitpersons = this.state.persons.filter(obj => {return obj.name.toUpperCase() === this.state.newsearchPerson });
     const searchitpersons3 = this.state.persons.filter(obj => {return obj.name.toUpperCase().includes(this.state.newsearchPerson) });
 
+    //const stateliftupsearchstring = this.state.stateliftupsearchstring;
+    //alert('App stateliftupsearchstring: ' + stateliftupsearchstring);
+
+
     return (
       <div>
         <div id="opetusohjelma"><h1>### HW2.10 PhoneBook split to components: duplicate prevention,phonenumbers and search</h1>
+        <Clock />
+        <TemperatureCalculator />
+        <div id="FormPersonsByString"><h1>FORM FormPersonsByString</h1>
+        <FormPersonsByString value={this.state.value} onChangeValue={this.handleFormPersonByString} />
+
+        <div id="AllPersons"><h2>AllPersons</h2>
+        <AllPersons persons={this.state.persons}/>
+        <div id="FilterPersonsByName"><h2>FilterPersonsByName</h2>
+        <FilterPersonsByName searchstring={this.state.newsearchPerson} persons={this.state.persons}/>
+        <div id="FilterPersonsByString"><h2>FilterPersonsByString</h2>
+        <FilterPersonsByString searchstring={this.state.newsearchPerson} persons={this.state.persons}/>
         <form onChange={this.searchPerson}>
           <label>search:
             <input
@@ -209,6 +240,10 @@ console.log("App.js - just before return");
         <Kurssit kurssit={this.state.kurssit}/>
         <div id="notes"><h2>Mapped ALL notes</h2>
             {this.state.notes.map(note=><Note key={note.id} note={note}/>)}
+        </div>
+        </div>
+        </div>
+        </div>
         </div>
         </div>
         </div>

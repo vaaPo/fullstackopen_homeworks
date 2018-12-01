@@ -1,17 +1,18 @@
 //import React from 'react';
 import halfstackkurssi from '../../datafiles/Kurssit/halfstackkurssi';
 import nodekurssi from '../../datafiles/Kurssit/nodekurssi';
-console.log("montakurssia.js loading");
+//console.log("montakurssia.js loading");
 
-console.log(halfstackkurssi);
-console.log(nodekurssi);
+//console.log(halfstackkurssi);
+//console.log(nodekurssi);
 
 const kurssit = [halfstackkurssi,nodekurssi];
 
 
-console.log(kurssit);
-console.log(kurssit.length);
+//console.log(kurssit);
+//console.log(kurssit.length);
 
+/** just hardcoding here to test 
 const kurssit2 = [
   {
     nimi: 'Half Stack -sovelluskehitys',
@@ -51,10 +52,11 @@ const kurssit2 = [
     ]
   }
 ];
-console.log(kurssit2);
-console.log(kurssit2.length);
+ */
+//console.log(kurssit2);
+//console.log(kurssit2.length);
 
-const jabba=JSON.stringify(kurssit) === JSON.stringify(kurssit2);
-console.log("Check if montakurssia can load from files the kurssi parts = ", jabba);
+//const jabba=JSON.stringify(kurssit) === JSON.stringify(kurssit2);
+//console.log("Check if montakurssia can load from files the kurssi parts = ", jabba);
 
 export default kurssit;
