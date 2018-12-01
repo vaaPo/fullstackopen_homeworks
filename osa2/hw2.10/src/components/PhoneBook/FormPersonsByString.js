@@ -6,12 +6,7 @@ import React from 'react';
 
 // the parent is App and this is the child
 
-//const newHOCFormPersonsByString =   // do we need to do Higher order components to get rid of warnings?
-/**Warning: Functions are not valid as a React child. 
- * This may happen if you return a Component instead of <Component /> from render. 
- * Or maybe you meant to call this function rather than return it.
- * 
- */
+
 class FormPersonsByString extends React.Component {
 
     componentDidMount() {               // mounting, method runs after the component output has been rendered to the DOM. This is a good place to set up a timer
@@ -41,10 +36,18 @@ class FormPersonsByString extends React.Component {
             />
           </label>
           debug this.props.value: {this.props.value}
-          debug this.props.onChangeValue: {this.props.onChangeValue}
         </form>
         </>
       );
     };
   };
 export default FormPersonsByString;
+// tää on killeri           debug this.props.onChangeValue: {this.props.onChangeValue}
+// thanx for finding that this causes the warning to mr. Joona in telegram..
+// jos se häiritsee ni pistä vaik {`${onChangeValue}`} eli käytännös pistät sen stringiks
+//const newHOCFormPersonsByString =   // do we need to do Higher order components to get rid of warnings?
+/**Warning: Functions are not valid as a React child. 
+ * This may happen if you return a Component instead of <Component /> from render. 
+ * Or maybe you meant to call this function rather than return it.
+ * 
+ */
