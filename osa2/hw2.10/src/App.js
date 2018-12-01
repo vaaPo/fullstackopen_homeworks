@@ -21,7 +21,9 @@ App                 src\App.js
   Yhteensä          src\Kurssi\Yhteensa.js
 
   Notes
-  PhoneBook
+  PhoneBook         Form, Filter-files, and PhoneBook
+  Clock             mdn example
+  Temperature       mdn example
 
   datafiles
     Kurssit         src\datafiles\Kurssit\halfstackkurssi.js

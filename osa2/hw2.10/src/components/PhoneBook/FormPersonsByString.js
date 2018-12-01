@@ -26,25 +26,11 @@ class FormPersonsByString extends React.Component {
         console.log('FormPersonsByString componentWillUnmount');
     }; 
 
- /**
-    handlesearchPersonChange = (event) => {
-        console.log(event.target.value);
-        alert('FormPersonsByString handlesearchPersonChange: ' + event.target.value);
-        //this.props.stateliftupsearchstring = event.target.value.toUpperCase();
-        //this.props=({
-        //  stateliftupsearchstring: event.target.value.toUpperCase()
-        //});
-        this.setState({
-            value: event.target.value.toUpperCase(),
-          stateliftupsearchstring: event.target.value.toUpperCase()
-        }); 
-        this.props.stateliftupsearchstring(event.target.value.toUpperCase());
-    
-    };
+ /** handler lifted too App parent
   */   
     
     render() {
-      return (
+      return (<>
         <form onChange={this.searchPerson}>
           <label>search:
             <input
@@ -57,6 +43,7 @@ class FormPersonsByString extends React.Component {
           debug this.props.value: {this.props.value}
           debug this.props.onChangeValue: {this.props.onChangeValue}
         </form>
+        </>
       );
     };
   };

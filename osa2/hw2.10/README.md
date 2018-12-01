@@ -1,3 +1,27 @@
+//### HW2.10 PhoneBook split to components: duplicate prevention,phonenumbers and search
+/**
+App                 src\App.js
+  Kurssi            src\Kurssi\Kurssi.js
+    Otsikko         src\Kurssi\Otsikko.js
+    Sisalto         src\Kurssi\Sisalto.js
+      Osa
+      Osa
+  Yhteensä          src\Kurssi\Yhteensa.js
+
+  Notes
+  PhoneBook         Form, Filter-files, and PhoneBook
+  Clock             mdn example
+  Temperature       mdn example
+
+  datafiles
+    Kurssit         src\datafiles\Kurssit\halfstackkurssi.js
+                    src\datafiles\Kurssit\nodekurssi.js
+    Notes           src\datafiles\Notes\notes.js
+    PhoneBook
+kurssi data         
+
+ */
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
