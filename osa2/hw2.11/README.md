@@ -2,7 +2,13 @@
 ### `sudo npm install -g json-server`
 ### `json-server --port=3001 --watch db.json`
 
-http://localhost:3001/notes
+  Resources
+  http://localhost:3001/notes
+  http://localhost:3001/persons
+
+  Home
+  http://localhost:3001
+  
 ### `npm install axios --save`
 
 ### Event loops
