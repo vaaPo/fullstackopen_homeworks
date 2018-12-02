@@ -5,13 +5,17 @@
 http://localhost:3001/notes
 ### `npm install axios --save`
 
+### Event loops
 Philip Roberts: What the heck is the event loop anyway? JSConf EU [event loop](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 Web Workers is a simple means for web content to run scripts in background threads. The worker thread can perform tasks without interfering with the user interface. [web worker]https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
 
+### Web workers and single thread
 Web workers - firefox vs. chrome doesn't allow [single thread](https://medium.com/techtrument/multithreading-javascript-46156179cf9a)
 
+### Axios
 Promise based HTTP client for the browser and node.js [axios](https://github.com/axios/axios)
 
+### Default create-react-app stuff ...
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
