@@ -10,8 +10,9 @@ import FilterPersonsByString from './components/PhoneBook/FilterPersonsByString'
 import AllPersons from './components/PhoneBook/AllPersons';
 
 console.log("App.js - imports loaded");
-//### HW2.10 PhoneBook split to components: duplicate prevention,phonenumbers and search
+//### HW2.11 PhoneBook goes json-server and split to components: duplicate prevention,phonenumbers and search
 /**
+json-server         /db.json        has notes and persons
 App                 src\App.js
   Kurssi            src\Kurssi\Kurssi.js
     Otsikko         src\Kurssi\Otsikko.js

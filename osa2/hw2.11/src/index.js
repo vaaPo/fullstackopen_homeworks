@@ -7,8 +7,7 @@ import persons from './datafiles/PhoneBook/persons'
 
 
 console.log("Index.js loading");
-//### HW2.4 monta kurssia
-//### OPETUSOHJELMA HW2.4 monta kurssia
+//### HW2.11 PhoneBook goes json-server and split to components: duplicate prevention,phonenumbers and search
 /**
 App                 src\App.js
   Kurssit           src\Kurssi\Kurssit.js

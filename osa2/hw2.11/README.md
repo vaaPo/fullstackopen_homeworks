@@ -2,14 +2,20 @@
 ### `sudo npm install -g json-server`
 ### `json-server --port=3001 --watch db.json`
 
+### multiple files supporet for [json-server](https://www.npmjs.com/package/json-server)
   Resources
   http://localhost:3001/notes
   http://localhost:3001/persons
 
   Home
   http://localhost:3001
-  
+
 ### `npm install axios --save`
+### `npm install json-server --save`
+
+See package.json for server-script:
+### `npm run server`
+
 
 ### Event loops
 Philip Roberts: What the heck is the event loop anyway? JSConf EU [event loop](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
