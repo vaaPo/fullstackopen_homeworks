@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import notes from './datafiles/Notes/notes';
 import montakurssia from './components/Kurssi/montakurssia';
-import persons from './datafiles/PhoneBook/persons'
-
+import persons from './datafiles/PhoneBook/persons';
+//import axios from 'axios';
+import './components/AxiosDemos/AxiosDemos.js';
 
 console.log("Index.js loading");
+
 //### HW2.11 PhoneBook goes json-server and split to components: duplicate prevention,phonenumbers and search
 /**
 App                 src\App.js

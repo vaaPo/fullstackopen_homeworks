@@ -8,6 +8,9 @@ import FormPersonsByString from './components/PhoneBook/FormPersonsByString';
 import FilterPersonsByName from './components/PhoneBook/FilterPersonsByName';
 import FilterPersonsByString from './components/PhoneBook/FilterPersonsByString';
 import AllPersons from './components/PhoneBook/AllPersons';
+import AxiosDemosNotes from './components/AxiosDemos/AxiosDemoNotes';
+import AxiosDemosPersons from './components/AxiosDemos/AxiosDemoPersons';
+
 
 console.log("App.js - imports loaded");
 //### HW2.11 PhoneBook goes json-server and split to components: duplicate prevention,phonenumbers and search
@@ -168,7 +171,9 @@ console.log("App.js - just before return");
 
     return (
       <div>
-        <div id="opetusohjelma"><h1>### HW2.10 PhoneBook split to components: duplicate prevention,phonenumbers and search</h1>
+        <div id="opetusohjelma"><h1>HW2.11 PhoneBook goes json-server and split to components: duplicate prevention,phonenumbers and search</h1>
+        <AxiosDemosPersons />
+        <AxiosDemosNotes />
         <Clock />
         <TemperatureCalculator />
         <div id="FormPersonsByString"><h1>FORM FormPersonsByString</h1>
