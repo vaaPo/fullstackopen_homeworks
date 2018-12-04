@@ -1,12 +1,12 @@
 import React from 'react';
-import PhoneBook from './PhoneBook';
+import PersonRow from './PersonRow';
 console.log("AllPersons.js - loading");
 
 const AllPersons = ({ persons }) => {
     const hit=persons;
 
     return (
-        <p>ALL- {hit.map(person=><PhoneBook key={person.id} person={person}/>)}</p>
+        <p>ALL- {hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
     );
   };
   

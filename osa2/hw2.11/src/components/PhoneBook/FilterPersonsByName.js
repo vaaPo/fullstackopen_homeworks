@@ -1,5 +1,5 @@
 import React from 'react';
-import PhoneBook from './PhoneBook';
+import PersonRow from './PersonRow';
 console.log("FilterPersonsByName.js - loading");
 
 const FilterPersonsByName = ({ searchstring,persons }) => {
@@ -8,7 +8,7 @@ const FilterPersonsByName = ({ searchstring,persons }) => {
     console.log('FPBN persons',persons);
     console.log('FPBN hit',hit);
     return (
-        <p>FPBN-{searchstring} {hit.map(person=><PhoneBook key={person.id} person={person}/>)}</p>
+        <p>FPBN-{searchstring} {hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
 
     );
   };

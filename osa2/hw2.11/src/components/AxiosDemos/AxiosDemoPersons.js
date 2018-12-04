@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PhoneBook from '../PhoneBook/PhoneBook';
+import PersonRow from '../PhoneBook/PersonRow';
 
 class AxiosDemoPersons extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class AxiosDemoPersons extends React.Component {
     const fetchedpersons = this.state.persons;
     console.log('AxiosDemoPersons fetchedpersons',fetchedpersons)
     return (
-          <p>AxiosDemoPersons: {fetchedpersons.map(person=><PhoneBook key={person.id} person={person}/>)}</p>
+          <p>AxiosDemoPersons: {fetchedpersons.map(person=><PersonRow key={person.id} person={person}/>)}</p>
     );
   };
 };

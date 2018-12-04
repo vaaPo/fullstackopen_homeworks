@@ -4,10 +4,14 @@ import App from './App';
 import notes from './datafiles/Notes/notes';
 import montakurssia from './components/Kurssi/montakurssia';
 import persons from './datafiles/PhoneBook/persons';
+//import AxiosInitialFetchPersons from './components/PhoneBook/AxiosInitialFetchPersons';
 //import axios from 'axios';
 import './components/AxiosDemos/AxiosDemos.js';
 
 console.log("Index.js loading");
+//const kala=AxiosInitialFetchPersons;
+
+//console.log("Index.js axios kala", kala);
 
 //### HW2.11 PhoneBook goes json-server and split to components: duplicate prevention,phonenumbers and search
 /**
@@ -25,6 +29,7 @@ kurssi data         src\datafiles\halfstackkurssi.js
                     src\datafiles\nodekurssi.js
 
  */
+
 
 ReactDOM.render(
   <App notes={notes} kurssit={montakurssia} persons={persons}/>,

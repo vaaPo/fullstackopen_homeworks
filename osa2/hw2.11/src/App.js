@@ -1,7 +1,7 @@
 import React from 'react';
 import Kurssit from './components/Kurssi/Kurssit';
 import Note from './components/Notes/Note';
-import PhoneBook from './components/PhoneBook/PhoneBook';
+import PersonRow from './components/PhoneBook/PersonRow';
 import Clock from './components/Clock/Clock';
 import TemperatureCalculator from './components/Temperature/TemperatureCalculator';
 import FormPersonsByString from './components/PhoneBook/FormPersonsByString';
@@ -10,6 +10,10 @@ import FilterPersonsByString from './components/PhoneBook/FilterPersonsByString'
 import AllPersons from './components/PhoneBook/AllPersons';
 import AxiosDemosNotes from './components/AxiosDemos/AxiosDemoNotes';
 import AxiosDemosPersons from './components/AxiosDemos/AxiosDemoPersons';
+import AppPhoneBook from './components/PhoneBook/AppPhoneBook';
+import axios from 'axios';
+import AxiosInitialFetchPersons from './components/PhoneBook/AppPhoneBook';
+
 
 
 console.log("App.js - imports loaded");
@@ -51,7 +55,8 @@ class App extends React.Component {
       newPhonenumber: '',
       newsearchPerson: '',
       stateliftupsearchstring: '',
-      value: ''
+      value: '',
+      initpersons: ''
     };
     this.toggleVisible = this.toggleVisible.bind(this);
     this.addNote = this.addNote.bind(this);
@@ -68,6 +73,16 @@ console.log("App.js - kurssit", kurssit);
 console.log("App.js - notes", notes);
 console.log("App.js - just before return");
  */
+
+componentDidMount() {
+  console.log('App.js did mount')
+  axios
+    .get('http://localhost:3001/persons')
+    .then(response => {
+      console.log('App.js promise fulfilled');
+      this.setState({ initpersons: response.data });
+    });
+};
 
   toggleVisible = () => {
     this.setState({ showAll: !this.state.showAll });   // toggles the true to false to true
@@ -167,11 +182,14 @@ console.log("App.js - just before return");
 
     //const stateliftupsearchstring = this.state.stateliftupsearchstring;
     //alert('App stateliftupsearchstring: ' + stateliftupsearchstring);
-
+//        <AxiosInitialFetchPersons initpersons={this.state.initpersons} />
+    const initperse=this.state.initpersons;
+    console.log('initperse',this.state.initpersons);
 
     return (
       <div>
         <div id="opetusohjelma"><h1>HW2.11 PhoneBook goes json-server and split to components: duplicate prevention,phonenumbers and search</h1>
+        <AppPhoneBook />
         <AxiosDemosPersons />
         <AxiosDemosNotes />
         <Clock />
@@ -197,12 +215,12 @@ console.log("App.js - just before return");
         </form>
         debug: {this.state.newsearchPerson}
         <div id="searchedpersonsincludes"><h2>Searched persons, string includes</h2>
-            {searchitpersons3.map(person=><PhoneBook key={person.id} person={person}/>)}
+            {searchitpersons3.map(person=><PersonRow key={person.id} person={person}/>)}
         <div id="searchedpersonsexact"><h2>Searched persons, exact match</h2>
-            {searchitpersons.map(person=><PhoneBook key={person.id} person={person}/>)}
+            {searchitpersons.map(person=><PersonRow key={person.id} person={person}/>)}
 
         <div id="persons"><h2>All persons</h2>
-            {this.state.persons.map(person=><PhoneBook key={person.id} person={person}/>)}
+            {this.state.persons.map(person=><PersonRow key={person.id} person={person}/>)}
         <form onSubmit={this.addPerson}>
           <label>name: 
           <input
