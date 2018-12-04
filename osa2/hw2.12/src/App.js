@@ -1,11 +1,12 @@
 import React from 'react';
-import AppPhoneBook from './components/PhoneBook/AppPhoneBook';
-import AxiosDemosNotes from './components/AxiosDemos/AxiosDemoNotes';
-import AxiosDemosPersons from './components/AxiosDemos/AxiosDemoPersons';
-import AppNotes from './components/Notes/AppNotes';
-import Clock from './components/Clock/Clock';
-import TemperatureCalculator from './components/Temperature/TemperatureCalculator';
-import Kurssit from './components/Kurssi/Kurssit';
+//import AppPhoneBook from './components/PhoneBook/AppPhoneBook';
+//import AxiosDemosNotes from './components/AxiosDemos/AxiosDemoNotes';
+//import AxiosDemosPersons from './components/AxiosDemos/AxiosDemoPersons';
+//import AppNotes from './components/Notes/AppNotes';
+//import Clock from './components/Clock/Clock';
+//import TemperatureCalculator from './components/Temperature/TemperatureCalculator';
+//import Kurssit from './components/Kurssi/Kurssit';
+import AppCountries from './components/RestCountries/AppCountries';
 
 
 
@@ -57,7 +58,16 @@ console.log("App.js - just before return");
     return (
       <div>
         <div id="opetusohjelma"><h1>App</h1> HW2.12 RestCountries + all the previous sample and hw apps: AppPhoneBook, AxiosDemosNotes, AxiosDemosPersons, Clock, TemperatureCalculator, Opetusohjelma
-        <div id="AppPhoneBook"><AppPhoneBook /></div>
+        <div id="AppCountries"><AppCountries /></div>        
+        </div>
+        </div>
+    );
+  };
+};
+
+export default App
+/**
+ *        <div id="AppPhoneBook"><AppPhoneBook /></div>
         <div id="AxiosDemosNotes"><AxiosDemosNotes /></div>
         <div id="AxiosDemosPersons"><AxiosDemosPersons /></div>
         <div id="AppNotes"><AppNotes /></div>
@@ -66,11 +76,5 @@ console.log("App.js - just before return");
         <div id="Kurssit">
         <Kurssit kurssit={this.state.kurssit}/>
         </div>
-        </div>
-        </div>
-    );
-  };
-};
-
-export default App
-
+ 
+ */

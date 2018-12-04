@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import notes from './datafiles/Notes/notes';
-import montakurssia from './components/Kurssi/montakurssia';
-import persons from './datafiles/PhoneBook/persons';
+//import notes from './datafiles/Notes/notes';
+//import montakurssia from './components/Kurssi/montakurssia';
+//import persons from './datafiles/PhoneBook/persons';
 //import AxiosInitialFetchPersons from './components/PhoneBook/AxiosInitialFetchPersons';
 //import axios from 'axios';
 import './components/AxiosDemos/AxiosDemos.js';
@@ -32,6 +32,7 @@ kurssi data         src\datafiles\halfstackkurssi.js
 
 
 ReactDOM.render(
-  <App notes={notes} kurssit={montakurssia} persons={persons}/>,
+  <App />,
   document.getElementById('root')
 );
+//  <App notes={notes} kurssit={montakurssia} persons={persons}/>,

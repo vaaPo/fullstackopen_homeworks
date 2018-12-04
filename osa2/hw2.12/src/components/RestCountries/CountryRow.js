@@ -1,8 +1,9 @@
 import React from 'react';
 
 const CountryRow = ({ country }) => {
+//    console.log('CountryRow', country);
   return (
-    <li>{country.id} {country.name}</li>
+    <li> alpha3Code: {country.alpha3Code} name: {country.name}</li>
   );
 };
 
