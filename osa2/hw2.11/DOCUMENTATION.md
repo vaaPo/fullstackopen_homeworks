@@ -4,7 +4,7 @@ Components
 **src/App.js**
 
 ### 1. App
-
+```
 json-server         /db.json        has notes and persons
 App                 src\App.js
   Kurssi            src\Kurssi\Kurssi.js
@@ -25,6 +25,7 @@ App                 src\App.js
     Notes           src\datafiles\Notes\notes.js
     PhoneBook
 kurssi data   
+```
 
 
 
