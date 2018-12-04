@@ -9,7 +9,7 @@ const FilterPersonsByString = ({ searchstring,persons }) => {
     console.log('FPBS persons',persons);
     console.log('FPBS hit',hit);
     return (
-        <p>FPBS-{searchstring} {hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
+        <p><b>FilterPersonsByString:</b>{searchstring} {hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
 
     );
   };

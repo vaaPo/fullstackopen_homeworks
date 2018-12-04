@@ -8,7 +8,7 @@ const FilterPersonsByName = ({ searchstring,persons }) => {
     console.log('FPBN persons',persons);
     console.log('FPBN hit',hit);
     return (
-        <p>FPBN-{searchstring} {hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
+        <p><b>FilterPersonsByName:</b>{searchstring} {hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
 
     );
   };

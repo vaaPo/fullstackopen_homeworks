@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import Note from '../Notes/Note';
+import NoteRow from '../Notes/NoteRow';   //ugly //FIXME ugly import
 
 class AxiosDemoNotes extends React.Component {
   constructor(props) {
@@ -36,9 +36,7 @@ class AxiosDemoNotes extends React.Component {
       this.state.notes.filter(note => note.important === true) ;         // render only important===true
 
     return (
-        <ul>
-          AxiosDemosNotes: {notesToShow.map(note => <Note key={note.id} note={note} />)}
-        </ul>
+      <p><b>AxiosDemoNotes</b>{notesToShow.map(note => <NoteRow key={note.id} note={note} />)}</p>
     );
   };
 };

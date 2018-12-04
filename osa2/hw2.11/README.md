@@ -1,3 +1,7 @@
+### HW2.11 PhoneBook uses axios via json-server and split to components: duplicate prevention,phonenumbers and search
+
+
+
 ## Preparations
 ### `sudo npm install -g json-server`
 ### `json-server --port=3001 --watch db.json`

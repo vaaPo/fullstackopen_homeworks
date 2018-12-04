@@ -6,7 +6,7 @@ const AllPersons = ({ persons }) => {
     const hit=persons;
 
     return (
-        <p>ALL- {hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
+        <p><b>AllPersons:</b>{hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
     );
   };
   

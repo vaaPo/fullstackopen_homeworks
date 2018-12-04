@@ -31,7 +31,7 @@ class AxiosDemoPersons extends React.Component {
     const fetchedpersons = this.state.persons;
     console.log('AxiosDemoPersons fetchedpersons',fetchedpersons)
     return (
-          <p>AxiosDemoPersons: {fetchedpersons.map(person=><PersonRow key={person.id} person={person}/>)}</p>
+          <p><b>AxiosDemoPersons:</b>{fetchedpersons.map(person=><PersonRow key={person.id} person={person}/>)}</p>
     );
   };
 };

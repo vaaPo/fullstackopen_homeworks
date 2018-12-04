@@ -27,7 +27,7 @@ class FormPersonsByString extends React.Component {
     render() {
       return (<>
         <form onChange={this.searchPerson}>
-          <label>search:
+          <label><b>FormPersonsByString:</b>
             <input
             name="FormPersonsByStringInput"
             type="text"
@@ -35,7 +35,7 @@ class FormPersonsByString extends React.Component {
             onChange={this.props.onChangeValue}
             />
           </label>
-          debug this.props.value: {this.props.value}
+          <br></br>debug this.props.value: {this.props.value}
         </form>
         </>
       );
