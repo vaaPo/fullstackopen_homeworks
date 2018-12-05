@@ -1,17 +1,81 @@
 import React from 'react';
 import PersonRow from './PersonRow';
+import personsTAPI from './services/personsTAPI';
 console.log("FilterPersonsByString.js - loading");
 
-const FilterPersonsByString = ({ searchstring,persons }) => {
-    const hit=persons.filter(obj => {return obj.name.toUpperCase().includes(searchstring) });
 
-    console.log('FPBS searchstring',searchstring);
-    console.log('FPBS persons',persons);
-    console.log('FPBS hit',hit);
-    return (
-        <p><b>FilterPersonsByString:</b>{searchstring} {hit.map(person=><PersonRow key={person.id} person={person}/>)}</p>
-
-    );
+class FilterPersonsByString extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      deleteId: null
+    };
+    console.log('PersonRow constructor');
+    this.onPersonClickDel = this.onPersonClickDel.bind(this);
   };
-  
+
+  componentDidMount() {               // mounting, method runs after the component output has been rendered to the DOM. This is a good place to set up a timer
+      console.log('PersonRow componentDidMount');
+      console.log('PersonRow props',this.props);
+  };
+/**While this.props is set up by React itself and this.state has a special meaning, 
+ * you are free to add additional fields to the class manually 
+ * if you need to store something that doesn’t participate in the data flow (like a timer ID).
+ * 
+ */
+  componentWillUnmount() {            // unmounting, We will tear down the timer in the componentWillUnmount() lifecycle method:
+      console.log('PersonRow componentWillUnmount');
+  }; 
+
+  onPersonClickDel(id) {
+ 
+    alert("FPBS onPersonClickDel for id "+id);
+    console.log("FPBS onPersonClickDel",id);
+    personsTAPI
+        .deletepromised(id)
+        .then(deletedPerson => {
+            alert("deletePromised "+id);
+            this.props.onPersonClickDel(id);
+              });
+  };
+
+  render() {
+    const hit=this.props.persons.filter(obj => {return obj.name.toUpperCase().includes(this.props.searchstring) });
+
+    console.log('FPBS searchstring',this.props.searchstring);
+    console.log('FPBS persons',this.props.persons);
+    console.log('FPBS hit',hit);
+    
+    const content =<><br></br><b>FilterPersonsByString:</b>{this.props.searchstring} 
+                    {hit.map(person=><PersonRow
+                         key={person.id}
+                         person={person}
+                         onPersonClick={() => this.onPersonClickDel(person.id)}
+                         />)}</>;
+     /**
+    const content =<><br></br><b>FilterPersonsByString:</b>{this.props.searchstring} 
+                    {hit.map(person=><PersonRow
+                         key={person.id}
+                         person={person}
+                         onPersonClick={() => this.props.onPersonClickDel(person.id)}
+                         />)}</>;
+    */
+
+    return (content);
+  };
+};
+
 export default FilterPersonsByString;
+//const FilterPersonsByString = ({ searchstring,persons,onSubmitDelete }) => {
+
+/**
+ * 
+    return (
+        <p><b>FilterPersonsByString:</b>{this.props.searchstring} 
+                                        {hit.map(person=><PersonRow
+                                                             key={person.id}
+                                                             person={person}
+                                                             onPersonClick={() => this.onPersonClickDel(person.id)}
+                                                             />)}</p>
+    );
+ */

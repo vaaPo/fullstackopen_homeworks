@@ -4,7 +4,7 @@
       "id": 1,
       "content": "HTML on helppoa",
       "date": "2017-12-10T17:30:31.098Z",
-      "important": false
+      "important": true
     },
     {
       "id": 2,
@@ -16,72 +16,12 @@
       "id": 3,
       "content": "HTTP-protokollan tärkeimmät metodit ovat GET ja POST",
       "date": "2017-12-10T19:20:14.298Z",
-      "important": false
+      "important": true
     },
     {
-      "content": "tärkeä huomio 1",
+      "content": "ihmeellistä sad",
       "important": false,
-      "id": 4
-    },
-    {
-      "content": "erikoinen juttu tuo response eikö vain",
-      "important": true,
       "id": 5
-    },
-    {
-      "content": "haastava notes: this.state.notes.concat(response.data),",
-      "important": false,
-      "id": 6
-    },
-    {
-      "content": "ihmeellistä",
-      "important": false,
-      "id": 7
-    },
-    {
-      "content": "kalavale 2",
-      "important": false,
-      "id": 8
-    },
-    {
-      "content": "refactoirointi makes you happy",
-      "important": true,
-      "id": 9
-    },
-    {
-      "content": "function it is",
-      "important": true,
-      "id": 10
-    },
-    {
-      "content": "niinpäniin",
-      "important": true,
-      "id": 11
-    },
-    {
-      "content": "apuuVVA",
-      "important": false,
-      "id": 13
-    },
-    {
-      "content": "kuitenkin toimii vai eikö",
-      "important": false,
-      "id": 14
-    },
-    {
-      "content": "tapi workkii",
-      "important": true,
-      "id": 15
-    },
-    {
-      "content": "noteTAPI name change",
-      "important": true,
-      "id": 16
-    },
-    {
-      "content": "xxxx ccccc bbbb",
-      "important": false,
-      "id": 17
     }
   ],
   "persons": [
@@ -106,14 +46,19 @@
       "id": 4
     },
     {
-      "name": "xx",
-      "phonenumber": "123",
-      "id": 5
+      "name": "CCCCCCCCCCCCCC",
+      "phonenumber": "213",
+      "id": 7
     },
     {
-      "name": "aaa",
-      "phonenumber": "123344",
-      "id": 6
+      "name": "dgfhhfdh",
+      "phonenumber": "4w6536",
+      "id": 9
+    },
+    {
+      "name": "yuyyyyyy",
+      "phonenumber": "yyy",
+      "id": 10
     }
   ],
   "all_name_capital_population_flag_alpha3Code": [

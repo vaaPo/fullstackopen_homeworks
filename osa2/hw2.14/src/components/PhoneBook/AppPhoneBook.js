@@ -21,6 +21,7 @@ class AppPhoneBook extends React.Component {
 
         newsearchPerson: '',
         value: '',
+        deletePersonId:''
       };
       console.log('AppPhoneBook constructor');
       this.addPerson = this.addPerson.bind(this);
@@ -29,6 +30,7 @@ class AppPhoneBook extends React.Component {
       this.handleFormPersonByString = this.handleFormPersonByString.bind(this);
       this.handleChangeValueFormPerson = this.handleChangeValueFormPerson.bind(this);
       this.handleChangeValueFormPhonenumber = this.handleChangeValueFormPhonenumber.bind(this);
+      this.onPersonClickDelDeep = this.onPersonClickDelDeep.bind(this);
 
     };
   
@@ -50,6 +52,20 @@ class AppPhoneBook extends React.Component {
         });
     };
  
+  refreshPersons() {
+      console.log('AppPhoneBook.js refreshPersons');
+      this.setState({persons: []});
+
+      personsTAPI
+        .getAllpromised()
+        .then(response => {
+          this.setState({
+            persons: response
+          })
+        });
+    };
+ 
+
   componentWillUnmount() {            // unmounting, We will tear down the timer in the componentWillUnmount() lifecycle method:
       console.log('AppPhoneBook componentWillUnmount');
     }; 
@@ -62,17 +78,18 @@ class AppPhoneBook extends React.Component {
       alert('addPerson submitted: ' + this.state.newPerson + ' with phonenumber:' + this.state.newPhonenumber);
       const personObject = {
         name: this.state.newPerson,
-        phonenumber: this.state.newPhonenumber,
-        id: this.state.persons.length + 1
+        phonenumber: this.state.newPhonenumber
+//        id: this.state.persons.length + 1
       };
       personsTAPI
       .createpromised(personObject)
       .then(newPerson => {
         this.setState({
-          persons: this.state.persons.concat(personObject),
+          persons: this.state.persons.concat(personObject),   //FIXME ei toimi json-serverin luoma id puuttuu
           newPerson: '',
           newPhonenumber: ''
-        })
+        });
+        this.refreshPersons();
       });
 //      const persons = this.state.persons.concat(personObject);
   
@@ -108,8 +125,8 @@ class AppPhoneBook extends React.Component {
       const personObject = {
         name: this.state.newFormPerson,
         phonenumber: this.state.newFormPhonenumber,
-        id: this.state.persons.length + 1
-      } 
+//        id: this.state.persons.length + 1
+      }; 
       personsTAPI
       .createpromised(personObject)
       .then(newPerson => {
@@ -163,10 +180,16 @@ class AppPhoneBook extends React.Component {
     });
   };
 
+
   // conditional chains type, but only one row
   //  of ternary https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
   // see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
   // the difference of == and ===
+  onPersonClickDelDeep() {
+ 
+    alert("AppPhoneBook onPersonClickDelDeep ");
+    console.log("this.onPersonClickDelDeep");
+  };
 
   render() {
     console.log('AppPhoneBook render');
@@ -178,9 +201,10 @@ class AppPhoneBook extends React.Component {
         <p>components: AllPersons, FilterPersonsByName, FilterPersonsByString, FormPersonAdd</p>
         <FormPersonsByString value={this.state.value} onChangeValue={this.handleFormPersonByString} />
 
-        <div id="AllPersons"><AllPersons persons={this.state.persons}/>
-        <div id="FilterPersonsByName"><FilterPersonsByName searchstring={this.state.newsearchPerson} persons={this.state.persons}/>
-        <div id="FilterPersonsByString"><FilterPersonsByString searchstring={this.state.newsearchPerson} persons={this.state.persons}/>
+        <div id="FilterPersonsByString"><FilterPersonsByString 
+                                                    searchstring={this.state.newsearchPerson}
+                                                    persons={this.state.persons}
+                                                    onPersonClickDel={() => this.refreshPersons()}/>
         <FormPersonAdd ValuePerson={this.state.newFormPerson} 
                        onChangeValuePerson={this.handleChangeValueFormPerson}
                        ValuePhonenumber={this.state.newFormPhonenumber}
@@ -216,11 +240,8 @@ class AppPhoneBook extends React.Component {
           </label></p>
           <button type="submit">tallenna person</button>
         </form>
-        <p><b>AppPhoneBook.PersonsRow:</b>{fetchedpersons.map(person=><PersonRow key={person.id} person={person}/>)}</p>
         debug: {this.state.newPerson}
 
-        </div>
-        </div>
         </div>
         </div>
         );
@@ -243,5 +264,17 @@ export default AppPhoneBook;
         <div id="persons"><h2>All persons</h2>
             {this.state.persons.map(person=><PersonRow key={person.id} person={person}/>)}
 
+        <p><b>AppPhoneBook.PersonsRow:</b>{fetchedpersons.map(person=><PersonRow 
+                                                                        key={person.id}
+                                                                        person={person}
+                                                                        deletePerson={this.deletePerson(person.id)} />)}</p>
+
+ */
+/**
+ * 
+ *         <div id="AllPersons"><AllPersons persons={this.state.persons}/>
+        <div id="FilterPersonsByName"><FilterPersonsByName searchstring={this.state.newsearchPerson} persons={this.state.persons}/>
+        </div>
+        </div>
 
  */
