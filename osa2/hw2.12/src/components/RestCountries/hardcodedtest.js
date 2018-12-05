@@ -29,13 +29,3 @@ axios
   
     //  this.setState({ countries2: response.data });
 });
-
-
-
-//    const hitcount = hit.length;
-  
-/** <p><b>FilterCountriesByString:</b>{searchstring} {hit.map(country=><CountryRow key={country.alpha3Code} country={country}/>)}</p>
-     {countries.map(country=><CountryRow key={country.alpha3Code} country={country}/>)}</p>
-//    const hit=countries.filter(obj => {return obj.name.toUpperCase().includes(searchstring) });
-
-* */

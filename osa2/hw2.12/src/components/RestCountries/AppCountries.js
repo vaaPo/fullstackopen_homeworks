@@ -3,6 +3,8 @@ import axios from 'axios';
 //import CountryRow from './CountryRow';
 import FormCountriesByString from './FormCountriesByString';
 import FilterCountriesByString from './FilterCountriesByString';
+//import Imagetest from './Imagetest';
+
 
 class AppCountries extends React.Component {
     constructor(props) {
@@ -20,7 +22,7 @@ class AppCountries extends React.Component {
   componentDidMount() {
       console.log('AppCountries did mount');
       axios
-        .get('http://localhost:3001/countries_name_alpha3code') //https://restcountries.eu/rest/v2/all?fields=name;alpha3Code
+        .get('http://localhost:3001/all_name_capital_population_flag_alpha3Code') //https://restcountries.eu/rest/v2/all?fields=name;capital;population;flag;alpha3Code
         .then(response => {
           console.log('AppCountries promise fulfilled');
           this.setState({ countries: response.data });
@@ -62,11 +64,3 @@ class AppCountries extends React.Component {
   };
 
 export default AppCountries;
-/**
- *         <p><b>AppCountries.CountryRow:</b>{fetchedcountries.map(country=><CountryRow key={country.alpha3Code} country={country}/>)}</p>
-        <p><b>AppCountries.CountryRow:</b>{fetchedcountries.map(country=><CountryRow key={country.alpha3Code} country={country}/>)}</p>
-
-         <FormCountriesByString value={this.state.value} onChangeValue={this.handleFormCountriesByString} />
-        <div id="FilterCountriesByString"><FilterCountriesByString searchstring={haemut} countries={this.state.countries}/>
-
- */

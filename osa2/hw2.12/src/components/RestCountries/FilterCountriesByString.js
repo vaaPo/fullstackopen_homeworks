@@ -12,7 +12,7 @@ const FilterCountriesByString = ({ searchstring,countries }) => {
     console.log('FCBS searchstring:',searchstring,'and hitcount as hit.length',hitcount);
 //    console.log('FCBS countries',countries);
     if (hitcount < 11) {
-    return (<p><b>FilterCountriesByString:</b>{searchstring} {hit.map(country=><CountryRow key={country.alpha3Code} country={country}/>)}</p>);
+    return (<p><b>FilterCountriesByString:</b>{searchstring} {hit.map(country=><CountryRow key={country.alpha3Code} country={country} responsedatalength={hitcount}/>)}</p>);
     } else {
     return (<p>too many rows, refine search</p>);
     // eslint-disable-next-line
@@ -20,7 +20,3 @@ const FilterCountriesByString = ({ searchstring,countries }) => {
   };
   
 export default FilterCountriesByString;
-/** <p><b>FilterCountriesByString:</b>{searchstring} {hit.map(country=><CountryRow key={country.alpha3Code} country={country}/>)}</p>
-     {countries.map(country=><CountryRow key={country.alpha3Code} country={country}/>)}</p>
-
-* */
