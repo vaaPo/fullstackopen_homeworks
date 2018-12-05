@@ -2,7 +2,7 @@ import React from 'react';
 //import axios from 'axios';
 import NoteRow from './NoteRow';
 import noteService from './notesTAPI';      // in lecture material this was refactored to ~/services/notes.js
-
+import Notification from '../Notification/Notification';    //notifications
 
 class AppNotes extends React.Component {
     constructor(props) {
@@ -10,7 +10,8 @@ class AppNotes extends React.Component {
       this.state = {
         notes: [],
         newNote: '',
-        showAll: true
+        showAll: true,
+        error: null  //'catched that something went wrong..'
       };
       console.log('AppNotes constructor');
       this.toggleVisible = this.toggleVisible.bind(this);
@@ -153,11 +154,20 @@ class AppNotes extends React.Component {
                   notes: notes.concat(changedNote)
                 })
               })
-              .catch(error => {
-                alert(`muistiinpano '${note.content}' on jo valitettavasti poistettu palvelimelta`)
-                this.setState({ notes: this.state.notes.filter(n => n.id !== id) })
-              });  //promise-chain ends here, so .catch is here too
+//              .catch(error => {
+//                alert(`muistiinpano '${note.content}' on jo valitettavasti poistettu palvelimelta`)
+//                this.setState({ notes: this.state.notes.filter(n => n.id !== id) })
+//              });  //promise-chain ends here, so .catch is here too
 
+              .catch(error => {
+                this.setState({
+                  error: `muistiinpano '${note.content}' on jo valitettavasti poistettu palvelimelta`,
+                  notes: this.state.notes.filter(n => n.id !== id)
+                })
+                setTimeout(() => {
+                  this.setState({error: null})
+                }, 5000)
+              });
 
               /**
                * Uusi muistiinpano lähetetään sitten PUT-pyynnön mukana palvelimelle, jossa se korvaa aiemman muistiinpanon.
@@ -201,6 +211,7 @@ class AppNotes extends React.Component {
                                         note={note}
                                         toggleImportance={this.toggleImportance(note.id)} />)}
         </ul>
+        <Notification message={this.state.error}/>
         <form onSubmit={this.addNote}>
           <input
             name="addNoteInput"

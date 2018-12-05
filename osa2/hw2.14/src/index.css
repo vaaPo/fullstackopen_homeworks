@@ -1,0 +1,35 @@
+h1 {
+    color: green;
+    font-style: italic;
+  }
+h2 {
+    color: brown;
+    font-style: italic;
+  }
+h3 {
+    color: blueviolet;
+    font-style: italic;
+  }
+h3 {
+    color: darkcyan;
+    font-style: italic;
+  }
+li {
+    color: brown;
+    padding-top: 5px;
+    font-size: 15px;
+  }
+.note {
+    color: royalblue;
+    padding-top: 5px;
+    font-size: 15px;
+  }
+.error {
+    color: red;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
