@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import PersonRow from './PersonRow';
 import FormPersonsByString from './FormPersonsByString';
 import FilterPersonsByName from './FilterPersonsByName';
 import FilterPersonsByString from './FilterPersonsByString';
 import AllPersons from './AllPersons';
 import FormPersonAdd from './FormPersonAdd';
+import personsTAPI from './services/personsTAPI';
 
 class AppPhoneBook extends React.Component {
     constructor(props) {
@@ -33,11 +34,19 @@ class AppPhoneBook extends React.Component {
   
   componentDidMount() {
       console.log('AppPhoneBook did mount');
-      axios
+/**      axios
         .get('http://localhost:3001/persons')
         .then(response => {
           console.log('AppPhoneBook promise fulfilled');
           this.setState({ persons: response.data });
+        });
+         */
+      personsTAPI
+        .getAllpromised()
+        .then(response => {
+          this.setState({
+            persons: response
+          })
         });
     };
  
@@ -56,14 +65,22 @@ class AppPhoneBook extends React.Component {
         phonenumber: this.state.newPhonenumber,
         id: this.state.persons.length + 1
       };
-  
-      const persons = this.state.persons.concat(personObject);
-  
-      this.setState({
-        persons: persons,
-        newPerson: '',
-        newPhonenumber: ''
+      personsTAPI
+      .createpromised(personObject)
+      .then(newPerson => {
+        this.setState({
+          persons: this.state.persons.concat(personObject),
+          newPerson: '',
+          newPhonenumber: ''
+        })
       });
+//      const persons = this.state.persons.concat(personObject);
+  
+//      this.setState({
+//        persons: persons,
+//        newPerson: '',
+//        newPhonenumber: ''
+//      });
       } else {
       //alert('duplicate check: ' +this.state.newPerson +" is duplicate " + duplicate); 
     };
@@ -93,15 +110,26 @@ class AppPhoneBook extends React.Component {
         phonenumber: this.state.newFormPhonenumber,
         id: this.state.persons.length + 1
       } 
-      const persons = this.state.persons.concat(personObject);
-  
-      this.setState({
-        persons: persons,
-        newFormPerson: '',
-        newFormPhonenumber: '',
-        ValueFormPerson: '',
-        ValueFormPhonenumber:''
+      personsTAPI
+      .createpromised(personObject)
+      .then(newPerson => {
+        this.setState({
+          persons: this.state.persons.concat(personObject),
+          newFormPerson: '',
+          newFormPhonenumber: '',
+          ValueFormPerson: '',
+          ValueFormPhonenumber:''
+        })
       });
+//      const persons = this.state.persons.concat(personObject);
+//  
+//      this.setState({
+//        persons: persons,
+//        newFormPerson: '',
+//        newFormPhonenumber: '',
+//        ValueFormPerson: '',
+//        ValueFormPhonenumber:''
+//      });
     } else {
       alert('duplicate check: ' +this.state.newFormPerson +" is duplicate " + duplicate); 
     };

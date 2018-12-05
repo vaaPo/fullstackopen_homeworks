@@ -1,7 +1,7 @@
 import React from 'react';
 //import axios from 'axios';
 import NoteRow from './NoteRow';
-import noteService from './services/notesTAPI';      // in lecture material this was refactored to ~/services/notes.js
+import notesTAPI from './services/notesTAPI';      // in lecture material this was refactored to ~/services/notes.js
 import Notification from '../Notification/Notification';    //notifications
 
 class AppNotes extends React.Component {
@@ -30,7 +30,7 @@ class AppNotes extends React.Component {
         });
       */
         /** notesTAPI vanillas, then must handled here
-      noteService                        //summoned in notesTAPI.js
+      notesTAPI                        //summoned in notesTAPI.js
         .getAll()
         .then(response => {
           this.setState({
@@ -38,7 +38,7 @@ class AppNotes extends React.Component {
           })
         });
        */
-      noteService
+      notesTAPI
 //        .getAllpromised()           // ok function
         .getAllpromisedpaskaa()       // to test .catch in end of promise-chain see toggleImportance
         .then(response => {
@@ -73,7 +73,7 @@ class AppNotes extends React.Component {
         });
          */
         /**
-        noteService
+        notesTAPI
           .create(noteObject)
           .then(response => {
             this.setState({
@@ -83,7 +83,7 @@ class AppNotes extends React.Component {
           });
          */
 
-        noteService
+        notesTAPI
           .createpromised(noteObject)
           .then(newNote => {
             this.setState({
@@ -138,7 +138,7 @@ class AppNotes extends React.Component {
               });
             */
            /**
-            noteService
+            notesTAPI
               .update(id, changedNote)
               .then(response => {
                 this.setState({
@@ -146,7 +146,7 @@ class AppNotes extends React.Component {
                 })
               });
              */
-            noteService
+            notesTAPI
               .updatepromised(id, changedNote)
               .then(changedNote => {
                 const notes = this.state.notes.filter(n => n.id !== id)
