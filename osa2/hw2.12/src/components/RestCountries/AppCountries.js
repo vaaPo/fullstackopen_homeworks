@@ -22,7 +22,8 @@ class AppCountries extends React.Component {
   componentDidMount() {
       console.log('AppCountries did mount');
       axios
-        .get('http://localhost:3001/all_name_capital_population_flag_alpha3Code') //https://restcountries.eu/rest/v2/all?fields=name;capital;population;flag;alpha3Code
+//        .get('http://localhost:3001/all_name_capital_population_flag_alpha3Code') //https://restcountries.eu/rest/v2/all?fields=name;capital;population;flag;alpha3Code
+        .get('https://restcountries.eu/rest/v2/all?fields=name;capital;population;flag;alpha3Code')
         .then(response => {
           console.log('AppCountries promise fulfilled');
           this.setState({ countries: response.data });
