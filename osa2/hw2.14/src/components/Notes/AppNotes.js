@@ -1,6 +1,8 @@
 import React from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import NoteRow from './NoteRow';
+import noteService from './notesTAPI';      // in lecture material this was refactored to ~/services/notes.js
+
 
 class AppNotes extends React.Component {
     constructor(props) {
@@ -18,20 +20,37 @@ class AppNotes extends React.Component {
   
   componentDidMount() {
       console.log('AppNotes did mount');
+      /** prior notesTAPI.js
       axios
         .get('http://localhost:3001/notes')
         .then(response => {
           console.log('AppNotes promise fulfilled');
           this.setState({ notes: response.data });
         });
+      */
+        /** notesTAPI vanillas, then must handled here
+      noteService                        //summoned in notesTAPI.js
+        .getAll()
+        .then(response => {
+          this.setState({
+            notes: response.data        // response from http get
+          })
+        });
+       */
+      noteService
+        .getAllpromised()
+        .then(response => {
+          this.setState({
+            notes: response
+          })
+      });
     };
  
   componentWillUnmount() {            // unmounting, We will tear down the timer in the componentWillUnmount() lifecycle method:
       console.log('AppNotes componentWillUnmount');
     }; 
 
-
-    addNote = (event) => {
+  addNote = (event) => {
         event.preventDefault();
         const noteObject = {
           content: this.state.newNote,
@@ -39,10 +58,9 @@ class AppNotes extends React.Component {
           important: Math.random() > 0.5,         // 50% chance to get true or false
           id: this.state.notes.length + 1
         };
-    
-        
 
         // adds note to notes - jsonserver handles post
+        /** prior notesTAPI.js 
         axios.post('http://localhost:3001/notes', noteObject)
         .then(response => {
           console.log(response);
@@ -51,11 +69,30 @@ class AppNotes extends React.Component {
             newNote: ''
           })
         });
-    
-/** OBSOLETED WITH AXIOS POST        const notes = this.state.notes.concat(noteObject);
-        this.setState({
-          notes,
-          newNote: ''
+         */
+        /**
+        noteService
+          .create(noteObject)
+          .then(response => {
+            this.setState({
+              notes: this.state.notes.concat(response.data),
+              newNote: ''
+            })
+          });
+         */
+
+        noteService
+          .createpromised(noteObject)
+          .then(newNote => {
+            this.setState({
+              notes: this.state.notes.concat(newNote),
+              newNote: ''
+            })
+          });
+        /** OBSOLETED WITH AXIOS POST        const notes = this.state.notes.concat(noteObject);
+                this.setState({
+                  notes,
+                  newNote: ''
         });
          */
       };
@@ -74,7 +111,7 @@ class AppNotes extends React.Component {
           //FIXME es6 template string doesnt work: console.log('importance of ${id} needs to be toggled');
             console.log('importance of '+id+' needs to be toggled');
           //FIXME ei toimi  const url='http://localhost:3001/notes/${id}';            // note specific unique url
-            const url='http://localhost:3001/notes/'+id;
+            // notesTAPI.js <-- const url='http://localhost:3001/notes/'+id;
             const note=this.state.notes.find(n=>n.id===id);           // get id reference (to note) for the to be changed note
             const changedNote={ ...note, important: !note.important }; // object spread https://github.com/tc39/proposal-object-rest-spread
             /**
@@ -89,6 +126,7 @@ class AppNotes extends React.Component {
              * 
              *  Koska tilaa ei Reactissa saa muuttaa suoraan!
              */
+            /** prior notesTAPI.jos 
             axios
               .put(url, changedNote)
               .then(response => {
@@ -96,6 +134,26 @@ class AppNotes extends React.Component {
                   notes: this.state.notes.map(note=>note.id!==id ? note:response.data)
                 })
               });
+            */
+           /**
+            noteService
+              .update(id, changedNote)
+              .then(response => {
+                this.setState({
+                  notes: this.state.notes.map(note=>note.id!==id ? note:response.data)
+                })
+              });
+             */
+            noteService
+              .updatepromised(id, changedNote)
+              .then(changedNote => {
+                const notes = this.state.notes.filter(n => n.id !== id)
+                this.setState({
+                  notes: notes.concat(changedNote)
+                })
+              });
+
+
               /**
                * Uusi muistiinpano lähetetään sitten PUT-pyynnön mukana palvelimelle, jossa se korvaa aiemman muistiinpanon.
                * Takaisinkutsufunktiossa asetetaan komponentin App tilaan kaikki vanhat muistiinpanot 
@@ -128,7 +186,7 @@ class AppNotes extends React.Component {
 
     return (
         <React.Fragment>
-        <h1>AppNotes </h1>
+        <h1>AppNotes</h1>using notesTAPI to get,put,post to json-server
           <button onClick={this.toggleVisible}>
             näytä {label}
           </button>
@@ -147,9 +205,6 @@ class AppNotes extends React.Component {
           />
           <button type="submit">tallenna</button>
         </form>
-                <p>Mapped ALL notes:
-                {this.state.notes.map(note=><NoteRow key={note.id} note={note}/>)}
-                </p>
         </React.Fragment>
         );
     };
