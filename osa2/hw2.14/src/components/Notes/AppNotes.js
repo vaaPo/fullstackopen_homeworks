@@ -1,7 +1,7 @@
 import React from 'react';
 //import axios from 'axios';
 import NoteRow from './NoteRow';
-import noteService from './notesTAPI';      // in lecture material this was refactored to ~/services/notes.js
+import noteService from './services/notesTAPI';      // in lecture material this was refactored to ~/services/notes.js
 import Notification from '../Notification/Notification';    //notifications
 
 class AppNotes extends React.Component {

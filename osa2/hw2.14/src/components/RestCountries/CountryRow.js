@@ -40,7 +40,7 @@ render() {
   const alpha3Code = <>{country.alpha3Code}</>;
   const capital = <><b>capital:</b> {country.capital}</>;
   const population = <><b>population:</b> {country.population}</>;
-  const flag = <Image src={country.flag} height={50} />;
+  const flag = <Image src={country.flag} height={50} width={100}/>;
   console.log('CountryRow render this.state.showdetail',this.state.showdetail);
 
   if (responsedatalength===1 || this.state.showdetail===true) {
@@ -56,7 +56,7 @@ render() {
               return (detail);
     } else { 
 //              const row=<><li>{country.alpha3Code} <div id="clickmerow" onClick={this.handleClick}>{country.name}</div></li></>;
-              const row=<div onClick={this.handleClick}><tr>{country.name}</tr></div>;
+              const row=<div onClick={this.handleClick}>{country.name}</div>;
               return (row);
 //              return (<div id="clickmerow" onClick={this.handleClick}>{row}</div>);
               // eslint-disable-next-line

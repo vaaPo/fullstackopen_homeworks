@@ -1,5 +1,5 @@
-import axios from 'axios'
-const baseUrl = 'http://localhost:3001/notes'
+import axios from 'axios';
+const baseUrl = 'http://localhost:3001/persons';
 
 // vanilla approach, returns promised which must be handled by the caller
 const getAll = () => {
@@ -26,7 +26,7 @@ const getAllpromisedpaskaa = () => {                            // use to test t
     const request=axios.get(baseUrl);
         const nonExisting = {
           id: 10000,
-          content: 'Tätä muistiinpanoa ei ole palvelimelta',
+          content: 'Tätä muistiinpanoa ei ole palvelimelta CLICKKAAMUA!!',
           date: '2017-12-10T17:30:31.098Z',
           important: true
         };
