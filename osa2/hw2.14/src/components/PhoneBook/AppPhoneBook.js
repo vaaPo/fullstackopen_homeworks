@@ -7,6 +7,9 @@ import FilterPersonsByString from './FilterPersonsByString';
 import AllPersons from './AllPersons';
 import FormPersonAdd from './FormPersonAdd';
 import personsTAPI from './services/personsTAPI';
+import Notification from '../Notification/Notification';    //notifications
+import OkNotification from '../Notification/OkNotification';    //notifications
+
 
 class AppPhoneBook extends React.Component {
     constructor(props) {
@@ -21,7 +24,9 @@ class AppPhoneBook extends React.Component {
 
         newsearchPerson: '',
         value: '',
-        deletePersonId:''
+        deletePersonId:'',
+        error:null,
+        noerror:null
       };
       console.log('AppPhoneBook constructor');
       this.addPerson = this.addPerson.bind(this);
@@ -47,8 +52,12 @@ class AppPhoneBook extends React.Component {
         .getAllpromised()
         .then(response => {
           this.setState({
-            persons: response
-          })
+            persons: response,
+            noerror: 'personsTAPI getAllpromised gets persons to you!'
+          });
+          setTimeout(() => {
+            this.setState({noerror: null})
+          }, 5000)
         });
     };
  
@@ -60,8 +69,12 @@ class AppPhoneBook extends React.Component {
         .getAllpromised()
         .then(response => {
           this.setState({
-            persons: response
-          })
+            persons: response,
+            noerror: 'refreshPersons!'
+          });
+          setTimeout(() => {
+            this.setState({noerror: null})
+          }, 5000);
         });
     };
  
@@ -87,9 +100,13 @@ class AppPhoneBook extends React.Component {
         this.setState({
           persons: this.state.persons.concat(personObject),   //FIXME ei toimi json-serverin luoma id puuttuu
           newPerson: '',
-          newPhonenumber: ''
+          newPhonenumber: '',
+          noerror: 'addPerson!'
         });
-        this.refreshPersons();
+        setTimeout(() => {
+          this.setState({noerror: null})
+        }, 5000);
+      this.refreshPersons();
       });
 //      const persons = this.state.persons.concat(personObject);
   
@@ -131,12 +148,17 @@ class AppPhoneBook extends React.Component {
       .createpromised(personObject)
       .then(newPerson => {
         this.setState({
-          persons: this.state.persons.concat(personObject),
+          persons: this.state.persons.concat(personObject), //FIXME returning id uupuu?
           newFormPerson: '',
           newFormPhonenumber: '',
           ValueFormPerson: '',
-          ValueFormPhonenumber:''
-        })
+          ValueFormPhonenumber:'',
+          noerror: 'addPerson!'
+        });
+        setTimeout(() => {
+          this.setState({noerror: null})
+        }, 5000);
+        this.refreshPersons();
       });
 //      const persons = this.state.persons.concat(personObject);
 //  
@@ -197,8 +219,11 @@ class AppPhoneBook extends React.Component {
 
     console.log('AppPhoneBook fetchedpersons',fetchedpersons)
     return (<div id="AppPhoneBook"><h4>AppPhoneBook for HW2.14</h4>
+        <OkNotification message={this.state.noerror}/>
+        <Notification message={this.state.error}/>
         <p>uses axios: adding persons,duplicate prevention,phonenumbers and search</p>
         <p>components: AllPersons, FilterPersonsByName, FilterPersonsByString, FormPersonAdd</p>
+
         <FormPersonsByString value={this.state.value} onChangeValue={this.handleFormPersonByString} />
 
         <div id="FilterPersonsByString"><FilterPersonsByString 

@@ -1,6 +1,9 @@
 import React from 'react';
 import PersonRow from './PersonRow';
 import personsTAPI from './services/personsTAPI';
+import Notification from '../Notification/Notification';    //notifications
+import OkNotification from '../Notification/OkNotification';    //notifications
+
 console.log("FilterPersonsByString.js - loading");
 
 
@@ -8,7 +11,9 @@ class FilterPersonsByString extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      deleteId: null
+      deleteId: null,
+      noerror: null,
+      error: null
     };
     console.log('PersonRow constructor');
     this.onPersonClickDel = this.onPersonClickDel.bind(this);
@@ -36,7 +41,12 @@ class FilterPersonsByString extends React.Component {
         .then(deletedPerson => {
             alert("deletePromised "+id);
             this.props.onPersonClickDel(id);
-              });
+            this.setState({
+                noerror: 'DELETE OK!'
+            });
+            setTimeout(() => {
+              this.setState({noerror: null})
+            }, 5000);              });
   };
 
   render() {
@@ -47,6 +57,9 @@ class FilterPersonsByString extends React.Component {
     console.log('FPBS hit',hit);
     
     const content =<><br></br><b>FilterPersonsByString:</b>{this.props.searchstring} 
+            <OkNotification message={this.state.noerror}/>
+        <Notification message={this.state.error}/>
+
                     {hit.map(person=><PersonRow
                          key={person.id}
                          person={person}
