@@ -38,7 +38,8 @@ class AppNotes extends React.Component {
         });
        */
       noteService
-        .getAllpromised()
+//        .getAllpromised()           // ok function
+        .getAllpromisedpaskaa()       // to test .catch in end of promise-chain see toggleImportance
         .then(response => {
           this.setState({
             notes: response
@@ -151,7 +152,11 @@ class AppNotes extends React.Component {
                 this.setState({
                   notes: notes.concat(changedNote)
                 })
-              });
+              })
+              .catch(error => {
+                alert(`muistiinpano '${note.content}' on jo valitettavasti poistettu palvelimelta`)
+                this.setState({ notes: this.state.notes.filter(n => n.id !== id) })
+              });  //promise-chain ends here, so .catch is here too
 
 
               /**
