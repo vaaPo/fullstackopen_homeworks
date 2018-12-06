@@ -45,8 +45,11 @@ class PersonRow extends React.Component {
                                 <td id={idCell0} key={idCell0}>{this.props.person.id}</td>
                                 <td id={idCell1} key={idCell1}>{this.props.person.phonenumber}</td>
                                 <td id={idCell2} key={idCell2}>{this.props.person.name}</td>
-                                <td id={idCell3} key={idCell3}><button id={delbuttonId} key={delbuttonId} type="submit" 
-                                                         onClick={() => this.props.onPersonClick(this.props.person.id)}>
+                                <td id={idCell3} key={idCell3}><button id={delbuttonId} 
+                                                                       key={delbuttonId}
+                                                                       type="submit" 
+                                                                       className="button button3"
+                                                                       onClick={() => this.props.onPersonClick(this.props.person.id)}>
                                                           del
                                                   </button>
                                                   </td>

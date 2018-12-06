@@ -40,16 +40,16 @@
     },
     {
       "content": "erikoinen juttu tuo response eikö vain",
-      "important": false,
+      "important": true,
       "id": 9
+    },
+    {
+      "content": "xxx",
+      "important": true,
+      "id": 10
     }
   ],
   "persons": [
-    {
-      "name": "Arto Hellas",
-      "phonenumber": "040-123456",
-      "id": 1
-    },
     {
       "name": "Martti Tienari",
       "phonenumber": "040-123456",
@@ -91,23 +91,8 @@
       "id": 13
     },
     {
-      "name": "xx",
-      "phonenumber": "asda2112",
-      "id": 14
-    },
-    {
-      "name": "a",
-      "phonenumber": "asda2112",
-      "id": 16
-    },
-    {
-      "name": "aaa",
-      "phonenumber": "asda2112",
-      "id": 17
-    },
-    {
-      "name": "jess james",
-      "phonenumber": "asdaasd",
+      "name": "hellevi hiltunune",
+      "phonenumber": "asdasd121q212",
       "id": 18
     }
   ],

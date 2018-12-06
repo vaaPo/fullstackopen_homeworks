@@ -33,21 +33,24 @@ class FilterPersonsByString extends React.Component {
   }; 
 
   onPersonClickDel(id) {
- 
-    alert("FPBS onPersonClickDel for id "+id);
-    console.log("FPBS onPersonClickDel",id);
-    personsTAPI
-        .deletepromised(id)
-        .then(deletedPerson => {
-            alert("deletePromised "+id);
-            this.props.onPersonClickDel(id);
-            this.setState({
-                noerror: 'DELETE OK!'
-            });
-            setTimeout(() => {
-              this.setState({noerror: null})
-            }, 5000);              });
-  };
+    if (window.confirm("Do you really want to delete this person.id: "+id)) { 
+//      window.open("exit.html", "Thanks for Visiting!");
+        alert("FPBS onPersonClickDel for id "+id);
+        console.log("FPBS onPersonClickDel",id);
+        personsTAPI
+            .deletepromised(id)
+            .then(deletedPerson => {
+                alert("deletePromised "+id);
+                this.props.onPersonClickDel(id);
+                this.setState({
+                    noerror: 'DELETE OK!'
+                });
+                setTimeout(() => {
+                  this.setState({noerror: null})
+                }, 5000);              });
+
+      };
+    };
 
   render() {
     var hit=[];
