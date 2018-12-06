@@ -26,6 +26,16 @@ li {
     padding-top: 5px;
     font-size: 15px;
   }
+.rowname {
+  color: darkslateblue;
+  padding-top: 8px;
+  font-size: 20px;
+  font-style: bold;
+  border-style: solid;
+  border-radius: 3px;
+  padding: 6px;
+  margin-bottom: 4px;
+}
 .error {
     color: red;
     background: lightgrey;

@@ -31,13 +31,15 @@ class PersonRow extends React.Component {
   };
 
   render() {
-    const content= <><br></br>{this.props.person.id}
+    const content= <><div id="personrow" key={this.props.person.id}>
+                              {this.props.person.id}
                               {this.props.person.phonenumber}
                               {this.props.person.name}
                               <button type="submit" 
                                       onClick={() => this.props.onPersonClick(this.props.person.id)}>
                                       del
                               </button>
+                              </div>  
                     </>;
 
 return (
