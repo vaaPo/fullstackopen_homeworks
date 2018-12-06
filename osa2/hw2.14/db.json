@@ -79,6 +79,11 @@
       "name": "arto kurikka",
       "phonenumber": "123123",
       "id": 7
+    },
+    {
+      "name": "james bond",
+      "phonenumber": "123213",
+      "id": 10
     }
   ],
   "all_name_capital_population_flag_alpha3Code": [

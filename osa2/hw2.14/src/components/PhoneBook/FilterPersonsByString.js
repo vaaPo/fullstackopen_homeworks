@@ -64,16 +64,19 @@ class FilterPersonsByString extends React.Component {
                     <OkNotification message={this.state.noerror}/>
                     <Notification message={this.state.error}/>
 
-                    <table id="filterpersontable">
+                    <table id="filterpersontable" key="filterpersontable">
+                    <tbody>
                       <tr>
                          <th>person.id</th>
                          <th>phonenumber</th>
                          <th>name</th>
+                         <th>buttons</th>
                       </tr>
                       {hit.map(person=><PersonRow
                          key={person.id}
                          person={person}
                          onPersonClick={() => this.onPersonClickDel(person.id)}/>)}
+                      </tbody>
                     </table>
                     </>;
      /**

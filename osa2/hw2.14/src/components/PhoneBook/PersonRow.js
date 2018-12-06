@@ -31,12 +31,17 @@ class PersonRow extends React.Component {
   };
 
   render() {
+    const idCell0 = "cell-"+this.props.person.id+"-"+0;
+    const idCell1 = "cell-"+this.props.person.id+"-"+1;
+    const idCell2 = "cell-"+this.props.person.id+"-"+2;
+    const idCell3 = "cell-"+this.props.person.id+"-"+3;
+
     const content= <>
                               <tr id={this.props.person.id} key={this.props.person.id}>
-                                <td id="cell0-0">{this.props.person.id}</td>
-                                <td id="cell0-1">{this.props.person.phonenumber}</td>
-                                <td id="cell0-2">{this.props.person.name}</td>
-                                <td id="cell0-3"><button type="submit" 
+                                <td id={idCell0} key={idCell0}>{this.props.person.id}</td>
+                                <td id={idCell1} key={idCell1}>{this.props.person.phonenumber}</td>
+                                <td id={idCell2} key={idCell2}>{this.props.person.name}</td>
+                                <td id={idCell3} key={idCell3}><button type="submit" 
                                                          onClick={() => this.props.onPersonClick(this.props.person.id)}>
                                                           del
                                                   </button>
