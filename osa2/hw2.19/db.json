@@ -10,13 +10,13 @@
       "id": 2,
       "content": "Selain pystyy suorittamaan vain javascriptiä",
       "date": "2017-12-10T18:39:34.091Z",
-      "important": false
+      "important": true
     },
     {
       "id": 3,
       "content": "HTTP-protokollan tärkeimmät metodit ovat GET ja POST",
       "date": "2017-12-10T19:20:14.298Z",
-      "important": true
+      "important": false
     },
     {
       "content": "ihmeellistä sad",
@@ -47,6 +47,11 @@
       "content": "xxx",
       "important": true,
       "id": 10
+    },
+    {
+      "content": "Cool looking gui isnt it - sorting is not needed?",
+      "important": true,
+      "id": 11
     }
   ],
   "persons": [
@@ -81,11 +86,6 @@
       "id": 7
     },
     {
-      "name": "XX",
-      "phonenumber": "111 2222333",
-      "id": 13
-    },
-    {
       "name": "AAA",
       "phonenumber": "123456",
       "id": 16
@@ -94,6 +94,16 @@
       "name": "asdasd",
       "phonenumber": "88888",
       "id": 17
+    },
+    {
+      "name": "Hellevi Hulvaton",
+      "phonenumber": "123123123123",
+      "id": 18
+    },
+    {
+      "name": "jörn jäykkä",
+      "phonenumber": "666",
+      "id": 19
     }
   ],
   "all_name_capital_population_flag_alpha3Code": [

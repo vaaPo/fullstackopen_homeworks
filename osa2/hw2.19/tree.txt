@@ -1,0 +1,76 @@
+All homeworks in one APP for the Part2 of https://fullstackopen.github.io/osa2
+https://fullstackopen.github.io/tehtävät/
+.
+├── db.json
+├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── README.md
+├── src
+│   ├── App.js
+│   ├── components
+│   │   ├── AxiosDemos
+│   │   │   ├── AxiosDemoNotes.js
+│   │   │   ├── AxiosDemoPersons.js
+│   │   │   └── AxiosDemos.js
+│   │   ├── Clock
+│   │   │   └── Clock.js
+│   │   ├── Hello
+│   │   │   └── HelloWprops.js
+│   │   ├── Kurssi
+│   │   │   ├── Kurssi.js
+│   │   │   ├── Kurssit.js
+│   │   │   ├── montakurssia.js
+│   │   │   ├── Otsikko.js
+│   │   │   ├── Sisalto.js
+│   │   │   └── Yhteensa.js
+│   │   ├── Notes
+│   │   │   ├── AppNotes.js
+│   │   │   ├── NoteRow.js
+│   │   │   └── services
+│   │   │       └── notesTAPI.js
+│   │   ├── Notification
+│   │   │   ├── Notification.js
+│   │   │   └── OkNotification.js
+│   │   ├── PhoneBook
+│   │   │   ├── AppPhoneBook.js
+│   │   │   ├── FilterPersonsByString.js
+│   │   │   ├── FormPersonAdd.js
+│   │   │   ├── FormPersonsByString.js
+│   │   │   ├── PersonRow.js
+│   │   │   └── services
+│   │   │       └── personsTAPI.js
+│   │   ├── RestCountries
+│   │   │   ├── AppCountries.js
+│   │   │   ├── CountryRow.js
+│   │   │   ├── FilterCountriesByString.js
+│   │   │   ├── FormCountriesByString.js
+│   │   │   ├── hardcodedtest.js
+│   │   │   ├── Imagetest.js
+│   │   │   └── services
+│   │   │       └── countriesTAPI.js
+│   │   └── Temperature
+│   │       ├── BoilingVerdict.js
+│   │       ├── TemperatureCalculator.js
+│   │       ├── TemperatureInput.js
+│   │       ├── toCelsius.js
+│   │       ├── toFahrenheit.js
+│   │       └── TryConvert.js
+│   ├── datafiles
+│   │   ├── Kurssit
+│   │   │   ├── halfstackkurssi.js
+│   │   │   └── nodekurssi.js
+│   │   ├── Notes
+│   │   │   └── notes.js
+│   │   └── PhoneBook
+│   │       └── persons.js
+│   ├── index.css
+│   └── index.js
+├── tree.txt
+└── yarn.lock
+
+4475 directories, 28612 files
