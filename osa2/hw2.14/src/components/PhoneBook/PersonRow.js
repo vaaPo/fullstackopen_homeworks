@@ -1,5 +1,4 @@
 import React from 'react';
-import personsTAPI from './services/personsTAPI';
 
 
 class PersonRow extends React.Component {
@@ -32,24 +31,14 @@ class PersonRow extends React.Component {
   };
 
   render() {
-/** 
-const content= <><br></br>{this.props.person.id}
-                          {this.props.person.phonenumber}
-                          {this.props.person.name}
-                          <button type="submit" 
-                                  onClick={() => this.onPersonClick(this.props.person.id)}>
-                                  del
-                          </button>
-                </>;
-*/
-const content= <><br></br>{this.props.person.id}
-                          {this.props.person.phonenumber}
-                          {this.props.person.name}
-                          <button type="submit" 
-                                  onClick={() => this.props.onPersonClick(this.props.person.id)}>
-                                  del
-                          </button>
-                </>;
+    const content= <><br></br>{this.props.person.id}
+                              {this.props.person.phonenumber}
+                              {this.props.person.name}
+                              <button type="submit" 
+                                      onClick={() => this.props.onPersonClick(this.props.person.id)}>
+                                      del
+                              </button>
+                    </>;
 
 return (
     content
@@ -58,4 +47,3 @@ return (
 };
 
 export default PersonRow;
-//const PersonRow = ({ person }) => {

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  <style type="text/css">h1 {
+    color: green;
+    font-style: italic;
+  }
+h2 {
+    color: brown;
+    font-style: italic;
+  }
+h3 {
+    color: blueviolet;
+    font-style: italic;
+  }
+h3 {
+    color: darkcyan;
+    font-style: italic;
+  }
+li {
+    color: brown;
+    padding-top: 5px;
+    font-size: 15px;
+  }
+.note {
+    color: darkslateblue;
+    padding-top: 5px;
+    font-size: 15px;
+  }
+.error {
+    color: red;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .noerror {
+    color: deepskyblue;
+    background: lightgrey;
+    font-size: 20px;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }</style></head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"><div><div id="AppNotes"><h1>AppNotes</h1>using notesTAPI to get,put,post to json-server<button>näytä vain tärkeät</button><ul><li class="note">&gt;HTML on helppoa <button>make not important</button></li><li class="note">&gt;Selain pystyy suorittamaan vain javascriptiä <button>make important</button></li><li class="note">&gt;HTTP-protokollan tärkeimmät metodit ovat GET ja POST <button>make not important</button></li><li class="note">&gt;ihmeellistä sad <button>make important</button></li><li class="note">&gt;Tätä muistiinpanoa ei ole palvelimelta CLICKKAAMUA!! <button>make not important</button></li><li class="note">&gt;Heippatirallaa <button>make not important</button></li><li class="note">&gt;Kukkakeppi <button>make not important</button></li><li class="note">&gt;haastava notes: this.state.notes.concat(response.data), <button>make important</button></li></ul><form><input name="addNoteInput" type="text" value=""><button type="submit">tallenna</button></form></div><div id="opetusohjelma"><h1>App</h1> HW2.14 AppPhoneBook uses server to add + all the previous sample and hw apps: AppCountries, AxiosDemosNotes, AxiosDemosPersons, Clock, TemperatureCalculator, Opetusohjelma<div id="AppPhoneBook"><div id="AppPhoneBook"><h4>AppPhoneBook for HW2.14</h4><p>uses axios: adding persons,duplicate prevention,phonenumbers and search</p><p>components: AllPersons, FilterPersonsByName, FilterPersonsByString, FormPersonAdd</p><form><label><b>FormPersonsByString:</b><input name="FormPersonsByStringInput" type="text" value=""></label><br>debug this.props.value: </form><div id="FilterPersonsByString"><br><b>FilterPersonsByString:</b><br>1040-123456Arto Hellas<button type="submit">del</button><br>2040-123456Martti Tienari<button type="submit">del</button><br>3040-123456Arto Järvinen<button type="submit">del</button><br>4040-123456Lea Kutvonen<button type="submit">del</button><br>512313 123Niilo Nokia<button type="submit">del</button><br>6777777Jeppe Jeppesen<button type="submit">del</button><p><b>FormPersonAdd</b></p><form><label>name:<input name="addPersonInput" type="text" value=""></label><p><label>phonenumber:<input name="addPhonenumberInput" type="text" value=""></label></p><button type="submit">FormPersonAdd tallenna person</button></form><form><label>search:<input name="searchPersonInput" type="text" value=""></label>debug: </form><h3>Person-form in App</h3><form><label>name:<input name="addPersonInput" type="text" value=""></label><p><label>phonenumber:<input name="addPhonenumberInput" type="text" value=""></label></p><button type="submit">tallenna person</button></form>debug: </div></div><h2>AppPhoneBook</h2></div><div id="AppCountries"><h2>AppCountries</h2><div id="AppCountries"><h4>AppCountries for HW2.13</h4><p>uses axios to fetch countries from restcountries.eu</p><p>components: FilterCountriesByString, FormCountriesByString</p><form><label><b>FormCountriesByString:</b><input name="FormCountriesByStringInput" type="text" value=""></label><br>debug this.props.value: </form><div id="FilterCountriesByString"><p>too many rows, refine search</p></div></div></div><div id="Kurssit"><div><div><div id="otsikko"><h2><div id="otsikko15"><hr><div><h2>Otsikko Half Stack -sovelluskehitys</h2></div></div></h2><div id="osat"><div id="osat"><hr><div><p>1 Reactin perusteet 10</p></div><div><p>2 Tiedonvälitys propseilla 7</p></div><div><p>3 Komponenttien tila 14</p></div></div><div id="yhteensa"><div id="summaosa"><h3>Yhteensä tehtäviä 31 kappaletta kurssin 3 osassa</h3></div></div></div></div></div><div><div id="otsikko"><h2><div id="otsikko15"><hr><div><h2>Otsikko Node.js</h2></div></div></h2><div id="osat"><div id="osat"><hr><div><p>1 Routing 3</p></div><div><p>2 Middlewaret 7</p></div></div><div id="yhteensa"><div id="summaosa"><h3>Yhteensä tehtäviä 10 kappaletta kurssin 2 osassa</h3></div></div></div></div></div></div></div><div id="Clock"><div><h1>Clock</h1>It is 12:33:37 PM.</div></div><div id="TemperatureCalculator"><div><h3>TemperatureCalculator</h3><fieldset><legend>Enter temperature in Celsius:</legend><input value=""></fieldset><fieldset><legend>Enter temperature in Fahrenheit:</legend><input value=""></fieldset><p>The water would not boil.</p></div></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script src="./React App_files/bundle.js"></script><script src="./React App_files/0.chunk.js"></script><script src="./React App_files/main.chunk.js"></script><script src="./React App_files/main.cfa4e7b70d623eeeed91.hot-update.js"></script>
+
+</body></html>

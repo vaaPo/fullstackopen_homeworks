@@ -22,6 +22,21 @@
       "content": "ihmeellistä sad",
       "important": false,
       "id": 5
+    },
+    {
+      "content": "Kukkakeppi",
+      "important": true,
+      "id": 6
+    },
+    {
+      "content": "Heippatirallaa",
+      "important": true,
+      "id": 7
+    },
+    {
+      "content": "haastava notes: this.state.notes.concat(response.data),",
+      "important": false,
+      "id": 8
     }
   ],
   "persons": [
@@ -44,6 +59,26 @@
       "name": "Lea Kutvonen",
       "phonenumber": "040-123456",
       "id": 4
+    },
+    {
+      "name": "Niilo Nokia",
+      "phonenumber": "12313 123",
+      "id": 5
+    },
+    {
+      "name": "Jeppe Jeppesen",
+      "phonenumber": "777777",
+      "id": 6
+    },
+    {
+      "name": "arto kurikka",
+      "phonenumber": "123123",
+      "id": 7
+    },
+    {
+      "name": "xx",
+      "phonenumber": "2342243432",
+      "id": 8
     }
   ],
   "all_name_capital_population_flag_alpha3Code": [

@@ -44,7 +44,7 @@ render() {
   console.log('CountryRow render this.state.showdetail',this.state.showdetail);
 
   if (responsedatalength===1 || this.state.showdetail===true) {
-              const detail = <div id="name">{name}
+              const detail = <div id="detailcountryname" onClick={this.handleClick}><h3>{name}</h3>
                               <div id="capital">{capital}
                               <div id="population">{population}
                               <div id="alpha3">{alpha3Code}</div>
@@ -56,7 +56,7 @@ render() {
               return (detail);
     } else { 
 //              const row=<><li>{country.alpha3Code} <div id="clickmerow" onClick={this.handleClick}>{country.name}</div></li></>;
-              const row=<div onClick={this.handleClick}>{country.name}</div>;
+              const row=<div id="rowcountryname" onClick={this.handleClick}><h3>{country.name}</h3></div>;
               return (row);
 //              return (<div id="clickmerow" onClick={this.handleClick}>{row}</div>);
               // eslint-disable-next-line

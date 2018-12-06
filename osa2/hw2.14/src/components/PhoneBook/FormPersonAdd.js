@@ -25,7 +25,7 @@ class FormPersonAdd extends React.Component {
   */   
     //type="text"
     render() {
-      return (<><p><b>FormPersonAdd</b></p>
+      return (<><h3>FormPersonAdd</h3>
         <form onSubmit={this.props.onSubmit}>
           <label>name: 
           <input

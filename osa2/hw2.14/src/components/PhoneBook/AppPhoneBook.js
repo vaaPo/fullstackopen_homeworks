@@ -1,10 +1,6 @@
 import React from 'react';
-//import axios from 'axios';
-import PersonRow from './PersonRow';
 import FormPersonsByString from './FormPersonsByString';
-import FilterPersonsByName from './FilterPersonsByName';
 import FilterPersonsByString from './FilterPersonsByString';
-import AllPersons from './AllPersons';
 import FormPersonAdd from './FormPersonAdd';
 import personsTAPI from './services/personsTAPI';
 import Notification from '../Notification/Notification';    //notifications
@@ -41,13 +37,13 @@ class AppPhoneBook extends React.Component {
   
   componentDidMount() {
       console.log('AppPhoneBook did mount');
-/**      axios
-        .get('http://localhost:3001/persons')
-        .then(response => {
-          console.log('AppPhoneBook promise fulfilled');
-          this.setState({ persons: response.data });
-        });
-         */
+                  /**      axios
+                          .get('http://localhost:3001/persons')
+                          .then(response => {
+                            console.log('AppPhoneBook promise fulfilled');
+                            this.setState({ persons: response.data });
+                          });
+                          */
       personsTAPI
         .getAllpromised()
         .then(response => {
@@ -171,6 +167,12 @@ class AppPhoneBook extends React.Component {
 //      });
     } else {
       alert('duplicate check: ' +this.state.newFormPerson +" is duplicate " + duplicate); 
+      this.setState({
+        error: 'DUPLICATES NOT ALLOWED!'
+      });
+      setTimeout(() => {
+        this.setState({error: null})
+      }, 5000);
     };
   };
 
@@ -245,7 +247,7 @@ class AppPhoneBook extends React.Component {
             />
           </label>
           debug: {this.state.newsearchPerson}
-        </form><h3>Person-form in App</h3>
+        </form><h3>Person-form in AppPhoneBook</h3>
         <form onSubmit={this.addPerson}>
           <label>name: 
           <input

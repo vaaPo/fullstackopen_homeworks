@@ -50,8 +50,12 @@ class FilterPersonsByString extends React.Component {
   };
 
   render() {
-    const hit=this.props.persons.filter(obj => {return obj.name.toUpperCase().includes(this.props.searchstring) });
-
+    var hit=[];
+    if (this.props.searchstring!==null) {
+      hit=this.props.persons.filter(obj => {return obj.name.toUpperCase().includes(this.props.searchstring) });
+    } else {
+      hit=this.props.persons;
+    };
     console.log('FPBS searchstring',this.props.searchstring);
     console.log('FPBS persons',this.props.persons);
     console.log('FPBS hit',hit);
