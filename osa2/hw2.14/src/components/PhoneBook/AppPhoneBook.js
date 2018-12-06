@@ -126,6 +126,36 @@ class AppPhoneBook extends React.Component {
     this.setState({ newPhonenumber: event.target.value });
   };
 
+  rescueaddPerson(rescueaddPersonObject) {
+    const okmsg="Rescue added person:"+ this.state.speissi+rescueaddPersonObject.name;
+    personsTAPI
+    .createpromised(rescueaddPersonObject)
+    .then(rescueaddPersonObject => {
+      this.setState({
+  //          persons: this.state.persons.concat(personObject), //FIXME returning id uupuu?
+        newFormPerson: '',
+        newFormPhonenumber: '',
+        ValueFormPerson: '',
+        ValueFormPhonenumber:'',
+        noerror: okmsg
+      });
+      console.log("rescueaddPerson succeeded");
+      setTimeout(() => {
+        this.setState({noerror: null})
+      }, 5000);
+      this.refreshPersons();
+    })
+    .catch(error => {
+      alert("ERROR serveri huone on tulessa korjaa json-server");
+      this.setState({
+        error: `ERROR serveri huone on tulessa korjaa json-server`
+      })
+      setTimeout(() => {
+        this.setState({error: null})
+      }, 5000)
+    });
+  };
+
 
   addFormPerson = (event) => {
     event.preventDefault();
@@ -167,15 +197,59 @@ class AppPhoneBook extends React.Component {
 //        ValueFormPhonenumber:''
 //      });
     } else {
-      alert('duplicate check: ' +this.state.newFormPerson +" is duplicate " + duplicate); 
-      this.setState({
-        error: 'DUPLICATES NOT ALLOWED!'
-      });
-      setTimeout(() => {
-        this.setState({error: null})
-      }, 5000);
+//      alert('duplicate check: ' +this.state.newFormPerson +" is duplicate " + duplicate); 
+      alert('duplicate.name:'       +this.state.speissi+duplicate.name+this.state.speissi
+           +'duplicate.id:'         +this.state.speissi+duplicate.id  +this.state.speissi
+           +'duplicate.phonenumber:'+this.state.speissi+duplicate.phonenumber);
+      if (window.confirm(duplicate.name+this.state.speissi+"Is already in Phonebook, do you want to update the phonenumber?")) {
+        const updPersonObject = {
+          name: this.state.newFormPerson,
+          phonenumber: this.state.newFormPhonenumber
+        };
+        this.updatePerson(duplicate.id,updPersonObject);
+      }; 
     };
   };
+
+  updatePerson(oldid,updPersonObject) {
+  const okmsg="Updated:"+ this.state.speissi+updPersonObject.name;
+  personsTAPI
+  .updatepromised(oldid,updPersonObject)
+  .then(updPersonObject => {
+    this.setState({
+//          persons: this.state.persons.concat(personObject), //FIXME returning id uupuu?
+      newFormPerson: '',
+      newFormPhonenumber: '',
+      ValueFormPerson: '',
+      ValueFormPhonenumber:'',
+      noerror: okmsg
+    });
+    console.log("updatePerson done");
+    setTimeout(() => {
+      this.setState({noerror: null})
+    }, 5000);
+    this.refreshPersons();
+    })
+  .catch(error => {
+      alert("ERROR person.id was deleted by THE FASTEST HAND IN THE INTERNET from our json-server"+this.state.speissi+oldid);
+      this.setState({
+        error: `person.id '${oldid}' is no more on json-server`,
+        persons: this.state.persons.filter(n => n.id !== oldid)
+      })
+      setTimeout(() => {
+        this.setState({error: null})
+      }, 5000)
+      if (window.confirm("Do you want to fix the json-server by adding Person back"+this.state.speissi+updPersonObject.name)) { 
+        const rescueaddPersonObject = {
+//          id: oldid,
+          name: updPersonObject.name,
+          phonenumber: updPersonObject.phonenumber
+        };
+        this.rescueaddPerson(rescueaddPersonObject);
+      };
+    });
+  };
+
 
   handleChangeValueFormPerson = (event) => {
     console.log('hCVFormP',event.target.value);
@@ -226,18 +300,20 @@ class AppPhoneBook extends React.Component {
         <Notification message={this.state.error}/>
         <p>uses axios: adding persons,duplicate prevention,phonenumbers and search</p>
         <p>components: AllPersons, FilterPersonsByName, FilterPersonsByString, FormPersonAdd</p>
-
-        <FormPersonsByString value={this.state.value} onChangeValue={this.handleFormPersonByString} />
-
-        <div id="FilterPersonsByString"><FilterPersonsByString 
-                                                    searchstring={this.state.newsearchPerson}
-                                                    persons={this.state.persons}
-                                                    onPersonClickDel={() => this.refreshPersons()}/>
+        <b>Create new phonebook entry or change phonenumber for existing person</b>
         <FormPersonAdd ValuePerson={this.state.newFormPerson} 
                        onChangeValuePerson={this.handleChangeValueFormPerson}
                        ValuePhonenumber={this.state.newFormPhonenumber}
                        onChangeValuePhonenumber={this.handleChangeValueFormPhonenumber}
                        onSubmit={this.addFormPerson} />
+
+        <div id="FilterPersonsByString"><FilterPersonsByString 
+                                                    searchstring={this.state.newsearchPerson}
+                                                    persons={this.state.persons}
+                                                    onPersonClickDel={() => this.refreshPersons()}/>
+        <FormPersonsByString value={this.state.value} onChangeValue={this.handleFormPersonByString} />
+
+
         <form onChange={this.searchPerson}>
           <label>search:
             <input
