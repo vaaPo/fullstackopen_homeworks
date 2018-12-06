@@ -31,13 +31,14 @@ class PersonRow extends React.Component {
   };
 
   render() {
+
     const idCell0 = "cell-"+this.props.person.id+"-"+0;
     const idCell1 = "cell-"+this.props.person.id+"-"+1;
     const idCell2 = "cell-"+this.props.person.id+"-"+2;
     const idCell3 = "cell-"+this.props.person.id+"-"+3;
     const delbuttonId = "persondelbutton"+this.props.person.id;
 
-    const trId = "personrow"+this.props.person.id;
+    const trId = "personrowxxx"+this.props.person.id;
 
     const content= <>
                               <tr id={trId} key={trId}>
@@ -59,16 +60,3 @@ return (
 };
 
 export default PersonRow;
-/**
- * <div id="personrow" key={this.props.person.id}>                
- *               {this.props.person.id}
-                              {this.props.person.phonenumber}
-                              {this.props.person.name}
-                              <button type="submit" 
-                                      onClick={() => this.props.onPersonClick(this.props.person.id)}>
-                                      del
-                              </button>
-                                                            </div>  
-
-
- */

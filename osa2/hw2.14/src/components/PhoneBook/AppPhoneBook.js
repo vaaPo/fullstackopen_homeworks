@@ -94,15 +94,15 @@ class AppPhoneBook extends React.Component {
       .createpromised(personObject)
       .then(newPerson => {
         this.setState({
-          persons: this.state.persons.concat(personObject),   //FIXME ei toimi json-serverin luoma id puuttuu
+//          persons: this.state.persons.concat(personObject),   //FIXME ei toimi json-serverin luoma id puuttuu
           newPerson: '',
           newPhonenumber: '',
           noerror: 'addPerson!'
         });
+        this.refreshPersons();
         setTimeout(() => {
           this.setState({noerror: null})
         }, 5000);
-      this.refreshPersons();
       });
 //      const persons = this.state.persons.concat(personObject);
   
@@ -144,17 +144,18 @@ class AppPhoneBook extends React.Component {
       .createpromised(personObject)
       .then(newPerson => {
         this.setState({
-          persons: this.state.persons.concat(personObject), //FIXME returning id uupuu?
+//          persons: this.state.persons.concat(personObject), //FIXME returning id uupuu?
           newFormPerson: '',
           newFormPhonenumber: '',
           ValueFormPerson: '',
           ValueFormPhonenumber:'',
           noerror: 'addPerson!'
         });
+        this.refreshPersons();
+        console.log("addFormPerson added via TAPI");
         setTimeout(() => {
           this.setState({noerror: null})
         }, 5000);
-        this.refreshPersons();
       });
 //      const persons = this.state.persons.concat(personObject);
 //  

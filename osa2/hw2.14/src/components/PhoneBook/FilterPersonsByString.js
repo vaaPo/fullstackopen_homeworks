@@ -59,18 +59,22 @@ class FilterPersonsByString extends React.Component {
     console.log('FPBS searchstring',this.props.searchstring);
     console.log('FPBS persons',this.props.persons);
     console.log('FPBS hit',hit);
-    
+    const idth0 = "FPBS-TH-0";
+    const idth1 = "FPBS-TH-1";
+    const idth2 = "FPBS-TH-2";
+    const idth3 = "FPBS-TH-3";
+
     const content =<><br></br><b>FilterPersonsByString:</b>{this.props.searchstring} 
                     <OkNotification message={this.state.noerror}/>
                     <Notification message={this.state.error}/>
 
                     <table id="filterpersontable" key="filterpersontable">
-                    <tbody>
-                      <tr>
-                         <th>person.id</th>
-                         <th>phonenumber</th>
-                         <th>name</th>
-                         <th>buttons</th>
+                    <tbody id="filterpersontbody" key="filterpersontbody">
+                      <tr id="filterpersontableheader" key="filterpersontableheader">
+                         <th id={idth0} key={idth0}>person.id</th>
+                         <th id={idth1} key={idth1}>phonenumber</th>
+                         <th id={idth2} key={idth2}>name</th>
+                         <th id={idth3} key={idth3}>buttons</th>
                       </tr>
                       {hit.map(person=><PersonRow
                          key={person.id}
