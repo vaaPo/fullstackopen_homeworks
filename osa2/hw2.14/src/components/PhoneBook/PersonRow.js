@@ -31,16 +31,18 @@ class PersonRow extends React.Component {
   };
 
   render() {
-    const content= <><div id="personrow" key={this.props.person.id}>
-                              {this.props.person.id}
-                              {this.props.person.phonenumber}
-                              {this.props.person.name}
-                              <button type="submit" 
-                                      onClick={() => this.props.onPersonClick(this.props.person.id)}>
-                                      del
-                              </button>
-                              </div>  
-                    </>;
+    const content= <>
+                              <tr id={this.props.person.id} key={this.props.person.id}>
+                                <td id="cell0-0">{this.props.person.id}</td>
+                                <td id="cell0-1">{this.props.person.phonenumber}</td>
+                                <td id="cell0-2">{this.props.person.name}</td>
+                                <td id="cell0-3"><button type="submit" 
+                                                         onClick={() => this.props.onPersonClick(this.props.person.id)}>
+                                                          del
+                                                  </button>
+                                                  </td>
+                              </tr>
+                  </>;
 
 return (
     content
@@ -49,3 +51,16 @@ return (
 };
 
 export default PersonRow;
+/**
+ * <div id="personrow" key={this.props.person.id}>                
+ *               {this.props.person.id}
+                              {this.props.person.phonenumber}
+                              {this.props.person.name}
+                              <button type="submit" 
+                                      onClick={() => this.props.onPersonClick(this.props.person.id)}>
+                                      del
+                              </button>
+                                                            </div>  
+
+
+ */

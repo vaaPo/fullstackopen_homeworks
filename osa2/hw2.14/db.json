@@ -37,6 +37,11 @@
       "content": "haastava notes: this.state.notes.concat(response.data),",
       "important": false,
       "id": 8
+    },
+    {
+      "content": "erikoinen juttu tuo response eikö vain",
+      "important": false,
+      "id": 9
     }
   ],
   "persons": [
@@ -74,11 +79,6 @@
       "name": "arto kurikka",
       "phonenumber": "123123",
       "id": 7
-    },
-    {
-      "name": "xx",
-      "phonenumber": "asda2112",
-      "id": 8
     }
   ],
   "all_name_capital_population_flag_alpha3Code": [

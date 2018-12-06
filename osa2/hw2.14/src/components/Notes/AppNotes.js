@@ -38,7 +38,7 @@ class AppNotes extends React.Component {
           })
         });
        */
-      notesTAPI
+      notesTAPI   //FIXME this getAllpromisedpaskaa() is not for prod. it breaks the app
 //        .getAllpromised()           // ok function
         .getAllpromisedpaskaa()       // to test .catch in end of promise-chain see toggleImportance
         .then(response => {

@@ -61,14 +61,21 @@ class FilterPersonsByString extends React.Component {
     console.log('FPBS hit',hit);
     
     const content =<><br></br><b>FilterPersonsByString:</b>{this.props.searchstring} 
-            <OkNotification message={this.state.noerror}/>
-        <Notification message={this.state.error}/>
+                    <OkNotification message={this.state.noerror}/>
+                    <Notification message={this.state.error}/>
 
-                    {hit.map(person=><PersonRow
+                    <table id="filterpersontable">
+                      <tr>
+                         <th>person.id</th>
+                         <th>phonenumber</th>
+                         <th>name</th>
+                      </tr>
+                      {hit.map(person=><PersonRow
                          key={person.id}
                          person={person}
-                         onPersonClick={() => this.onPersonClickDel(person.id)}
-                         />)}</>;
+                         onPersonClick={() => this.onPersonClickDel(person.id)}/>)}
+                    </table>
+                    </>;
      /**
     const content =<><br></br><b>FilterPersonsByString:</b>{this.props.searchstring} 
                     {hit.map(person=><PersonRow
