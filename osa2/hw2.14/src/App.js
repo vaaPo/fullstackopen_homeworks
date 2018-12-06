@@ -35,9 +35,9 @@ console.log("App.js - just before return");
       <div>
         <div id="AppNotes"><AppNotes /></div>
         <div id="opetusohjelma"><h1>App</h1> HW2.14 AppPhoneBook uses server to add + all the previous sample and hw apps: AppCountries, AxiosDemosNotes, AxiosDemosPersons, Clock, TemperatureCalculator, Opetusohjelma
-        <div id="AppPhoneBook"><h2>AppPhoneBook</h2><AppPhoneBook /></div>
-        <div id="AppCountries"><h2>AppCountries</h2><AppCountries /></div>        
-        <div id="Kurssit"><h2>Kurssit</h2><Kurssit kurssit={this.state.kurssit}/></div>
+        <div id="AppPhoneBook"><h2>AppPhoneBook HW2.6-HW2.11, HW2.14-HW2.16</h2><AppPhoneBook /></div>
+        <div id="AppCountries"><h2>AppCountries HW2.11-HW2.13</h2><AppCountries /></div>        
+        <div id="Kurssit"><h2>Kurssit HW2.1-HW2.5</h2><Kurssit kurssit={this.state.kurssit}/></div>
         <div id="Clock"><h2>Clock</h2><Clock /></div>
         <div id="TemperatureCalculator"><h2>TemperatureCalculator</h2><TemperatureCalculator /></div>
         </div>
