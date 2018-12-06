@@ -13,7 +13,8 @@ class FilterPersonsByString extends React.Component {
     this.state = {
       deleteId: null,
       noerror: null,
-      error: null
+      error: null,
+      speissi: '\u00A0'
     };
     console.log('PersonRow constructor');
     this.onPersonClickDel = this.onPersonClickDel.bind(this);
@@ -34,22 +35,17 @@ class FilterPersonsByString extends React.Component {
 
   onPersonClickDel(id,name) {
     if (window.confirm("Do you really want to delete this person.id: "+id)) { 
+        const okmsg = "Deleted:"+this.state.speissi+name;
 //      window.open("exit.html", "Thanks for Visiting!");
-        alert("FPBS onPersonClickDel for id "+id);
-        const filterperson = this.props.persons.filter(obj => {return obj.id===id});
-        console.log("FPBS onPersonClickDel filterperson",filterperson);
-        const filterpersonname = name;
-
-        const deletedid="DELETED ID: "+id + "person.name: "+filterpersonname;
-        console.log("FPBS onPersonClickDel",id,filterpersonname,deletedid);
-
+//        alert("FPBS onPersonClickDel for id "+this.state.speissi+id+this.state.speissi+"name:"+this.state.speissi+name);
+        console.log("FPBS onPersonClickDel for id ",id,"name:",name);
         personsTAPI
             .deletepromised(id)
             .then(deletedPerson => {
-                alert("deletePromised "+id);
+//                alert("deletePromised"+id);
                 this.props.onPersonClickDel(id);
                 this.setState({
-                    noerror: deletedid
+                    noerror: okmsg
                 });
                 setTimeout(() => {
                   this.setState({noerror: null})
@@ -92,30 +88,8 @@ class FilterPersonsByString extends React.Component {
                       </tbody>
                     </table>
                     </>;
-     /**
-    const content =<><br></br><b>FilterPersonsByString:</b>{this.props.searchstring} 
-                    {hit.map(person=><PersonRow
-                         key={person.id}
-                         person={person}
-                         onPersonClick={() => this.props.onPersonClickDel(person.id)}
-                         />)}</>;
-    */
-
     return (content);
   };
 };
 
 export default FilterPersonsByString;
-//const FilterPersonsByString = ({ searchstring,persons,onSubmitDelete }) => {
-
-/**
- * 
-    return (
-        <p><b>FilterPersonsByString:</b>{this.props.searchstring} 
-                                        {hit.map(person=><PersonRow
-                                                             key={person.id}
-                                                             person={person}
-                                                             onPersonClick={() => this.onPersonClickDel(person.id)}
-                                                             />)}</p>
-    );
- */

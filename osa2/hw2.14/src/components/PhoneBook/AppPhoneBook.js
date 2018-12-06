@@ -22,7 +22,8 @@ class AppPhoneBook extends React.Component {
         value: '',
         deletePersonId:'',
         error:null,
-        noerror:null
+        noerror:null,
+        speissi: '\u00A0'
       };
       console.log('AppPhoneBook constructor');
       this.addPerson = this.addPerson.bind(this);
@@ -65,12 +66,8 @@ class AppPhoneBook extends React.Component {
         .getAllpromised()
         .then(response => {
           this.setState({
-            persons: response,
-            noerror: 'refreshPersons!'
+            persons: response
           });
-          setTimeout(() => {
-            this.setState({noerror: null})
-          }, 5000);
         });
     };
  
@@ -81,10 +78,11 @@ class AppPhoneBook extends React.Component {
 
   addPerson = (event) => {
     event.preventDefault();
+    const okmsg="Added:"+ this.state.speissi+this.state.newFormPerson;
     const duplicate = this.state.persons.find(person => person.name === this.state.newPerson);
     if (duplicate===undefined) {
       console.log(duplicate);
-      alert('addPerson submitted: ' + this.state.newPerson + ' with phonenumber:' + this.state.newPhonenumber);
+      alert('addPerson submitted:'+this.state.speissi + this.state.newPerson+this.state.speissi + 'with phonenumber'+this.state.speissi + this.state.newPhonenumber);
       const personObject = {
         name: this.state.newPerson,
         phonenumber: this.state.newPhonenumber
@@ -97,7 +95,7 @@ class AppPhoneBook extends React.Component {
 //          persons: this.state.persons.concat(personObject),   //FIXME ei toimi json-serverin luoma id puuttuu
           newPerson: '',
           newPhonenumber: '',
-          noerror: 'addPerson!'
+          noerror: okmsg
         });
         this.refreshPersons();
         setTimeout(() => {
@@ -131,7 +129,9 @@ class AppPhoneBook extends React.Component {
 
   addFormPerson = (event) => {
     event.preventDefault();
-    alert('addFormPerson submitted: ' + this.state.newFormPerson + ' with phonenumber:' + this.state.newFormPhonenumber);
+    
+    const okmsg="Added:"+ this.state.speissi+this.state.newFormPerson;
+    alert('addFormPerson submitted:' + this.state.speissi+ this.state.newFormPerson + this.state.speissi+'with phonenumber:'+this.state.speissi+ this.state.newFormPhonenumber);
     const duplicate = this.state.persons.find(person => person.name === this.state.newFormPerson);
     if (duplicate===undefined) {
       console.log(duplicate);
@@ -149,13 +149,13 @@ class AppPhoneBook extends React.Component {
           newFormPhonenumber: '',
           ValueFormPerson: '',
           ValueFormPhonenumber:'',
-          noerror: 'addPerson!'
+          noerror: okmsg
         });
-        this.refreshPersons();
         console.log("addFormPerson added via TAPI");
         setTimeout(() => {
           this.setState({noerror: null})
         }, 5000);
+        this.refreshPersons();
       });
 //      const persons = this.state.persons.concat(personObject);
 //  
