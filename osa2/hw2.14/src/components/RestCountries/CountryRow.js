@@ -40,14 +40,14 @@ render() {
   const alpha3Code = <>{country.alpha3Code}</>;
   const capital = <><b>capital:</b> {country.capital}</>;
   const population = <><b>population:</b> {country.population}</>;
-  const flag = <Image src={country.flag} height={50} width={100}/>;
+  const flag = <Image onClick={this.handleClick} src={country.flag} height={50} width={100}/>;
   console.log('CountryRow render this.state.showdetail',this.state.showdetail);
 
   if (responsedatalength===1 || this.state.showdetail===true) {
               const detail = <div id="detailcountryname" className="rowname" key={country.alpha3Code} onClick={this.handleClick}>{name}
-                              <div id="capital">{capital}
-                              <div id="population">{population}
-                              <div id="alpha3">{alpha3Code}</div>
+                              <div id="capital" onClick={this.handleClick}>{capital}
+                              <div id="population" onClick={this.handleClick}>{population}
+                              <div id="alpha3" onClick={this.handleClick}>{alpha3Code}</div>
                               <div id="flag">{flag}
                               </div>
                               </div>
