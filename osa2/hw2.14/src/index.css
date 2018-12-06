@@ -54,3 +54,6 @@ li {
     padding: 10px;
     margin-bottom: 10px;
   }
+  table, th, td {
+    border: 1px solid black;
+  }
