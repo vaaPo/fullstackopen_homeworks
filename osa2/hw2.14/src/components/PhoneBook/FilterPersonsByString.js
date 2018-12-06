@@ -32,18 +32,24 @@ class FilterPersonsByString extends React.Component {
       console.log('PersonRow componentWillUnmount');
   }; 
 
-  onPersonClickDel(id) {
+  onPersonClickDel(id,name) {
     if (window.confirm("Do you really want to delete this person.id: "+id)) { 
 //      window.open("exit.html", "Thanks for Visiting!");
         alert("FPBS onPersonClickDel for id "+id);
-        console.log("FPBS onPersonClickDel",id);
+        const filterperson = this.props.persons.filter(obj => {return obj.id===id});
+        console.log("FPBS onPersonClickDel filterperson",filterperson);
+        const filterpersonname = name;
+
+        const deletedid="DELETED ID: "+id + "person.name: "+filterpersonname;
+        console.log("FPBS onPersonClickDel",id,filterpersonname,deletedid);
+
         personsTAPI
             .deletepromised(id)
             .then(deletedPerson => {
                 alert("deletePromised "+id);
                 this.props.onPersonClickDel(id);
                 this.setState({
-                    noerror: 'DELETE OK!'
+                    noerror: deletedid
                 });
                 setTimeout(() => {
                   this.setState({noerror: null})
@@ -82,7 +88,7 @@ class FilterPersonsByString extends React.Component {
                       {hit.map(person=><PersonRow
                          key={person.id}
                          person={person}
-                         onPersonClick={() => this.onPersonClickDel(person.id)}/>)}
+                         onPersonClick={() => this.onPersonClickDel(person.id,person.name)}/>)}
                       </tbody>
                     </table>
                     </>;
